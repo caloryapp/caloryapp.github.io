@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": false,
+    "outDir": "dist",
+    "stripInternal": true
+  },
+  "include": ["src/libs/index.ts", "src/components/CaloryApp.tsx", "src/vite-env.d.ts"],
+  "exclude": ["node_modules", "dist", "**/*.test.*", "**/*.stories.*"]
+}

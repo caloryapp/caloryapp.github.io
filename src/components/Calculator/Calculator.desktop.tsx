@@ -1,0 +1,149 @@
+import { useTranslation } from 'react-i18next'
+import styles from './Calculator.module.css'
+import MinusIcon from '../../assets/icons/minus.svg?react'
+import PlusIcon from '../../assets/icons/plus.svg?react'
+import ArrowsUpDownIcon from '../../assets/icons/arrows-up-down.svg?react'
+import PlusCircleIcon from '../../assets/icons/plus-circle.svg?react'
+import DocumentArrowDownIcon from '../../assets/icons/document-arrow-down.svg?react'
+import DocumentArrowUpIcon from '../../assets/icons/document-arrow-up.svg?react'
+import TrashIcon from '../../assets/icons/trash.svg?react'
+import { cn } from '../../libs/tw'
+import { useStoreContext } from '../../providers/StoreProvider/context'
+import { useCalculatorContext } from './Calculator.context'
+import useStickyDetection from './useStickyDetection'
+import { useCurrentDate, useSortable } from './helpers'
+import Row from './Row'
+
+function CalculatorDesktop() {
+  const { t } = useTranslation()
+  const {
+    preferences: { dailyLimit },
+    totalSum,
+    putEntry
+  } = useStoreContext()
+  const {
+    visibleEntryList,
+    importArticles,
+    exportArticles,
+    clearEntries,
+    moveEntry,
+    addEntry,
+    deleteEntry
+  } = useCalculatorContext()
+  const curDate = useCurrentDate()
+  const { tableRef, isStuck } = useStickyDetection()
+  const totalLeft = dailyLimit - totalSum
+
+  const { ref: entriesRef } = useSortable<HTMLTableSectionElement>({
+    draggable: 'tr',
+    handle: '.handle',
+    onEnd: (e) => moveEntry({ fromIndex: e.oldIndex, toIndex: e.newIndex })
+  })
+
+  return (
+    <table ref={tableRef} class={styles.entries}>
+      <thead
+        class={cn(
+          'sticky top-0 bg-base-100 z-10 transition-shadow duration-200',
+          isStuck && 'shadow-md'
+        )}
+      >
+        <tr>
+          <th class={styles.compact}>&nbsp;</th>
+          <th colSpan={5} class="text-xl font-medium">
+            <div class="flex flex-row justify-between">
+              <span>{curDate}</span>
+              {!isNaN(totalLeft) ? (
+                <span>
+                  {dailyLimit.toFixed(2)} - {totalSum.toFixed(2)} ={' '}
+                  {t('kcal', { d: totalLeft.toFixed(2) })}
+                </span>
+              ) : (
+                <span>{t('kcal', { d: totalSum.toFixed(2) })}</span>
+              )}
+            </div>
+          </th>
+          <th colSpan={2} class="text-right">
+            <div class="inline-flex gap-1.5">
+              <button
+                type="button"
+                onClick={clearEntries}
+                title={t`delete-all-entries`}
+                class="btn btn-square btn-warning"
+              >
+                <TrashIcon />
+              </button>
+              <div class="join">
+                <button
+                  type="button"
+                  onClick={importArticles}
+                  class="btn btn-square join-item"
+                >
+                  <DocumentArrowUpIcon />
+                </button>
+                <button
+                  type="button"
+                  onClick={exportArticles}
+                  class="btn btn-square join-item"
+                >
+                  <DocumentArrowDownIcon />
+                </button>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody ref={entriesRef}>
+        {visibleEntryList.map((entry, i) => (
+          <tr key={entry.id}>
+            <td
+              class={cn(
+                'handle cursor-grab active:cursor-grabbing',
+                styles.compact
+              )}
+            >
+              <ArrowsUpDownIcon />
+            </td>
+            <Row
+              entry={entry}
+              autoFocus={i == visibleEntryList.length - 1}
+              onSave={putEntry}
+            />
+            <td class={styles.compact}>
+              <div class="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => deleteEntry(entry.id)}
+                  title={t`remove`}
+                  class="btn btn-square"
+                >
+                  <MinusIcon />
+                </button>
+                <div class="join">
+                  <button
+                    type="button"
+                    onClick={() => addEntry(entry.id, 'kcalPer100g')}
+                    title={t`new-article`}
+                    class="btn btn-square join-item"
+                  >
+                    <PlusIcon />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => addEntry(entry.id, 'section')}
+                    title={t`new-section`}
+                    class="btn btn-square join-item"
+                  >
+                    <PlusCircleIcon />
+                  </button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+}
+
+export default CalculatorDesktop

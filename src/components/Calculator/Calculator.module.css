@@ -1,0 +1,29 @@
+/* header cells paddings */
+.entries th {
+  padding: 1.5rem 0.5rem 1.5rem;
+}
+.entries th:first-child {
+  padding-left: 1.5rem;
+}
+.entries th:last-child {
+  padding-right: 1.5rem;
+}
+
+/* body cells paddings */
+.entries td {
+  padding: 0.25rem 0.5rem;
+}
+.entries td:first-child {
+  padding-left: 1.5rem;
+}
+.entries td:last-child {
+  padding-right: 1.5rem;
+}
+.entries tr:last-child td {
+  padding-bottom: 3rem;
+}
+
+.compact {
+  white-space: nowrap;
+  width: 1%;
+}

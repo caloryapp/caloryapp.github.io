@@ -1,0 +1,92 @@
+{
+  "name": "@caloryapp/caloryapp",
+  "version": "0.0.2-beta.3",
+  "description": "Add foods. Count calories. That's it!",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/libs/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/libs/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/caloryapp.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "ladle": "ladle serve",
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.build.json && vite build",
+    "build:lib": "tsc -p tsconfig.lib.json && vite build --config vite.lib.config.ts",
+    "analyze:lib": "ANALYZE=true npm run build:lib",
+    "analyze:lib:text": "ANALYZE=true ANALYZE_TEMPLATE=markdown ANALYZE_OUT=reports/stats.md npm run build:lib",
+    "prepublishOnly": "npm run build:lib",
+    "preview": "vite preview",
+    "lint": "eslint src && tsc --noEmit -p tsconfig.dev.json",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write src",
+    "prepare": "husky",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "clsx": "^2.1.1",
+    "dexie": "^4.0.0",
+    "dexie-react-hooks": "^4.2.0",
+    "fractional-indexing": "^3.2.0",
+    "i18next": "^25.8.0",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "nanoid": "^5.1.6",
+    "react-i18next": "^16.5.3",
+    "sortablejs": "^1.15.6",
+    "tailwind-merge": "^3.4.0",
+    "use-debounce": "^10.1.0",
+    "wouter": "^3.9.0"
+  },
+  "peerDependencies": {
+    "preact": "^10.19.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "@ladle/react": "^5.1.1",
+    "@preact/preset-vite": "^2.8.1",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/preact": "^3.2.4",
+    "@types/chrome": "^0.1.35",
+    "@types/node": "^25.0.9",
+    "@types/sortablejs": "^1.15.9",
+    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@typescript-eslint/parser": "^8.53.1",
+    "autoprefixer": "^10.4.23",
+    "daisyui": "^5.5.14",
+    "eslint": "^9.39.2",
+    "eslint-config-preact": "^2.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "fake-indexeddb": "^6.2.5",
+    "husky": "^9.1.7",
+    "jsdom": "^28.0.0",
+    "postcss": "^8.5.6",
+    "preact": "^10.28.4",
+    "prettier": "^3.8.0",
+    "rollup-plugin-visualizer": "^7.0.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.1",
+    "vite": "^7.3.1",
+    "vite-plugin-svgr": "^4.5.0",
+    "vitest": "^4.0.18"
+  }
+}
