@@ -19,8 +19,8 @@ Optional verification:
 
 ```bash
 # Check dist-tags (latest, beta, etc.)
-npm view @caloryapp/caloryapp dist-tags
+npm view @caloryapp/calculator dist-tags
 
 # Check published versions
-npm view @caloryapp/caloryapp versions --json
+npm view @caloryapp/calculator versions --json
 ```

@@ -3,7 +3,7 @@ import Toast, { ToastHandle } from './Toast'
 import { useRef } from 'preact/hooks'
 
 export default {
-  title: 'Components'
+  title: 'Components/Feedback'
 } satisfies StoryDefault
 
 export const Example: Story = () => {

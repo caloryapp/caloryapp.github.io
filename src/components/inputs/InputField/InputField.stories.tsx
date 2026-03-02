@@ -2,7 +2,7 @@ import { Story, StoryDefault } from '@ladle/react'
 import InputField from './InputField'
 
 export default {
-  title: 'Components/Forms'
+  title: 'Components/Inputs'
 } satisfies StoryDefault
 
 export const Example: Story = () => {

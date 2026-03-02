@@ -4,7 +4,7 @@ import CalculatorIcon from '../../assets/icons/calculator.svg?react'
 import { cn } from '../../libs/tw'
 import { capitalize } from '../../libs/strings'
 import { useTheme } from '../../libs/theme'
-import CaloryApp from '../../components/CaloryApp'
+import CaloryApp from '../../CaloryApp'
 
 const availThemes = ['light', 'cupcake', 'caramellatte', 'valentine']
 

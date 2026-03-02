@@ -6,6 +6,13 @@ export default [
   {
     ignores: ["dist", "node_modules", "*.config.js"]
   },
+  {
+    languageOptions: {
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname
+      }
+    },
+  },
   ...preact,
   ...tseslint.configs.recommended,
   prettier,

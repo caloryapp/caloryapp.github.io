@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker'
 import Combobox from './Combobox'
 
 export default {
-  title: 'Components'
+  title: 'Components/Inputs'
 } satisfies StoryDefault
 
 export const Example: Story = () => {

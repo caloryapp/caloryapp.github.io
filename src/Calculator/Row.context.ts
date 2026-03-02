@@ -1,7 +1,7 @@
 import { createContext } from 'preact'
 import { useContext } from 'preact/hooks'
 import { DebouncedState } from 'use-debounce'
-import { Entry } from '../../services/types'
+import { Entry } from '../services/types'
 
 export type RowContextProps = {
   autoFocus: boolean

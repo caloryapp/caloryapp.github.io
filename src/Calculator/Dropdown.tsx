@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
 import ChevronUpDownIcon from '../../assets/icons/chevron-up-down.svg?react'
 import MinusIcon from '../../assets/icons/trash.svg?react'
-import { cn } from '../../libs/tw'
+import { cn } from '../libs/tw'
 import { truncateText } from './helpers'
 
 const maxOptionCols = 40

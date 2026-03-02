@@ -14,7 +14,7 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: false,
     lib: {
-      entry: resolve(__dirname, 'src/libs/index.ts'),
+      entry: resolve(__dirname, 'src/index.ts'),
       name: 'CaloryApp',
       formats: ['es', 'cjs'],
       fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs')

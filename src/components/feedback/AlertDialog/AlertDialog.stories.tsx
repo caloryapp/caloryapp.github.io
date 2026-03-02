@@ -1,10 +1,10 @@
-import type { StoryDefault } from '@ladle/react'
+import type { Story, StoryDefault } from '@ladle/react'
 import DialogsProvider, {
   useDialogsContext
 } from '../../../providers/DialogsProvider'
 
 export default {
-  title: 'Components',
+  title: 'Components/Feedback',
   decorators: [
     (Component) => (
       <DialogsProvider>
@@ -14,7 +14,7 @@ export default {
   ]
 } satisfies StoryDefault
 
-export const AlertDialog = () => {
+export const Example: Story = () => {
   const { confirm } = useDialogsContext()
   return (
     <button
@@ -32,3 +32,4 @@ export const AlertDialog = () => {
     </button>
   )
 }
+Example.storyName = 'AlertDialog'
