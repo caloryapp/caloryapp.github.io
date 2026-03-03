@@ -1,0 +1,44 @@
+{
+  "name": "@caloryapp/website",
+  "version": "0.0.1",
+  "description": "Add foods. Count calories. That's it!",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "preview": "vite preview",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "lint": "eslint src && tsc --noEmit -p tsconfig.dev.json",
+    "lint:fix": "eslint src --fix",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@caloryapp/calculator": "^0.0.2-beta.3",
+    "@tailwindcss/vite": "^4.1.18",
+    "clsx": "^2.1.1",
+    "i18next": "^25.8.0",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "preact": "^10.28.4",
+    "react-i18next": "^16.5.3",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.8.1",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^25.0.9",
+    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@typescript-eslint/parser": "^8.53.1",
+    "autoprefixer": "^10.4.23",
+    "daisyui": "^5.5.14",
+    "eslint": "^9.39.2",
+    "eslint-config-preact": "^2.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "postcss": "^8.5.6",
+    "prettier": "^3.8.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.53.1",
+    "vite": "^7.3.1",
+    "vite-plugin-svgr": "^4.5.0"
+  }
+}
