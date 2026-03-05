@@ -24,7 +24,7 @@ const HomePage = () => {
     <div class="flex flex-col h-screen max-w-6xl mx-auto">
       <div class="navbar z-20">
         <div class="flex-1 flex items-center gap-1.5 text-2xl font-medium">
-          <CalculatorIcon />
+          <CalculatorIcon className="size-7" />
           <span>{t`app-title`}</span>
         </div>
         <div class="flex-none">

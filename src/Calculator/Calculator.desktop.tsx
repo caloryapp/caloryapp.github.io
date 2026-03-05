@@ -4,14 +4,13 @@ import MinusIcon from '../assets/icons/minus.svg?react'
 import PlusIcon from '../assets/icons/plus.svg?react'
 import ArrowsUpDownIcon from '../assets/icons/arrows-up-down.svg?react'
 import PlusCircleIcon from '../assets/icons/plus-circle.svg?react'
-import DocumentArrowDownIcon from '../assets/icons/document-arrow-down.svg?react'
-import DocumentArrowUpIcon from '../assets/icons/document-arrow-up.svg?react'
 import TrashIcon from '../assets/icons/trash.svg?react'
 import { cn } from '../libs/tw'
 import { useStoreContext } from '../providers/StoreProvider/context'
 import { useCalculatorContext } from './Calculator.context'
 import useStickyDetection from './useStickyDetection'
 import { useCurrentDate, useSortable } from './helpers'
+import SettingsButton from './SettingsButton'
 import Row from './Row'
 
 function CalculatorDesktop() {
@@ -21,15 +20,8 @@ function CalculatorDesktop() {
     totalSum,
     putEntry
   } = useStoreContext()
-  const {
-    visibleEntryList,
-    importArticles,
-    exportArticles,
-    clearEntries,
-    moveEntry,
-    addEntry,
-    deleteEntry
-  } = useCalculatorContext()
+  const { visibleEntryList, clearEntries, moveEntry, addEntry, deleteEntry } =
+    useCalculatorContext()
   const curDate = useCurrentDate()
   const { tableRef, isStuck } = useStickyDetection()
   const totalLeft = goal - totalSum
@@ -75,22 +67,7 @@ function CalculatorDesktop() {
               >
                 <TrashIcon />
               </button>
-              <div class="join">
-                <button
-                  type="button"
-                  onClick={importArticles}
-                  class="btn btn-square join-item"
-                >
-                  <DocumentArrowUpIcon />
-                </button>
-                <button
-                  type="button"
-                  onClick={exportArticles}
-                  class="btn btn-square join-item"
-                >
-                  <DocumentArrowDownIcon />
-                </button>
-              </div>
+              <SettingsButton />
             </div>
           </th>
         </tr>
@@ -104,7 +81,7 @@ function CalculatorDesktop() {
                 styles.compact
               )}
             >
-              <ArrowsUpDownIcon />
+              <ArrowsUpDownIcon className="size-4" />
             </td>
             <Row
               entry={entry}
@@ -119,7 +96,7 @@ function CalculatorDesktop() {
                   title={t`remove`}
                   class="btn btn-square"
                 >
-                  <MinusIcon />
+                  <MinusIcon className="size-4" />
                 </button>
                 <div class="join">
                   <button
@@ -128,7 +105,7 @@ function CalculatorDesktop() {
                     title={t`new-article`}
                     class="btn btn-square join-item"
                   >
-                    <PlusIcon />
+                    <PlusIcon className="size-4" />
                   </button>
                   <button
                     type="button"
@@ -136,7 +113,7 @@ function CalculatorDesktop() {
                     title={t`new-section`}
                     class="btn btn-square join-item"
                   >
-                    <PlusCircleIcon />
+                    <PlusCircleIcon className="size-5" />
                   </button>
                 </div>
               </div>

@@ -29,5 +29,8 @@
   "settings": "Settings",
   "goal": "Goal",
   "search-url": "Search URL",
-  "caloric-goal": "Calorie goal (e.g. 2200 kcal)"
+  "caloric-goal": "Calorie goal (e.g. 2200 kcal)",
+  "goal-kcal": "Goal (kcal)",
+  "import-ingredients": "Import ingredients",
+  "export-ingredients": "Export ingredients"
 }

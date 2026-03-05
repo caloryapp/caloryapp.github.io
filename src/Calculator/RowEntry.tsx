@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import styles from './Calculator.module.css'
 import MagnifyingGlassIcon from '../assets/icons/magnifying-glass.svg?react'
 import DocumentPlusIcon from '../assets/icons/document-plus.svg?react'
-import MinusIcon from '../assets/icons/trash.svg?react'
+import TrashIcon from '../assets/icons/trash.svg?react'
 import { SEARCH_URL } from '../config'
 import { useDialogsContext } from '../providers/DialogsProvider'
 import { useStoreContext } from '../providers/StoreProvider'
@@ -93,7 +93,7 @@ const RowEntry = () => {
                   onClick={() => deleteArticle(option.id)}
                   class="btn btn-ghost btn-square btn-sm -mr-1"
                 >
-                  <MinusIcon aria-label="delete" />
+                  <TrashIcon />
                 </button>
               </div>
             )}
@@ -107,7 +107,7 @@ const RowEntry = () => {
             title={t`search-article`}
             class="btn btn-square"
           >
-            <MagnifyingGlassIcon />
+            <MagnifyingGlassIcon className="size-5" />
           </a>
         </div>
       </td>
@@ -173,7 +173,7 @@ const RowEntry = () => {
             title={t`save-article`}
             class="btn btn-square"
           >
-            <DocumentPlusIcon />
+            <DocumentPlusIcon className="size-5" />
           </button>
         </div>
       </td>

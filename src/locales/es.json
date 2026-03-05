@@ -1,7 +1,7 @@
 {
   "app-title": "Calory App",
   "cancel": "Cancelar",
-  "close": "Close",
+  "close": "Cerrar",
   "accept": "Aceptar",
   "save": "Guardar",
   "confirm": "Confirme",
@@ -29,5 +29,8 @@
   "settings": "Preferencias",
   "goal": "Objetivo",
   "search-url": "URL de búsqueda",
-  "caloric-goal": "Objetivo calórico (ej. 2200 kcal)"
+  "caloric-goal": "Objetivo calórico (ej. 2200 kcal)",
+  "goal-kcal": "Objetivo calórico",
+  "import-ingredients": "Importar ingredientes",
+  "export-ingredients": "Exportar ingredientes"
 }

@@ -81,7 +81,7 @@ const Toast = forwardRef<ToastHandle, ToastProps>(({ delay = 4500 }, ref) => {
           onClick={handleClose}
           class="btn btn-square btn-xs btn-link text-base-content"
         >
-          <CloseIcon />
+          <CloseIcon className="size-5" />
         </button>
       </div>
     </div>

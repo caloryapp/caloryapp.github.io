@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { EntryType } from '../services/types'
 import { useDialogsContext } from '../providers/DialogsProvider'
 import { useStoreContext } from '../providers/StoreProvider/context'
+import { SettingsDialog } from '../dialogs/SettingsDialog.tsx'
 import { CalculatorContext, CalculatorContextProps } from './Calculator.context'
 import CalculatorDesktop from './Calculator.desktop'
 import { exportArticles, importArticles } from './helpers'
@@ -12,7 +13,6 @@ import useDisplayOrder from './useDisplayOrder'
 const Calculator = () => {
   const { t, i18n } = useTranslation()
   const focusIdRef = useRef('')
-  const [focusId, setFocusId] = useState('')
   const { genOrderAfter, moveEntryBefore, moveEntryAfter } = useDisplayOrder()
   const { confirm, toast } = useDialogsContext()
   const {
@@ -25,6 +25,7 @@ const Calculator = () => {
     clearEntries,
     replaceArticles
   } = useStoreContext()
+  const [openSettingsDialog, setOpenSettingsDialog] = useState(false)
 
   const collator = useMemo(() => {
     const language = i18n.resolvedLanguage || i18n.language || 'en'
@@ -128,8 +129,7 @@ const Calculator = () => {
       focusIdRef,
       articles,
       visibleEntryList,
-      focusId,
-      setFocusId,
+      showSettingsDialog: () => setOpenSettingsDialog(true),
       importArticles: handleImportArticles,
       exportArticles: handleExportArticles,
       clearEntries: handleClearEntries,
@@ -138,7 +138,6 @@ const Calculator = () => {
       deleteEntry: handleDeleteEntry
     }),
     [
-      focusId,
       articles,
       visibleEntryList,
       handleImportArticles,
@@ -153,6 +152,10 @@ const Calculator = () => {
   return (
     <CalculatorContext value={ctxValue}>
       <CalculatorDesktop />
+      <SettingsDialog
+        open={openSettingsDialog}
+        onClose={() => setOpenSettingsDialog(false)}
+      />
     </CalculatorContext>
   )
 }

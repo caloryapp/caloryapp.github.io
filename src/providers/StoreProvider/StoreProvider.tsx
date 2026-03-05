@@ -2,11 +2,11 @@ import { ComponentChildren } from 'preact'
 import { useEffect, useMemo } from 'preact/hooks'
 import { useLiveQuery } from 'dexie-react-hooks'
 import {
-  articlesTable,
+  PREFERENCES_KEY,
   db,
   ensureEntriesSeed,
+  articlesTable,
   entriesTable,
-  PREFERENCES_KEY,
   preferencesTable
 } from '../../services/db'
 import { Article, Entry, Preferences } from '../../services/types'
@@ -33,6 +33,7 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
 
   const ctxValue = useMemo<StoreContextProps>(
     () => ({
+      // user
       preferences: preferences ?? {
         goal: NaN
       },

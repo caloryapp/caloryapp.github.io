@@ -5,6 +5,7 @@ const PopupApp = () => {
     })
   }
 
+  // TODO: add translations
   return (
     <div class="container">
       <header>
