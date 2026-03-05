@@ -33,7 +33,7 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
   const ctxValue = useMemo<StoreContextProps>(
     () => ({
       preferences: preferences ?? {
-        dailyLimit: NaN
+        goal: NaN
       },
       // articles
       articleList,

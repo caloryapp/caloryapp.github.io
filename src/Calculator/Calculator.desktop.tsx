@@ -17,7 +17,7 @@ import Row from './Row'
 function CalculatorDesktop() {
   const { t } = useTranslation()
   const {
-    preferences: { dailyLimit },
+    preferences: { goal },
     totalSum,
     putEntry
   } = useStoreContext()
@@ -32,7 +32,7 @@ function CalculatorDesktop() {
   } = useCalculatorContext()
   const curDate = useCurrentDate()
   const { tableRef, isStuck } = useStickyDetection()
-  const totalLeft = dailyLimit - totalSum
+  const totalLeft = goal - totalSum
 
   const { ref: entriesRef } = useSortable<HTMLTableSectionElement>({
     draggable: 'tr',
@@ -52,14 +52,16 @@ function CalculatorDesktop() {
           <th class={styles.compact}>&nbsp;</th>
           <th colSpan={5} class="text-xl font-medium">
             <div class="flex flex-row justify-between">
-              <span>{curDate}</span>
-              {!isNaN(totalLeft) ? (
-                <span>
-                  {dailyLimit.toFixed(2)} - {totalSum.toFixed(2)} ={' '}
-                  {t('kcal', { d: totalLeft.toFixed(2) })}
-                </span>
+              <div>{curDate}</div>
+              {isNaN(totalLeft) ? (
+                <div>{t('kcal', { d: totalSum.toFixed(2) })}</div>
               ) : (
-                <span>{t('kcal', { d: totalSum.toFixed(2) })}</span>
+                <div class="flex flex-col items-end">
+                  <span>{t('kcal', { d: totalLeft.toFixed(2) })}</span>
+                  <span class="text-xs">
+                    {goal.toFixed(2)} - {t('kcal', { d: totalSum.toFixed(2) })}
+                  </span>
+                </div>
               )}
             </div>
           </th>

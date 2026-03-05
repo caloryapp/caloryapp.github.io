@@ -2,7 +2,7 @@ export type EntryType = 'section' | 'kcalPer100g' | 'kcalPerUnit'
 export type ArticleType = 'kcalPer100g' | 'kcalPerUnit'
 
 export type Preferences = {
-  dailyLimit: number
+  goal: number
 }
 
 export type Article = {
