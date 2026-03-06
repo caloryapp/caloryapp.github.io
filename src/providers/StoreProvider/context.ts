@@ -5,6 +5,7 @@ import { Article, Entry, Preferences } from '../../services/types'
 export type StoreContextProps = {
   // user
   preferences: Preferences
+  updatePreferences: (preferences: Partial<Preferences>) => Promise<void>
 
   // articles
   articleList: Article[] | undefined

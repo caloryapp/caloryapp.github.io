@@ -3,6 +3,7 @@
   "cancel": "Cancel",
   "close": "Close",
   "accept": "Accept",
+  "save": "Save",
   "confirm": "Confirm",
   "theme": "Theme",
   "section-name": "Breakfast, Lunch, Snack, Dinner, etc.",
@@ -24,5 +25,9 @@
   "save-article": "Save ingredient",
   "remove": "Remove",
   "new-article": "New ingredient",
-  "new-section": "New section"
+  "new-section": "New section",
+  "settings": "Settings",
+  "goal": "Goal",
+  "search-url": "Search URL",
+  "caloric-goal": "Calorie goal (e.g. 2200 kcal)"
 }

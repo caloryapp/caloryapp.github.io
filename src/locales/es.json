@@ -3,6 +3,7 @@
   "cancel": "Cancelar",
   "close": "Close",
   "accept": "Aceptar",
+  "save": "Guardar",
   "confirm": "Confirme",
   "theme": "Tema",
   "section-name": "Desayuno, Almuerzo, Merienda, Cena, etc.",
@@ -24,5 +25,9 @@
   "save-article": "Guardar ingrediente",
   "remove": "Eliminar",
   "new-article": "Nuevo ingrediente",
-  "new-section": "Nueva sección"
+  "new-section": "Nueva sección",
+  "settings": "Preferencias",
+  "goal": "Objetivo",
+  "search-url": "URL de búsqueda",
+  "caloric-goal": "Objetivo calórico (ej. 2200 kcal)"
 }

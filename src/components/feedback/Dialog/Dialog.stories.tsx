@@ -32,4 +32,4 @@ export const Example: Story = () => {
     </button>
   )
 }
-Example.storyName = 'AlertDialog'
+Example.storyName = 'Dialog'

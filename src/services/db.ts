@@ -3,6 +3,8 @@ import { nanoid } from 'nanoid'
 import { generateKeyBetween } from 'fractional-indexing'
 import { Article, Entry, Preferences } from './types'
 
+export const PREFERENCES_KEY = '1'
+
 type PreferencesTable = Preferences & {
   id: string
 }

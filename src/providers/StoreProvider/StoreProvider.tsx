@@ -6,9 +6,10 @@ import {
   db,
   ensureEntriesSeed,
   entriesTable,
+  PREFERENCES_KEY,
   preferencesTable
 } from '../../services/db'
-import { Article, Entry } from '../../services/types'
+import { Article, Entry, Preferences } from '../../services/types'
 import { StoreContext, StoreContextProps } from './context'
 import { getTotalSum } from './helpers'
 
@@ -34,6 +35,9 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
     () => ({
       preferences: preferences ?? {
         goal: NaN
+      },
+      updatePreferences: async (preferences: Partial<Preferences>) => {
+        await preferencesTable().upsert(PREFERENCES_KEY, preferences)
       },
       // articles
       articleList,

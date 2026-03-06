@@ -1,7 +1,7 @@
 import { ComponentChild, ComponentChildren } from 'preact'
 import { useMemo, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
-import AlertDialog from '../../components/feedback/AlertDialog'
+import Dialog from '../../components/feedback/Dialog'
 import Toast, { ToastHandle } from '../../components/feedback/Toast'
 import { DialogsContext, DialogsContextProps } from './context'
 
@@ -53,11 +53,10 @@ const DialogsProvider = ({ children }: DialogsProviderProps) => {
     <DialogsContext value={ctxValue}>
       {children}
       <Toast ref={toastRef} />
-      <AlertDialog
+      <Dialog
         open={confirmDialog.open}
-        header={confirmDialog.header}
-        message={confirmDialog.message}
         onClose={handleCloseConfirmDialog}
+        header={confirmDialog.header}
         actions={
           <>
             <button
@@ -77,7 +76,9 @@ const DialogsProvider = ({ children }: DialogsProviderProps) => {
             </button>
           </>
         }
-      />
+      >
+        {confirmDialog.message}
+      </Dialog>
     </DialogsContext>
   )
 }

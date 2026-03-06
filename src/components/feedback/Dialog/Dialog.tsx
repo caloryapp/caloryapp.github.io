@@ -1,21 +1,15 @@
-import { ComponentChild } from 'preact'
+import { ComponentChild, ComponentChildren } from 'preact'
 import { useEffect, useRef } from 'preact/hooks'
 
-export type AlertDialogProps = {
-  open: boolean
-  header: ComponentChild
-  message: ComponentChild
-  actions: ComponentChild
+export type DialogProps = {
+  open?: boolean
+  header?: ComponentChild
+  actions?: ComponentChild
+  children?: ComponentChildren
   onClose?: () => void
 }
 
-const AlertDialog = ({
-  open,
-  header,
-  message,
-  actions,
-  onClose
-}: AlertDialogProps) => {
+const Dialog = ({ open, header, actions, children, onClose }: DialogProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   const handleBackdropClick = (event: MouseEvent) => {
@@ -40,12 +34,12 @@ const AlertDialog = ({
       class="modal"
     >
       <div class="modal-box">
-        <h3 class="text-lg font-bold">{header}</h3>
-        <p class="py-4">{message}</p>
-        <div class="modal-action">{actions}</div>
+        {header && <h3 class="text-lg font-bold">{header}</h3>}
+        {children && <div class="py-4">{children}</div>}
+        {actions && <div class="modal-action">{actions}</div>}
       </div>
     </dialog>
   )
 }
 
-export default AlertDialog
+export default Dialog
