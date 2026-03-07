@@ -1,6 +1,6 @@
 {
   "name": "@caloryapp/calculator",
-  "version": "0.0.2-beta.5",
+  "version": "0.0.2-beta.6",
   "description": "Add foods. Count calories. That's it!",
   "type": "module",
   "main": "./dist/index.cjs",
