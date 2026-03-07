@@ -32,5 +32,6 @@
   "caloric-goal": "Objetivo calórico (ej. 2200 kcal)",
   "goal-kcal": "Objetivo calórico",
   "import-ingredients": "Importar ingredientes",
-  "export-ingredients": "Exportar ingredientes"
+  "export-ingredients": "Exportar ingredientes",
+  "kcal-budget": "Te quedan: {{d}} kcal"
 }

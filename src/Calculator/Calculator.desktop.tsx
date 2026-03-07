@@ -49,7 +49,9 @@ function CalculatorDesktop() {
                 <div>{t('kcal', { d: totalSum.toFixed(2) })}</div>
               ) : (
                 <div class="flex flex-col items-end">
-                  <span>{t('kcal', { d: totalLeft.toFixed(2) })}</span>
+                  <span class={cn({ 'text-warning': totalLeft < 0 })}>
+                    {t('kcal-budget', { d: totalLeft.toFixed(2) })}
+                  </span>
                   <span class="text-xs">
                     {goal.toFixed(2)} - {t('kcal', { d: totalSum.toFixed(2) })}
                   </span>
