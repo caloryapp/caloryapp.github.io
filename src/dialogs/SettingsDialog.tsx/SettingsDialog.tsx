@@ -26,6 +26,11 @@ const SettingsDialog = () => {
   const { changed, open, onClose, save } = useSettingsDialogContext()
   const [activeTab, setActiveTab] = useState<ActiveTab>('goal')
 
+  useEffect(() => {
+    if (!open) return
+    setActiveTab('goal')
+  }, [open])
+
   return (
     <Dialog
       open={open}
