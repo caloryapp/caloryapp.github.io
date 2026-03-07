@@ -26,6 +26,11 @@ const SettingsDialog = () => {
   const { changed, open, onClose, save } = useSettingsDialogContext()
   const [activeTab, setActiveTab] = useState<ActiveTab>('goal')
 
+  const handleSave = () => {
+    save()
+    onClose()
+  }
+
   useEffect(() => {
     if (!open) return
     setActiveTab('goal')
@@ -44,7 +49,7 @@ const SettingsDialog = () => {
           <button
             type="button"
             disabled={!changed}
-            onClick={save}
+            onClick={handleSave}
             class="btn btn-primary"
           >
             {t`save`}
