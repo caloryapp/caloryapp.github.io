@@ -89,14 +89,17 @@ const SettingsDialogProvider = ({ open, onClose }: SettingsDialogProps) => {
   })
 
   const handleSave = useCallback(() => {
-    updatePreferences({ goal: Number.parseFloat(data.goal) })
+    updatePreferences({
+      goal: Number.parseFloat(data.goal),
+      searchUrl: data.searchUrl.trim()
+    })
     setChanged(false)
-  }, [data.goal, updatePreferences])
+  }, [data.goal, data.searchUrl, updatePreferences])
 
   const goal = Number.isNaN(preferences.goal) ? '' : `${preferences.goal}`
   useEffect(() => {
-    setData((val) => ({ ...val, goal }))
-  }, [goal, setData])
+    setData((val) => ({ ...val, goal, searchUrl: preferences.searchUrl }))
+  }, [goal, preferences.searchUrl, setData])
 
   const ctxValue = useMemo<SettingsDialogContextProps>(
     () => ({

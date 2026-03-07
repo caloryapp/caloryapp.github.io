@@ -3,6 +3,7 @@ export type ArticleType = 'kcalPer100g' | 'kcalPerUnit'
 
 export type Preferences = {
   goal: number
+  searchUrl: string
 }
 
 export type Article = {

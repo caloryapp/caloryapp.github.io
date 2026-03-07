@@ -1,6 +1,7 @@
 import { ComponentChildren } from 'preact'
 import { useEffect, useMemo } from 'preact/hooks'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { SEARCH_URL } from '../../config'
 import {
   PREFERENCES_KEY,
   db,
@@ -34,8 +35,9 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
   const ctxValue = useMemo<StoreContextProps>(
     () => ({
       // user
-      preferences: preferences ?? {
-        goal: NaN
+      preferences: {
+        goal: preferences?.goal ?? NaN,
+        searchUrl: preferences?.searchUrl ?? SEARCH_URL
       },
       updatePreferences: async (preferences: Partial<Preferences>) => {
         await preferencesTable().upsert(PREFERENCES_KEY, preferences)
