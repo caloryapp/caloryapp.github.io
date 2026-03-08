@@ -1,5 +1,9 @@
 import { useTranslation } from 'react-i18next'
 import styles from './Calculator.module.css'
+import DocumentArrowDownIcon from '../assets/icons/document-arrow-down.svg?react'
+import DocumentArrowUpIcon from '../assets/icons/document-arrow-up.svg?react'
+import Cog6ToothIcon from '../assets/icons/cog-6-tooth.svg?react'
+import RocketLaunchIcon from '../assets/icons/rocket-launch.svg?react'
 import MinusIcon from '../assets/icons/minus.svg?react'
 import PlusIcon from '../assets/icons/plus.svg?react'
 import ArrowsUpDownIcon from '../assets/icons/arrows-up-down.svg?react'
@@ -7,10 +11,10 @@ import PlusCircleIcon from '../assets/icons/plus-circle.svg?react'
 import TrashIcon from '../assets/icons/trash.svg?react'
 import { cn } from '../libs/tw'
 import { useStoreContext } from '../providers/StoreProvider/context'
+import Menu, { MenuButton, MenuDivider } from '../components/navigation/Menu'
 import { useCalculatorContext } from './Calculator.context'
 import useStickyDetection from './useStickyDetection'
 import { useCurrentDate, useSortable } from './helpers'
-import SettingsButton from './SettingsButton'
 import Row from './Row'
 
 function CalculatorDesktop() {
@@ -20,8 +24,16 @@ function CalculatorDesktop() {
     totalSum,
     putEntry
   } = useStoreContext()
-  const { visibleEntryList, clearEntries, moveEntry, addEntry, deleteEntry } =
-    useCalculatorContext()
+  const {
+    visibleEntryList,
+    showSettingsDialog,
+    importArticles,
+    exportArticles,
+    clearEntries,
+    moveEntry,
+    addEntry,
+    deleteEntry
+  } = useCalculatorContext()
   const curDate = useCurrentDate()
   const { tableRef, isStuck } = useStickyDetection()
   const totalLeft = goal - totalSum
@@ -69,7 +81,28 @@ function CalculatorDesktop() {
               >
                 <TrashIcon />
               </button>
-              <SettingsButton />
+              <Menu
+                anchor={({ toggle }) => (
+                  <button type="button" onClick={toggle} class="btn btn-square">
+                    <Cog6ToothIcon />
+                  </button>
+                )}
+                class="dropdown-end"
+              >
+                <MenuButton onClick={showSettingsDialog}>
+                  <RocketLaunchIcon />
+                  <span class="text-nowrap">{t`goal-kcal`}</span>
+                </MenuButton>
+                <MenuDivider />
+                <MenuButton onClick={importArticles}>
+                  <DocumentArrowUpIcon />
+                  <span class="text-nowrap">{t`import-ingredients`}</span>
+                </MenuButton>
+                <MenuButton onClick={exportArticles}>
+                  <DocumentArrowDownIcon />
+                  <span class="text-nowrap">{t`export-ingredients`}</span>
+                </MenuButton>
+              </Menu>
             </div>
           </th>
         </tr>

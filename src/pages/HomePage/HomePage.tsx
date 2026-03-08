@@ -1,23 +1,20 @@
-import { useRef } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
 import CalculatorIcon from '../../assets/icons/calculator.svg?react'
-import { cn } from '../../libs/tw'
+import ChevronDownIcon from '../../assets/icons/chevron-down.svg?react'
 import { capitalize } from '../../libs/strings'
+import { cn } from '../../libs/tw'
 import { useTheme } from '../../libs/theme'
+import Menu, { MenuButton } from '../../components/navigation/Menu'
 import CaloryApp from '../../CaloryApp'
 
 const availThemes = ['light', 'cupcake', 'caramellatte', 'valentine']
 
 const HomePage = () => {
-  const detailsRef = useRef<HTMLDetailsElement>(null)
   const { t } = useTranslation()
   const { theme, setTheme } = useTheme()
 
   const handleChangeTheme = (theme: string) => {
-    const detailsEl = detailsRef.current
-    if (!detailsEl) return
     setTheme(theme)
-    detailsEl.open = false
   }
 
   return (
@@ -27,27 +24,29 @@ const HomePage = () => {
           <CalculatorIcon className="size-7" />
           <span>{t`app-title`}</span>
         </div>
-        <div class="flex-none">
-          <ul class="menu menu-horizontal px-1">
-            <li>
-              <details ref={detailsRef}>
-                <summary>{t`theme`}</summary>
-                <ul class="bg-base-100 rounded-t-none p-2">
-                  {availThemes.map((option, i) => (
-                    <li key={i}>
-                      <a
-                        class={cn({ 'font-semibold': theme == option })}
-                        onClick={() => handleChangeTheme(option)}
-                      >
-                        {capitalize(option)}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-            </li>
-          </ul>
-        </div>
+        <Menu
+          anchor={({ toggle, open }) => (
+            <button type="button" onClick={toggle} class="btn btn-sm btn-ghost">
+              {t`theme`}
+              <ChevronDownIcon
+                className={cn('size-4 transition-[rotate]', {
+                  'rotate-180': open
+                })}
+              />
+            </button>
+          )}
+          class="flex-none dropdown-center self-end"
+        >
+          {availThemes.map((option, i) => (
+            <MenuButton
+              key={i}
+              onClick={() => handleChangeTheme(option)}
+              class={cn({ 'menu-active': option == theme })}
+            >
+              {capitalize(option)}
+            </MenuButton>
+          ))}
+        </Menu>
       </div>
       <div class="grow overflow-auto bg-base-100 rounded-2xl rounded-b-none border-2 border-neutral/15 border-b-0">
         <CaloryApp />
