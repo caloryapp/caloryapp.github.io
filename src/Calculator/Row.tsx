@@ -42,22 +42,20 @@ const RowRouter = () => {
         )}
       </td>
       <td class={styles.compact}>
-        {(type == 'kcalPer100g' || type == 'kcalPerUnit') && (
-          <input
-            id={inputId}
-            key={entry.discard} // force remounting (issue preact/issues/1899)
-            type="checkbox"
-            checked={!entry.discard}
-            onInput={debouncedSave}
-            onChange={(e) => {
-              onEntryChange({
-                ...entry,
-                discard: !e.currentTarget.checked
-              })
-            }}
-            class="toggle toggle-xs mb-1"
-          />
-        )}
+        <input
+          id={inputId}
+          key={entry.discard} // force remounting (issue preact/issues/1899)
+          type="checkbox"
+          checked={!entry.discard}
+          onInput={debouncedSave}
+          onChange={(e) => {
+            onEntryChange({
+              ...entry,
+              discard: !e.currentTarget.checked
+            })
+          }}
+          class="toggle toggle-xs mb-1"
+        />
       </td>
     </>
   )
