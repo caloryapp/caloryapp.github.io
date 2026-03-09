@@ -51,8 +51,7 @@
     "react-i18next": "^16.5.3",
     "sortablejs": "^1.15.6",
     "tailwind-merge": "^3.4.0",
-    "use-debounce": "^10.1.0",
-    "wouter": "^3.9.0"
+    "use-debounce": "^10.1.0"
   },
   "peerDependencies": {
     "preact": "^10.28.4"
