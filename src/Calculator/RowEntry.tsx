@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { nanoid } from 'nanoid'
 import styles from './Calculator.module.css'
 import MagnifyingGlassIcon from '../assets/icons/magnifying-glass.svg?react'
-import DocumentPlusIcon from '../assets/icons/document-plus.svg?react'
+import FloppyDiskIcon from '../assets/icons/floppy-disk.svg?react'
 import TrashIcon from '../assets/icons/trash.svg?react'
 import { useDialogsContext } from '../providers/DialogsProvider'
 import { useStoreContext } from '../providers/StoreProvider'
@@ -28,10 +28,12 @@ const RowEntry = () => {
     useRowContext()
   const { toast } = useDialogsContext()
   const inputNameRef = useRef<HTMLInputElement>(null)
+  const articleIdRef = useRef('')
 
   const handleChangeArticle = async (articleId: string) => {
     const article = await searchArticleById(articleId)
     if (!article) return
+    articleIdRef.current = article.id
 
     const newEntry = {
       ...entry,
@@ -45,9 +47,12 @@ const RowEntry = () => {
   }
 
   const handleSaveArticle = async () => {
-    const article = await searchArticleByName(entry.name)
+    const article = articleIdRef.current
+      ? await searchArticleById(articleIdRef.current)
+      : await searchArticleByName(entry.name)
+    articleIdRef.current = article?.id || nanoid()
     await putArticle({
-      id: article?.id || nanoid(),
+      id: articleIdRef.current,
       createdAt: article?.createdAt || Date.now(),
       type: entry.type as ArticleType,
       name: entry.name,
@@ -173,7 +178,7 @@ const RowEntry = () => {
             title={t`save-article`}
             class="btn btn-square"
           >
-            <DocumentPlusIcon className="size-5" />
+            <FloppyDiskIcon className="size-5" />
           </button>
         </div>
       </td>
