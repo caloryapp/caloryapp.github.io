@@ -38,6 +38,12 @@ function CalculatorDesktop() {
   const { tableRef, isStuck } = useStickyDetection()
   const totalLeft = goal - totalSum
 
+  const handleKeydown = (e: KeyboardEvent, entryId: string) => {
+    if (e.ctrlKey && e.key == '+') {
+      addEntry(entryId, 'kcalPer100g')
+    }
+  }
+
   const { ref: entriesRef } = useSortable<HTMLTableSectionElement>({
     draggable: 'tr',
     handle: '.handle',
@@ -118,7 +124,7 @@ function CalculatorDesktop() {
       </thead>
       <tbody ref={entriesRef}>
         {visibleEntryList.map((entry, i) => (
-          <tr key={entry.id}>
+          <tr key={entry.id} onKeyDown={(e) => handleKeydown(e, entry.id)}>
             <td
               class={cn(
                 'handle cursor-grab active:cursor-grabbing',
