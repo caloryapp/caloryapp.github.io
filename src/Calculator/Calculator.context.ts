@@ -6,7 +6,7 @@ export type CalculatorContextProps = {
   focusIdRef: MutableRef<string>
   articles: Article[]
   visibleEntryList: Entry[]
-  showSettingsDialog: () => void
+  showEditGoalDialog: () => void
   importArticles: () => void
   exportArticles: () => void
   clearEntries: () => void

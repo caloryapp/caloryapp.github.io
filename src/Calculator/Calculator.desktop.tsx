@@ -26,7 +26,7 @@ function CalculatorDesktop() {
   } = useStoreContext()
   const {
     visibleEntryList,
-    showSettingsDialog,
+    showEditGoalDialog,
     importArticles,
     exportArticles,
     clearEntries,
@@ -104,7 +104,7 @@ function CalculatorDesktop() {
                 )}
                 class="dropdown-end"
               >
-                <MenuButton onClick={showSettingsDialog}>
+                <MenuButton onClick={showEditGoalDialog}>
                   <RocketLaunchIcon />
                   <span class="text-nowrap">{t`goal-kcal`}</span>
                 </MenuButton>

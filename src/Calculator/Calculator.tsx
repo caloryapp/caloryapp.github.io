@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import { EntryType } from '../services/types'
 import { useDialogsContext } from '../providers/DialogsProvider'
 import { useStoreContext } from '../providers/StoreProvider/context'
-import { SettingsDialog } from '../dialogs/SettingsDialog.tsx'
+import EditGoalDialog from '../dialogs/EditGoalDialog/EditGoalDialog.tsx'
 import { CalculatorContext, CalculatorContextProps } from './Calculator.context'
 import CalculatorDesktop from './Calculator.desktop'
 import { exportArticles, importArticles } from './helpers'
@@ -25,7 +25,7 @@ const Calculator = () => {
     clearEntries,
     replaceArticles
   } = useStoreContext()
-  const [openSettingsDialog, setOpenSettingsDialog] = useState(false)
+  const [openEditGoalDialog, setOpenEditGoalDialog] = useState(false)
 
   const collator = useMemo(() => {
     const language = i18n.resolvedLanguage || i18n.language || 'en'
@@ -129,7 +129,7 @@ const Calculator = () => {
       focusIdRef,
       articles,
       visibleEntryList,
-      showSettingsDialog: () => setOpenSettingsDialog(true),
+      showEditGoalDialog: () => setOpenEditGoalDialog(true),
       importArticles: handleImportArticles,
       exportArticles: handleExportArticles,
       clearEntries: handleClearEntries,
@@ -152,9 +152,9 @@ const Calculator = () => {
   return (
     <CalculatorContext value={ctxValue}>
       <CalculatorDesktop />
-      <SettingsDialog
-        open={openSettingsDialog}
-        onClose={() => setOpenSettingsDialog(false)}
+      <EditGoalDialog
+        open={openEditGoalDialog}
+        onClose={() => setOpenEditGoalDialog(false)}
       />
     </CalculatorContext>
   )

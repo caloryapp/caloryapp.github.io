@@ -35,7 +35,7 @@ const Dialog = ({ open, header, actions, children, onClose }: DialogProps) => {
     >
       <div class="modal-box">
         {header && <h3 class="text-lg font-bold">{header}</h3>}
-        {children && <div class="py-4">{children}</div>}
+        {children && <div class="pt-4">{children}</div>}
         {actions && <div class="modal-action">{actions}</div>}
       </div>
     </dialog>
