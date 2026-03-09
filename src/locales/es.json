@@ -33,5 +33,5 @@
   "goal-kcal": "Objetivo calórico",
   "import-ingredients": "Importar ingredientes",
   "export-ingredients": "Exportar ingredientes",
-  "kcal-budget": "Te quedan: {{d}} kcal"
+  "kcal-budget": "<0>Te quedan:</0> <1>{{d}} kcal</1>"
 }

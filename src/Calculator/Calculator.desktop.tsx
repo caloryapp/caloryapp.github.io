@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import styles from './Calculator.module.css'
 import DocumentArrowDownIcon from '../assets/icons/document-arrow-down.svg?react'
 import DocumentArrowUpIcon from '../assets/icons/document-arrow-up.svg?react'
@@ -61,8 +61,17 @@ function CalculatorDesktop() {
                 <div>{t('kcal', { d: totalSum.toFixed(2) })}</div>
               ) : (
                 <div class="flex flex-col items-end">
-                  <span class={cn({ 'text-warning': totalLeft < 0 })}>
-                    {t('kcal-budget', { d: totalLeft.toFixed(2) })}
+                  <span
+                    class={cn('space-x-0.5', { 'text-warning': totalLeft < 0 })}
+                  >
+                    <Trans
+                      i18nKey="kcal-budget"
+                      values={{ d: totalLeft.toFixed(2) }}
+                      components={[
+                        <span key={0} class="text-lg font-normal" />,
+                        <span key={1} />
+                      ]}
+                    />
                   </span>
                   <span class="text-xs">
                     {goal.toFixed(2)} - {t('kcal', { d: totalSum.toFixed(2) })}
