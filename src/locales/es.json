@@ -28,5 +28,8 @@
   "goal-kcal": "Objetivo calórico",
   "import-ingredients": "Importar ingredientes",
   "export-ingredients": "Exportar ingredientes",
-  "kcal-budget": "<0>Te quedan:</0> <1>{{d}} kcal</1>"
+  "kcal-budget": "<0>Te quedan:</0> <1>{{d}} kcal</1>",
+  "language": "Lenguaje ({{lang}})",
+  "english": "English",
+  "spanish": "Español"
 }
