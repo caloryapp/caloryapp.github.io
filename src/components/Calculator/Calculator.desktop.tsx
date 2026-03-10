@@ -10,7 +10,8 @@ import ArrowsUpDownIcon from '../../assets/icons/arrows-up-down.svg?react'
 import PlusCircleIcon from '../../assets/icons/plus-circle.svg?react'
 import TrashIcon from '../../assets/icons/trash.svg?react'
 import { cn } from '../../libs/tw'
-import { useStoreContext } from '../../providers/StoreProvider/context'
+import { useStoreContext } from '../../providers/StoreProvider'
+import { useSettingsContext } from '../../providers/SettingsProvider'
 import Menu, { MenuButton, MenuDivider } from '../../components/navigation/Menu'
 import { useCalculatorContext } from './Calculator.context'
 import useStickyDetection from './useStickyDetection'
@@ -19,11 +20,8 @@ import Row from './Row'
 
 function CalculatorDesktop() {
   const { t } = useTranslation()
-  const {
-    preferences: { goal },
-    totalSum,
-    putEntry
-  } = useStoreContext()
+  const { goal } = useSettingsContext()
+  const { totalSum, putEntry } = useStoreContext()
   const {
     visibleEntryList,
     showEditGoalDialog,

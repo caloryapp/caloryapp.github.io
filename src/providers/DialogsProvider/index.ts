@@ -1,2 +1,2 @@
 export { default } from './DialogsProvider'
-export { useDialogsContext } from './context'
+export { useDialogsContext } from './DialogsProvider.context'

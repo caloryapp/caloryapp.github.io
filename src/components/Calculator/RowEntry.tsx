@@ -5,6 +5,7 @@ import styles from './Calculator.module.css'
 import MagnifyingGlassIcon from '../../assets/icons/magnifying-glass.svg?react'
 import FloppyDiskIcon from '../../assets/icons/floppy-disk.svg?react'
 import TrashIcon from '../../assets/icons/trash.svg?react'
+import { SEARCH_URL } from '../../config'
 import { useDialogsContext } from '../../providers/DialogsProvider'
 import { useStoreContext } from '../../providers/StoreProvider'
 import { ArticleType, EntryType } from '../../services/types'
@@ -16,7 +17,6 @@ import { useRowContext } from './Row.context'
 const RowEntry = () => {
   const { t } = useTranslation()
   const {
-    preferences: { searchUrl },
     putArticle,
     deleteArticle,
     putEntry,
@@ -106,7 +106,7 @@ const RowEntry = () => {
             class="w-full"
           />
           <a
-            href={`${searchUrl.replace('%q', encodeURIComponent(entry.name.trim()))}`}
+            href={`${SEARCH_URL.replace('%q', encodeURIComponent(entry.name.trim()))}`}
             target="_blank"
             rel="noreferrer"
             title={t`search-article`}

@@ -3,7 +3,7 @@ import { useMemo, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
 import Dialog from '../../components/feedback/Dialog'
 import Toast, { ToastHandle } from '../../components/feedback/Toast'
-import { DialogsContext, DialogsContextProps } from './context'
+import { DialogsContext, DialogsContextProps } from './DialogsProvider.context'
 
 type DialogsProviderProps = {
   children: ComponentChildren

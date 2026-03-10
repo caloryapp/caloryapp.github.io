@@ -1,2 +1,2 @@
 export { default } from './StoreProvider'
-export { useStoreContext } from './context'
+export { useStoreContext } from './StoreProvider.context'

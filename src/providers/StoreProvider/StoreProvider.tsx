@@ -1,17 +1,14 @@
 import { ComponentChildren } from 'preact'
 import { useEffect, useMemo } from 'preact/hooks'
 import { useLiveQuery } from 'dexie-react-hooks'
-import { SEARCH_URL } from '../../config'
 import {
-  PREFERENCES_KEY,
   db,
   ensureEntriesSeed,
   articlesTable,
-  entriesTable,
-  preferencesTable
+  entriesTable
 } from '../../services/db'
-import { Article, Entry, Preferences } from '../../services/types'
-import { StoreContext, StoreContextProps } from './context'
+import { Article, Entry } from '../../services/types'
+import { StoreContext, StoreContextProps } from './StoreProvider.context'
 import { getTotalSum } from './helpers'
 
 type StoreProviderProps = {
@@ -19,9 +16,6 @@ type StoreProviderProps = {
 }
 
 const StoreProvider = ({ children }: StoreProviderProps) => {
-  const preferences = useLiveQuery(() =>
-    preferencesTable().toCollection().first()
-  )
   const entryList = useLiveQuery(() =>
     entriesTable().orderBy('displayOrder').toArray()
   )
@@ -34,14 +28,6 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
 
   const ctxValue = useMemo<StoreContextProps>(
     () => ({
-      // user
-      preferences: {
-        goal: preferences?.goal ?? NaN,
-        searchUrl: preferences?.searchUrl ?? SEARCH_URL
-      },
-      updatePreferences: async (preferences: Partial<Preferences>) => {
-        await preferencesTable().upsert(PREFERENCES_KEY, preferences)
-      },
       // articles
       articleList,
       searchArticleById: async (articleId: string) => {
@@ -122,7 +108,7 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
         await entriesTable().bulkDelete(ids)
       }
     }),
-    [totalSum, sums, preferences, articleList, entryList]
+    [totalSum, sums, articleList, entryList]
   )
 
   useEffect(() => {

@@ -1,12 +1,8 @@
 import { createContext } from 'preact'
 import { useContext } from 'preact/hooks'
-import { Article, Entry, Preferences } from '../../services/types'
+import { Article, Entry } from '../../services/types'
 
 export type StoreContextProps = {
-  // user
-  preferences: Preferences
-  updatePreferences: (preferences: Partial<Preferences>) => Promise<void>
-
   // articles
   articleList: Article[] | undefined
   searchArticleById: (articleId: string) => Promise<Article | undefined>

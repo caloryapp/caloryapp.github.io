@@ -1,16 +1,11 @@
 import Dexie from 'dexie'
 import { nanoid } from 'nanoid'
 import { generateKeyBetween } from 'fractional-indexing'
-import { Article, Entry, Preferences } from './types'
+import { Article, Entry } from './types'
 
 export const PREFERENCES_KEY = '1'
 
-type PreferencesTable = Preferences & {
-  id: string
-}
-
 export const db = new Dexie('calory')
-export const preferencesTable = () => db.table<PreferencesTable>('preferences')
 export const entriesTable = () => db.table<Entry, string>('entries')
 export const articlesTable = () => db.table<Article, string>('articles')
 

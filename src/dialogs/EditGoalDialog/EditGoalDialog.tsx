@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
-import { useStoreContext } from '../../providers/StoreProvider'
+import { useSettingsContext } from '../../providers/SettingsProvider'
 import Dialog from '../../components/feedback/Dialog'
 
 export type EditGoalDialogProps = {
@@ -10,23 +10,23 @@ export type EditGoalDialogProps = {
 
 const EditGoalDialog = ({ open, onClose }: EditGoalDialogProps) => {
   const { t } = useTranslation()
-  const { preferences, updatePreferences } = useStoreContext()
-  const [goal, setGoal] = useState('')
+  const { goal, setGoal } = useSettingsContext()
+  const [inputVal, setInputVal] = useState('')
   const formId = useId()
   const inputRef = useRef<HTMLInputElement>(null)
 
   const handleSave = useCallback(() => {
-    updatePreferences({ goal: Number.parseFloat(goal) })
+    setGoal(Number.parseFloat(inputVal))
     onClose()
-  }, [goal, onClose, updatePreferences])
+  }, [inputVal, onClose, setGoal])
 
   const handleInput = (e: Event & { currentTarget: HTMLInputElement }) => {
-    setGoal(e.currentTarget.value)
+    setInputVal(e.currentTarget.value)
   }
 
-  const goalValue = Number.isNaN(preferences.goal) ? '' : `${preferences.goal}`
+  const goalValue = Number.isNaN(goal) ? '' : `${goal}`
   useEffect(() => {
-    setGoal(goalValue)
+    setInputVal(goalValue)
   }, [goalValue])
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const EditGoalDialog = ({ open, onClose }: EditGoalDialogProps) => {
             type="number"
             autoFocus
             placeholder={t`caloric-goal`}
-            value={goal}
+            value={inputVal}
             onInput={handleInput}
             class="input w-full"
           />
