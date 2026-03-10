@@ -1,6 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
+    <script>
+      ;(() => {
+        const theme = localStorage.getItem('theme')
+        document.documentElement.setAttribute('data-theme', theme || 'light')
+      })()
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />

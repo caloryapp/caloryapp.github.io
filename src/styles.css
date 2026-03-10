@@ -1,5 +1,9 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 @plugin "daisyui" {
-  themes: light, cupcake, caramellatte, valentine;
+  themes:
+    light --default,
+    cupcake,
+    caramellatte,
+    valentine;
 }
