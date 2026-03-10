@@ -11,6 +11,7 @@ import { nanoid } from 'nanoid'
 import { entriesTable, db } from '../../services/db'
 import { Entry } from '../../services/types'
 import DialogsProvider from '../../providers/DialogsProvider'
+import SettingsProvider from '../../providers/SettingsProvider'
 import StoreProvider from '../../providers/StoreProvider'
 import Calculator from './Calculator'
 
@@ -41,9 +42,11 @@ const seedDb = async () => {
 const renderCalculator = () => {
   render(
     <DialogsProvider>
-      <StoreProvider>
-        <Calculator />
-      </StoreProvider>
+      <SettingsProvider>
+        <StoreProvider>
+          <Calculator />
+        </StoreProvider>
+      </SettingsProvider>
     </DialogsProvider>
   )
 }
