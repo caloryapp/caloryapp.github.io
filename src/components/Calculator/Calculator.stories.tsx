@@ -1,8 +1,8 @@
 import { Story, StoryDefault } from '@ladle/react'
 import { I18nextProvider } from 'react-i18next'
-import i18n from '../i18n'
-import DialogsProvider from '../providers/DialogsProvider'
-import StoreProvider from '../providers/StoreProvider'
+import i18n from '../../i18n'
+import DialogsProvider from '../../providers/DialogsProvider'
+import StoreProvider from '../../providers/StoreProvider'
 import Calculator from './Calculator'
 
 export default {

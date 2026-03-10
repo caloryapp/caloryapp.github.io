@@ -8,10 +8,10 @@ import {
 } from '@testing-library/preact'
 import { generateKeyBetween } from 'fractional-indexing'
 import { nanoid } from 'nanoid'
-import { entriesTable, db } from '../services/db'
-import { Entry } from '../services/types'
-import DialogsProvider from '../providers/DialogsProvider'
-import StoreProvider from '../providers/StoreProvider'
+import { entriesTable, db } from '../../services/db'
+import { Entry } from '../../services/types'
+import DialogsProvider from '../../providers/DialogsProvider'
+import StoreProvider from '../../providers/StoreProvider'
 import Calculator from './Calculator'
 
 const seedDb = async () => {
