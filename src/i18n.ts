@@ -7,18 +7,22 @@ import en from './locales/en.json'
 
 const isDev = import.meta.env.DEV
 
+i18n.on('languageChanged', (lng) => {
+  document.documentElement.lang = lng.split('-')[0]
+})
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: 'es',
+    fallbackLng: 'en',
     resources: {
       es: { translation: es },
       en: { translation: en }
     },
     interpolation: { escapeValue: false },
     detection: {
-      order: ['querystring', 'navigator', 'localStorage', 'htmlTag'],
+      order: ['querystring', 'localStorage', 'navigator', 'htmlTag'],
       lookupQuerystring: 'lng',
       caches: ['localStorage']
     },
