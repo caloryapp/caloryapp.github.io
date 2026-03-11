@@ -10,6 +10,7 @@ import { generateKeyBetween } from 'fractional-indexing'
 import { nanoid } from 'nanoid'
 import { entriesTable, db } from '../../services/db'
 import { Entry } from '../../services/types'
+import ThemeProvider from '../../providers/ThemeProvider'
 import DialogsProvider from '../../providers/DialogsProvider'
 import SettingsProvider from '../../providers/SettingsProvider'
 import StoreProvider from '../../providers/StoreProvider'
@@ -41,13 +42,15 @@ const seedDb = async () => {
 
 const renderCalculator = () => {
   render(
-    <DialogsProvider>
-      <SettingsProvider>
-        <StoreProvider>
-          <Calculator />
-        </StoreProvider>
-      </SettingsProvider>
-    </DialogsProvider>
+    <ThemeProvider>
+      <DialogsProvider>
+        <SettingsProvider>
+          <StoreProvider>
+            <Calculator />
+          </StoreProvider>
+        </SettingsProvider>
+      </DialogsProvider>
+    </ThemeProvider>
   )
 }
 

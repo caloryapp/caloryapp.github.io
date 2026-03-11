@@ -1,9 +1,13 @@
-import { useTranslation } from 'react-i18next'
+import { useTranslation, I18nextProvider } from 'react-i18next'
+import i18n from './i18n'
 import CalculatorIcon from './assets/icons/calculator.svg?react'
 import ChevronDownIcon from './assets/icons/chevron-down.svg?react'
 import { capitalize } from './libs/strings'
 import { cn } from './libs/tw'
-import { useTheme } from './libs/theme'
+import ThemeProvider, { useThemeContext } from './providers/ThemeProvider'
+import DialogsProvider from './providers/DialogsProvider'
+import StoreProvider from './providers/StoreProvider'
+import SettingsProvider from './providers/SettingsProvider'
 import Menu, { MenuButton } from './components/navigation/Menu'
 import CaloryApp from './CaloryApp'
 
@@ -11,7 +15,7 @@ const availThemes = ['light', 'cupcake', 'caramellatte', 'valentine']
 
 const App = () => {
   const { t, i18n } = useTranslation()
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useThemeContext()
   const lang = i18n.language
 
   return (
@@ -84,4 +88,20 @@ const App = () => {
   )
 }
 
-export default App
+const AppProvider = () => {
+  return (
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider>
+        <DialogsProvider>
+          <SettingsProvider>
+            <StoreProvider>
+              <App />
+            </StoreProvider>
+          </SettingsProvider>
+        </DialogsProvider>
+      </ThemeProvider>
+    </I18nextProvider>
+  )
+}
+
+export default AppProvider
