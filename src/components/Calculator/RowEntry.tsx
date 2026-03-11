@@ -65,6 +65,16 @@ const RowEntry = () => {
     })
   }
 
+  const handleSearchArticle = () => {
+    const q = entry.name.trim()
+    let url = SEARCH_URL.replace('%q', encodeURIComponent(q))
+    if (!q) {
+      const urlInfo = new URL(SEARCH_URL)
+      url = urlInfo.origin + urlInfo.pathname
+    }
+    window.open(url, '_blank', 'noreferrer')
+  }
+
   useEffect(() => {
     if (focusIdRef.current === entry.id) {
       inputNameRef.current?.focus()
@@ -105,15 +115,13 @@ const RowEntry = () => {
             onSelectOption={(option) => handleChangeArticle(option.id)}
             class="w-full"
           />
-          <a
-            href={`${SEARCH_URL.replace('%q', encodeURIComponent(entry.name.trim()))}`}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            onClick={handleSearchArticle}
             title={t`search-article`}
             class="btn btn-square"
           >
             <MagnifyingGlassIcon className="size-5" />
-          </a>
+          </button>
         </div>
       </td>
       <td class={styles.compact}>
