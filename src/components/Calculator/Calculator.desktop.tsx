@@ -1,7 +1,7 @@
 import { Trans, useTranslation } from 'react-i18next'
 import styles from './Calculator.module.css'
-import DocumentArrowDownIcon from '../../assets/icons/document-arrow-down.svg?react'
-import DocumentArrowUpIcon from '../../assets/icons/document-arrow-up.svg?react'
+import ImportIcon from '../../assets/icons/import.svg?react'
+import ExportIcon from '../../assets/icons/export.svg?react'
 import Cog6ToothIcon from '../../assets/icons/cog-6-tooth.svg?react'
 import RocketLaunchIcon from '../../assets/icons/rocket-launch.svg?react'
 import MinusIcon from '../../assets/icons/minus.svg?react'
@@ -108,11 +108,11 @@ function CalculatorDesktop() {
                 </MenuButton>
                 <MenuDivider />
                 <MenuButton onClick={importArticles}>
-                  <DocumentArrowUpIcon />
+                  <ImportIcon />
                   <span class="text-nowrap">{t`import-ingredients`}</span>
                 </MenuButton>
                 <MenuButton onClick={exportArticles}>
-                  <DocumentArrowDownIcon />
+                  <ExportIcon />
                   <span class="text-nowrap">{t`export-ingredients`}</span>
                 </MenuButton>
               </Menu>
