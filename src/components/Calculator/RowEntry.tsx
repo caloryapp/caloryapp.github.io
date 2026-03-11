@@ -159,7 +159,7 @@ const RowEntry = () => {
         <div class="flex items-center gap-1.5">
           <input
             type="number"
-            step={entry.type == 'kcalPer100g' ? 10 : 1}
+            step={entry.type == 'kcalPer100g' ? 5 : 1}
             placeholder={t`entry-total`}
             value={isNaN(entry.total) ? '' : entry.total}
             onInput={debouncedSave}
