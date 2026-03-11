@@ -27,7 +27,7 @@ const alertClasses = {
   success: 'alert-success'
 }
 
-const Toast = forwardRef<ToastHandle, ToastProps>(({ delay = 4500 }, ref) => {
+const Toast = forwardRef<ToastHandle, ToastProps>(({ delay = 10_000 }, ref) => {
   const timeout = useRef<NodeJS.Timeout>()
   const [toast, setToast] = useState<{
     open: boolean
@@ -79,7 +79,7 @@ const Toast = forwardRef<ToastHandle, ToastProps>(({ delay = 4500 }, ref) => {
         <button
           type="button"
           onClick={handleClose}
-          class="btn btn-square btn-xs btn-link text-base-content"
+          class="btn btn-square btn-xs btn-link text-info-content"
         >
           <CloseIcon className="size-5" />
         </button>
