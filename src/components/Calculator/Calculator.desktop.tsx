@@ -59,7 +59,7 @@ function CalculatorDesktop() {
         <tr>
           <th class={styles.compact}>&nbsp;</th>
           <th colSpan={5} class="text-xl font-medium">
-            <div class="flex flex-row justify-between">
+            <div class="flex flex-row justify-between items-end">
               <div>{curDate}</div>
               {isNaN(totalLeft) ? (
                 <div>{t('kcal', { d: totalSum.toFixed(2) })}</div>
