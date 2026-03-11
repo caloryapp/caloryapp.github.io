@@ -10,14 +10,21 @@ type SettingsProviderProps = {
 }
 
 const SettingsProvider = ({ children }: SettingsProviderProps) => {
-  const [goal, setGoal] = useState(
-    Number.parseFloat(localStorage.getItem('goal') || '')
-  )
+  const [goal, setGoal] = useState(localStorage.getItem('goal') || '')
 
   const ctxValue = useMemo<SettingsContextProps>(
     () => ({
-      goal,
-      setGoal
+      goal: Number.parseFloat(goal),
+      setGoal: (val) => {
+        if (typeof val == 'function') {
+          setGoal((goal) => {
+            const x = val(Number.parseFloat(goal))
+            return isNaN(x) ? '' : `${x}`
+          })
+        } else {
+          setGoal(isNaN(val) ? '' : `${val}`)
+        }
+      }
     }),
     [goal]
   )
