@@ -2,6 +2,7 @@ import { useTranslation, I18nextProvider } from 'react-i18next'
 import i18n from './i18n'
 import CalculatorIcon from './assets/icons/calculator.svg?react'
 import ChevronDownIcon from './assets/icons/chevron-down.svg?react'
+import { AVAIL_THEMES } from './config'
 import { capitalize } from './libs/strings'
 import { cn } from './libs/tw'
 import ThemeProvider, { useThemeContext } from './providers/ThemeProvider'
@@ -10,8 +11,6 @@ import StoreProvider from './providers/StoreProvider'
 import SettingsProvider from './providers/SettingsProvider'
 import Menu, { MenuButton } from './components/navigation/Menu'
 import CaloryApp from './CaloryApp'
-
-const availThemes = ['light', 'cupcake', 'caramellatte', 'valentine']
 
 const App = () => {
   const { t, i18n } = useTranslation()
@@ -69,7 +68,7 @@ const App = () => {
             )}
             class="dropdown-center"
           >
-            {availThemes.map((option, i) => (
+            {AVAIL_THEMES.map((option, i) => (
               <MenuButton
                 key={i}
                 onClick={() => setTheme(option)}

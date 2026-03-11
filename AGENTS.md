@@ -12,7 +12,7 @@ Calory is a calorie counting web application built as a Chrome browser extension
 - Auto-save with debouncing
 - Article database for quick food lookup
 - Import/export articles as JSON
-- Theme switching (light, cupcake, caramellatte, valentine)
+- Theme switching (light, caramellatte, valentine)
 - Internationalization (English/Spanish)
 
 ## AI Assistant Behavior

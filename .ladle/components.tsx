@@ -2,6 +2,7 @@ import '../src/styles.css'
 import '../src/i18n'
 import { useEffect, useMemo } from 'preact/hooks'
 import type { GlobalProvider } from '@ladle/react'
+import { AVAIL_THEMES } from '../src/config'
 import {
   ThemeContext,
   ThemeContextProps
@@ -13,7 +14,7 @@ export const args = {
 
 export const argTypes = {
   theme: {
-    options: ['light', 'cupcake', 'caramellatte', 'valentine'],
+    options: AVAIL_THEMES,
     control: { type: 'select' }
   }
 }
