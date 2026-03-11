@@ -1,4 +1,4 @@
-import { useCallback, useId, useMemo, useState } from 'preact/hooks'
+import { useCallback, useId, useMemo, useRef, useState } from 'preact/hooks'
 import { useDebouncedCallback } from 'use-debounce'
 import styles from './Calculator.module.css'
 import { Entry } from '../../services/types'
@@ -61,17 +61,22 @@ const RowRouter = () => {
 
 const Row = ({ autoFocus, entry: entryParam, onSave }: RowProps) => {
   const [entry, setEntry] = useState<Entry>(entryParam)
-  const save = useCallback(
-    () => onSave({ ...entry, displayOrder: entryParam.displayOrder }),
-    [entry, entryParam, onSave]
-  )
+  const hasChangedRef = useRef(false)
+  const save = useCallback(() => {
+    if (!hasChangedRef.current) return
+    hasChangedRef.current = false
+    onSave({ ...entry, displayOrder: entryParam.displayOrder })
+  }, [entry, entryParam, onSave])
   const debouncedSave = useDebouncedCallback(save, AUTOSAVE_DELAY)
 
   const ctxValue = useMemo<RowContextProps>(
     () => ({
       autoFocus,
       entry,
-      onEntryChange: setEntry,
+      onEntryChange: (val) => {
+        hasChangedRef.current = true
+        setEntry(val)
+      },
       save,
       debouncedSave
     }),
