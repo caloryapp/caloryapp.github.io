@@ -87,7 +87,7 @@ const StoreProvider = ({ children }: StoreProviderProps) => {
         const nextEntry = entryList[sectionIndex + 1]
         return !nextEntry || nextEntry.type == 'section'
       },
-      getTotalSum: (entryId: string) => sums[entryId] ?? NaN,
+      getTotalSum: (entryId: string) => sums[entryId] ?? 0,
       clearEntries: async () => {
         await entriesTable().clear()
       },

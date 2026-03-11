@@ -29,17 +29,15 @@ const RowRouter = () => {
       {type == 'section' && <RowSection />}
       {(type == 'kcalPer100g' || type == 'kcalPerUnit') && <RowEntry />}
       <td class={cn('text-right whitespace-nowrap', styles.compact)}>
-        {!isNaN(totalSum) && (
-          <label
-            class={cn('text-right', {
-              'font-medium text-lg': type == 'section',
-              'line-through opacity-50': entry.discard
-            })}
-            htmlFor={inputId}
-          >
-            {t('kcal', { d: totalSum.toFixed(2) })}
-          </label>
-        )}
+        <label
+          class={cn('text-right', {
+            'font-medium text-lg': type == 'section',
+            'line-through opacity-50': entry.discard
+          })}
+          htmlFor={inputId}
+        >
+          {t('kcal', { d: totalSum.toFixed(2) })}
+        </label>
       </td>
       <td class={styles.compact}>
         <input
