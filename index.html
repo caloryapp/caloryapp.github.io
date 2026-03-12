@@ -1,16 +1,7 @@
 <!doctype html>
 <html lang="en" data-theme="light">
   <head>
-    <script>
-      ;(() => {
-        const theme = localStorage.getItem('theme')
-        document.documentElement.setAttribute('data-theme', theme || 'light')
-
-        const stored = localStorage.getItem('i18nextLng')
-        const lang = stored ? stored.split('-')[0] : 'en'
-        document.documentElement.setAttribute('lang', lang)
-      })()
-    </script>
+    <script type="module" src="/src/bootstrap.ts"></script>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
