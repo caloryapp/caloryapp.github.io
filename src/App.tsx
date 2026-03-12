@@ -5,6 +5,7 @@ import ChevronDownIcon from './assets/icons/chevron-down.svg?react'
 import { AVAIL_THEMES } from './config/theme'
 import { capitalize } from './libs/strings'
 import { cn } from './libs/tw'
+import { useLanguage } from './libs/i18n'
 import ThemeProvider, { useThemeContext } from './providers/ThemeProvider'
 import DialogsProvider from './providers/DialogsProvider'
 import StoreProvider from './providers/StoreProvider'
@@ -15,7 +16,7 @@ import CaloryApp from './CaloryApp'
 const App = () => {
   const { t, i18n } = useTranslation()
   const { theme, setTheme } = useThemeContext()
-  const lang = i18n.language
+  const lang = useLanguage()
 
   return (
     <div class="flex flex-col h-screen w-[calc(100%-2rem)] max-w-6xl mx-auto">

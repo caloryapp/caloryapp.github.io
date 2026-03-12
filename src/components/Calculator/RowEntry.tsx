@@ -9,6 +9,7 @@ import { SEARCH_URL } from '../../config/general'
 import { useDialogsContext } from '../../providers/DialogsProvider'
 import { useStoreContext } from '../../providers/StoreProvider'
 import { ArticleType, EntryType } from '../../services/types'
+import { useLanguage } from '../../libs/i18n'
 import { cn } from '../../libs/tw'
 import Combobox from '../../components/inputs/Combobox'
 import { useCalculatorContext } from './Calculator.context'
@@ -16,6 +17,7 @@ import { useRowContext } from './Row.context'
 
 const RowEntry = () => {
   const { t } = useTranslation()
+  const lang = useLanguage()
   const {
     putArticle,
     deleteArticle,
@@ -67,9 +69,10 @@ const RowEntry = () => {
 
   const handleSearchArticle = () => {
     const q = entry.name.trim()
-    let url = SEARCH_URL.replace('%q', encodeURIComponent(q))
+    const searchUrl = SEARCH_URL[lang] ?? 'en'
+    let url = searchUrl.replace('%q', encodeURIComponent(q))
     if (!q) {
-      const urlInfo = new URL(SEARCH_URL)
+      const urlInfo = new URL(searchUrl)
       url = urlInfo.origin + urlInfo.pathname
     }
     window.open(url, '_blank', 'noreferrer')
