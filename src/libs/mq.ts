@@ -2,9 +2,13 @@ import { useEffect, useMemo, useState } from 'preact/hooks'
 import { BREAKPOINTS } from '../config/theme'
 
 export const useMediaQuery = (q: string) => {
-  const mq = useMemo(() => window.matchMedia(q), [q])
-  const [changed, setChanged] = useState(mq.matches)
+  const mq = useMemo(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return null
+    return window.matchMedia(q)
+  }, [q])
+  const [changed, setChanged] = useState(!!mq?.matches)
   useEffect(() => {
+    if (!mq) return
     const onMediaChange = (e: MediaQueryListEvent) => setChanged(e.matches)
     mq.addEventListener('change', onMediaChange)
     setChanged(mq.matches)
