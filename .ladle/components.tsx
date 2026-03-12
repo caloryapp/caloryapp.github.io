@@ -2,7 +2,7 @@ import '../src/styles.css'
 import '../src/i18n'
 import { useEffect, useMemo } from 'preact/hooks'
 import type { GlobalProvider } from '@ladle/react'
-import { AVAIL_THEMES } from '../src/config'
+import { AVAIL_THEMES } from '../src/config/theme'
 import {
   ThemeContext,
   ThemeContextProps

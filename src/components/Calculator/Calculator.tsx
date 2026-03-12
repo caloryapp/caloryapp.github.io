@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
 import { nanoid } from 'nanoid'
+import { useIsSmallScreen } from '../../libs/mq.ts'
 import { EntryType } from '../../services/types'
 import { useDialogsContext } from '../../providers/DialogsProvider'
 import { useStoreContext } from '../../providers/StoreProvider'
@@ -9,6 +10,7 @@ import { CalculatorContext, CalculatorContextProps } from './Calculator.context'
 import CalculatorDesktop from './Calculator.desktop'
 import { exportArticles, importArticles } from './helpers'
 import useDisplayOrder from './useDisplayOrder'
+import CalculatorMobile from './Calculator.mobile.tsx'
 
 const Calculator = () => {
   const { t, i18n } = useTranslation()
@@ -26,6 +28,7 @@ const Calculator = () => {
     replaceArticles
   } = useStoreContext()
   const [openEditGoalDialog, setOpenEditGoalDialog] = useState(false)
+  const isSmallScreen = useIsSmallScreen()
 
   const collator = useMemo(() => {
     const language = i18n.resolvedLanguage || i18n.language || 'en'
@@ -151,7 +154,7 @@ const Calculator = () => {
 
   return (
     <CalculatorContext value={ctxValue}>
-      <CalculatorDesktop />
+      {isSmallScreen ? <CalculatorMobile /> : <CalculatorDesktop />}
       <EditGoalDialog
         open={openEditGoalDialog}
         onClose={() => setOpenEditGoalDialog(false)}

@@ -2,7 +2,7 @@ import { useTranslation, I18nextProvider } from 'react-i18next'
 import i18n from './i18n'
 import CalculatorIcon from './assets/icons/calculator.svg?react'
 import ChevronDownIcon from './assets/icons/chevron-down.svg?react'
-import { AVAIL_THEMES } from './config'
+import { AVAIL_THEMES } from './config/theme'
 import { capitalize } from './libs/strings'
 import { cn } from './libs/tw'
 import ThemeProvider, { useThemeContext } from './providers/ThemeProvider'
@@ -20,11 +20,11 @@ const App = () => {
   return (
     <div class="flex flex-col h-screen w-[calc(100%-2rem)] max-w-6xl mx-auto">
       <div class="navbar z-20">
-        <div class="grow flex items-center gap-1.5 text-2xl font-medium">
+        <div class="grow flex items-center gap-1.5 text-lg md:text-2xl font-medium">
           <CalculatorIcon className="size-7" />
           <span>{t`app-title`}</span>
         </div>
-        <div class="self-end flex gap-3.5 mb-1.5">
+        <div class="flex flex-wrap items-center justify-end gap-3.5 mt-1">
           <Menu
             anchor={({ toggle, open }) => (
               <button

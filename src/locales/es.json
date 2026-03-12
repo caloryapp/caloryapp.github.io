@@ -31,5 +31,6 @@
   "kcal-budget": "<0>Te quedan:</0> <1>{{d}} kcal</1>",
   "language": "Lenguaje ({{lang}})",
   "english": "English",
-  "spanish": "Español"
+  "spanish": "Español",
+  "narrow-screen": "La aplicación está optimizada para pantallas más amplias :)"
 }

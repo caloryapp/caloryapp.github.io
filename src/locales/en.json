@@ -31,5 +31,6 @@
   "kcal-budget": "<0>Budget:</0> <1>{{d}} kcal</1>",
   "language": "Language ({{lang}})",
   "english": "English",
-  "spanish": "Spanish"
+  "spanish": "Spanish",
+  "narrow-screen": "The app is optimized for larger screens :)"
 }
