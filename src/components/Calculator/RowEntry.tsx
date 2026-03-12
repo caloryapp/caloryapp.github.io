@@ -184,6 +184,7 @@ const RowEntry = () => {
             class="input w-24"
           />
           <button
+            disabled={!entry.name.trim()}
             type="button"
             onClick={handleSaveArticle}
             title={t`save-article`}
