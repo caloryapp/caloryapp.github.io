@@ -1,38 +1,15 @@
 {
-  "name": "@caloryapp/calculator",
-  "version": "0.0.2-beta.6",
+  "name": "caloryapp",
+  "version": "0.1.0",
+  "private": true,
   "description": "Add foods. Count calories. That's it!",
   "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./styles.css": "./dist/calculator.css"
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "dev": "vite --host",
     "ladle": "ladle serve",
-    "build": "tsc -p tsconfig.lib.json && vite build --config vite.lib.config.ts",
-    "build:watch": "vite build --config vite.lib.config.ts --watch",
+    "build": "vite build",
     "stats": "ANALYZE=true npm run build",
     "stats:text": "ANALYZE=true ANALYZE_TEMPLATE=markdown ANALYZE_OUT=reports/stats.md npm run build",
-    "prepublishOnly": "npm run build",
     "lint": "eslint src && tsc --noEmit -p tsconfig.dev.json",
     "lint:fix": "eslint src --fix",
     "i18n:unused": "node scripts/check-unused-translations.mjs",
@@ -53,9 +30,6 @@
     "sortablejs": "^1.15.6",
     "tailwind-merge": "^3.4.0",
     "use-debounce": "^10.1.0"
-  },
-  "peerDependencies": {
-    "preact": "^10.28.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.9.0",

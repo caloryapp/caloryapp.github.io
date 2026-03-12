@@ -11,7 +11,7 @@ import DialogsProvider from './providers/DialogsProvider'
 import StoreProvider from './providers/StoreProvider'
 import SettingsProvider from './providers/SettingsProvider'
 import Menu, { MenuButton } from './components/navigation/Menu'
-import CaloryApp from './CaloryApp'
+import Calculator from './components/Calculator'
 
 const App = () => {
   const { t, i18n } = useTranslation()
@@ -82,7 +82,7 @@ const App = () => {
         </div>
       </div>
       <div class="grow overflow-auto bg-base-100 rounded-2xl rounded-b-none border-2 border-neutral/15 border-b-0">
-        <CaloryApp />
+        <Calculator />
       </div>
     </div>
   )
