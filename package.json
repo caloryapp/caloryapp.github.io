@@ -26,7 +26,7 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "ladle": "ladle serve",
     "build": "tsc -p tsconfig.lib.json && vite build --config vite.lib.config.ts",
     "build:watch": "vite build --config vite.lib.config.ts --watch",
