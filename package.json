@@ -8,6 +8,7 @@
     "dev": "vite --host",
     "ladle": "ladle serve",
     "build": "vite build",
+    "preview": "vite preview",
     "stats": "ANALYZE=true npm run build",
     "stats:text": "ANALYZE=true ANALYZE_TEMPLATE=markdown ANALYZE_OUT=reports/stats.md npm run build",
     "lint": "eslint src && tsc --noEmit -p tsconfig.dev.json",
