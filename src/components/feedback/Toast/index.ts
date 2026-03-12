@@ -1,2 +1,2 @@
 export { default } from './Toast'
-export type { ToastProps, ToastHandle } from './Toast'
+export type { ToastHandle } from './Toast'

@@ -12,14 +12,11 @@ export type ToastSeverity = 'info' | 'success'
 export type ToastShowProps = {
   message: string
   severity?: ToastSeverity
+  delay?: number
 }
 
 export type ToastHandle = {
-  show: (props: { message: string; severity?: ToastSeverity }) => void
-}
-
-export type ToastProps = {
-  delay?: number
+  show: (props: ToastShowProps) => void
 }
 
 const alertClasses = {
@@ -27,7 +24,7 @@ const alertClasses = {
   success: 'alert-success'
 }
 
-const Toast = forwardRef<ToastHandle, ToastProps>(({ delay = 10_000 }, ref) => {
+const Toast = forwardRef<ToastHandle>((_, ref) => {
   const timeout = useRef<NodeJS.Timeout>()
   const [toast, setToast] = useState<{
     open: boolean
@@ -61,13 +58,15 @@ const Toast = forwardRef<ToastHandle, ToastProps>(({ delay = 10_000 }, ref) => {
   useImperativeHandle(
     ref,
     () => ({
-      show: ({ message, severity = 'info' }) => {
+      show: ({ message, severity = 'info', delay = 0 }) => {
         setToast((val) => ({ ...val, open: true, message, severity }))
         if (timeout.current) clearTimeout(timeout.current)
-        timeout.current = setTimeout(handleReset, delay)
+        if (delay > 0) {
+          timeout.current = setTimeout(handleReset, delay)
+        }
       }
     }),
-    [delay, handleReset]
+    [handleReset]
   )
 
   if (!toast.open) return

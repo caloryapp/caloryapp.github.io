@@ -13,7 +13,9 @@ export const Example: Story = () => {
     <>
       <button
         type="button"
-        onClick={() => toastRef.current?.show({ message: 'Message 1' })}
+        onClick={() =>
+          toastRef.current?.show({ message: 'Message 1', delay: 1000 })
+        }
         class="btn"
       >
         Toast 1
