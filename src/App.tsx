@@ -18,7 +18,7 @@ const App = () => {
   const lang = i18n.language
 
   return (
-    <div class="flex flex-col h-screen max-w-6xl mx-auto">
+    <div class="flex flex-col h-screen w-[calc(100%-2rem)] max-w-6xl mx-auto">
       <div class="navbar z-20">
         <div class="grow flex items-center gap-1.5 text-2xl font-medium">
           <CalculatorIcon className="size-7" />
@@ -66,7 +66,7 @@ const App = () => {
                 />
               </button>
             )}
-            class="dropdown-center"
+            class="dropdown-end xl:dropdown-center"
           >
             {AVAIL_THEMES.map((option, i) => (
               <MenuButton
