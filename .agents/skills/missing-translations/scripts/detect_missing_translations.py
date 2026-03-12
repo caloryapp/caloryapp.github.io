@@ -224,7 +224,7 @@ def print_report(results: Dict[Path, List[Dict]]) -> None:
         print("2. Replace the hardcoded text with: {t`suggested-key`}")
         print()
         print("Example:")
-        print('  <span>Calory App</span>')
+        print('  <span>CaloryApp</span>')
         print("  →")
         print('  <span>{t`app-title`}</span>')
 

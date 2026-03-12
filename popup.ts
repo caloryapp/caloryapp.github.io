@@ -1,7 +1,7 @@
-// Calory - Main Script
+// CaloryApp - Main Script
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Calory loaded')
+  console.log('CaloryApp loaded')
 
   // Initialize the extension
   initializeExtension()

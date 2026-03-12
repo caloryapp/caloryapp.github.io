@@ -1,8 +1,8 @@
-# Calory - AI Agent Guide
+# CaloryApp - AI Agent Guide
 
 ## Project Overview
 
-Calory is a calorie counting web application built as a Chrome browser extension. It allows users to track their daily food intake by adding food entries with calorie information. The app supports organizing entries into sections (like Breakfast, Lunch, Dinner), persisting data locally using IndexedDB, and managing a reusable article database for quick entry.
+CaloryApp is a calorie counting web application built as a Chrome browser extension. It allows users to track their daily food intake by adding food entries with calorie information. The app supports organizing entries into sections (like Breakfast, Lunch, Dinner), persisting data locally using IndexedDB, and managing a reusable article database for quick entry.
 
 **Key Features:**
 

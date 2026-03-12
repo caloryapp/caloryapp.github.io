@@ -9,11 +9,11 @@ const PopupApp = () => {
   return (
     <div class="container">
       <header>
-        <h1>Calory</h1>
+        <h1>CaloryApp</h1>
       </header>
 
       <main>
-        <p>Welcome to Calory!</p>
+        <p>Welcome to CaloryApp!</p>
         <p>Your meal planning extension is ready to use.</p>
 
         <button id="openFullTab" class="btn" onClick={openInFullTab}>
