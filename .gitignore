@@ -27,10 +27,6 @@ local_storage/
 .env
 .env.*
 
-# Ignore package-lock and yarn lock (if used)
-package-lock.json
-yarn.lock
-
 # Ignore coverage reports
 coverage/
 
