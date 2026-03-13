@@ -102,9 +102,12 @@ const RowEntry = () => {
             options={articles}
             renderOption={(option, onMouseDown) => (
               <div class="flex gap-1">
-                <a type="button" onMouseDown={onMouseDown} class="grow">
-                  <span class="whitespace-nowrap">{option.name}</span>
-                </a>
+                <button
+                  onClick={onMouseDown}
+                  class="cursor-pointer whitespace-nowrap grow self-stretch flex items-center"
+                >
+                  {option.name}
+                </button>
                 <button
                   type="button"
                   tabIndex={-1}
