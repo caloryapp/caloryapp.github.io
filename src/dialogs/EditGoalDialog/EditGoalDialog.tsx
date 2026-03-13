@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
-import { useSettingsContext } from '../../providers/SettingsProvider'
-import Dialog from '../../components/feedback/Dialog'
+import { useSettingsContext } from 'src/providers/SettingsProvider'
+import Dialog from 'src/components/feedback/Dialog'
 
 export type EditGoalDialogProps = {
   open: boolean

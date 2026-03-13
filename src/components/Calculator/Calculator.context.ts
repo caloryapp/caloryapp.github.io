@@ -1,6 +1,6 @@
 import { createContext } from 'preact'
 import { MutableRef, useContext } from 'preact/hooks'
-import { Article, Entry, EntryType } from '../../services/types'
+import { Article, Entry, EntryType } from 'src/services/types'
 
 export type CalculatorContextProps = {
   focusIdRef: MutableRef<string>

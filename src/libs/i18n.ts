@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { SEARCH_URL } from '../config/general'
+import { SEARCH_URL } from 'src/config/general'
 
 type SupportedLanguage = keyof typeof SEARCH_URL
 

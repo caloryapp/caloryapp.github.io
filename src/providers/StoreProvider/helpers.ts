@@ -1,4 +1,4 @@
-import { Entry } from '../../services/types'
+import { Entry } from 'src/services/types'
 
 /**
  * Calculates the total and per-entry calorie sums from a list of entries.

@@ -1,6 +1,6 @@
 import { ComponentChild, ComponentChildren } from 'preact'
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
-import { cn } from '../../../libs/tw'
+import { cn } from 'src/libs/tw'
 import { MenuContext, MenuContextProps, useMenuContext } from './Menu.context'
 
 export type MenuProps = {

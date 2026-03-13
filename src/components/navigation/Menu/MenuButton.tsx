@@ -1,5 +1,5 @@
 import { ComponentChildren } from 'preact'
-import { cn } from '../../../libs/tw'
+import { cn } from 'src/libs/tw'
 import { useMenuContext } from './Menu.context'
 
 export type MenuButtonProps = {

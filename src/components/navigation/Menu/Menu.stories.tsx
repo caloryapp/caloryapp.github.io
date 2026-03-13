@@ -1,6 +1,6 @@
 import { Story, StoryDefault } from '@ladle/react'
-import Cog6ToothIcon from '../../../assets/icons/cog-6-tooth.svg?react'
-import RocketLaunchIcon from '../../../assets/icons/rocket-launch.svg?react'
+import Cog6ToothIcon from 'src/assets/icons/cog-6-tooth.svg?react'
+import RocketLaunchIcon from 'src/assets/icons/rocket-launch.svg?react'
 import Menu from './Menu'
 import MenuButton from './MenuButton'
 import MenuDivider from './MenuDivider'

@@ -5,7 +5,7 @@ import {
   useState
 } from 'preact/hooks'
 import { forwardRef } from 'preact/compat'
-import CloseIcon from '../../../assets/icons/close.svg?react'
+import CloseIcon from 'src/assets/icons/close.svg?react'
 
 export type ToastSeverity = 'info' | 'success'
 

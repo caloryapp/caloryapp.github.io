@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import { Article } from '../../../services/types'
+import { Article } from 'src/services/types'
 
 export const truncateText = (text: string, maxCols: number) => {
   if (maxCols > 1 && text.length > maxCols) {

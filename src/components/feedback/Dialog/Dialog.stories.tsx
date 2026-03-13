@@ -1,7 +1,7 @@
 import type { Story, StoryDefault } from '@ladle/react'
 import DialogsProvider, {
   useDialogsContext
-} from '../../../providers/DialogsProvider'
+} from 'src/providers/DialogsProvider'
 
 export default {
   title: 'Components/Feedback',

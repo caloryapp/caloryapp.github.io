@@ -1,8 +1,8 @@
 import { ComponentChild, InputHTMLAttributes } from 'preact'
 import { forwardRef } from 'preact/compat'
 import { useEffect, useLayoutEffect, useRef } from 'preact/hooks'
-import ChevronDownIcon from '../../../assets/icons/chevron-down.svg?react'
-import { cn } from '../../../libs/tw'
+import ChevronDownIcon from 'src/assets/icons/chevron-down.svg?react'
+import { cn } from 'src/libs/tw'
 import { normalizeText } from './helpers'
 import useMenuManager from './useMenuManager'
 

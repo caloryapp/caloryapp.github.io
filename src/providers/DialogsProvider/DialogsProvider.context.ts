@@ -1,6 +1,6 @@
 import { ComponentChild, createContext } from 'preact'
 import { useContext } from 'preact/hooks'
-import { ToastSeverity } from '../../components/feedback/Toast/Toast'
+import { ToastSeverity } from 'src/components/feedback/Toast'
 
 export type DialogsContextProps = {
   toast: (props: { message: string; severity?: ToastSeverity }) => void

@@ -1,6 +1,6 @@
 import { createContext } from 'preact'
 import { useContext } from 'preact/hooks'
-import { Article, Entry } from '../../services/types'
+import { Article, Entry } from 'src/services/types'
 
 export type StoreContextProps = {
   // articles

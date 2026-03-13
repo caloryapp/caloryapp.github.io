@@ -6,8 +6,8 @@ import {
   ensureEntriesSeed,
   articlesTable,
   entriesTable
-} from '../../services/db'
-import { Article, Entry } from '../../services/types'
+} from 'src/services/db'
+import { Article, Entry } from 'src/services/types'
 import { StoreContext, StoreContextProps } from './StoreProvider.context'
 import { getTotalSum } from './helpers'
 

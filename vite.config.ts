@@ -11,6 +11,11 @@ const analyzeFilename = process.env.ANALYZE_OUT || 'reports/stats.html'
 
 export default defineConfig({
   plugins: [...(process.env.VITEST ? [] : [tailwindcss()]), svgr(), preact()],
+  resolve: {
+    alias: {
+      src: resolve(__dirname, 'src')
+    }
+  },
   publicDir: 'public',
   build: {
     outDir: 'dist',

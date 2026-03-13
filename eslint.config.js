@@ -19,17 +19,6 @@ export default [
   {
     files: ["**/*.ts", "**/*.tsx"],
     rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            {
-              group: ['src/*'],
-              message: 'Use relative paths'
-            }
-          ]
-        }
-      ],
       "semi": ["error", "never"],
       "quotes": ["error", "single"],
 
@@ -39,6 +28,17 @@ export default [
         "argsIgnorePattern": "^_",
         "varsIgnorePattern": "^_" 
       }],
+      "no-restricted-imports": [
+        "error",
+        {
+          "patterns": [
+            {
+              "group": ["../**"],
+              "message": "Use absolute alias `src/...` for imports outside the current directory. `./...` is allowed."
+            }
+          ]
+        }
+      ],
       "@typescript-eslint/no-explicit-any": "warn",
       "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
       

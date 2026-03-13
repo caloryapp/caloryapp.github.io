@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'preact/hooks'
-import { BREAKPOINTS } from '../config/theme'
+import { BREAKPOINTS } from 'src/config/theme'
 
 export const useMediaQuery = (q: string) => {
   const mq = useMemo(() => {
