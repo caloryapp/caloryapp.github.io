@@ -52,7 +52,7 @@ const Calculator = () => {
   const handleImportArticles = useCallback(async () => {
     const articles = await importArticles()
     await replaceArticles(articles)
-    toast({ message: t`import-articles-success` })
+    toast({ message: t`homePage:import-articles-success` })
   }, [t, toast, replaceArticles])
 
   const handleExportArticles = useCallback(() => {
@@ -60,12 +60,12 @@ const Calculator = () => {
     const fileDate = new Date().toISOString().slice(0, 10)
     const fileName = `calory-articles-${fileDate}.json`
     exportArticles(articleList, fileName)
-    toast({ message: t`export-articles-success` })
+    toast({ message: t`homePage:export-articles-success` })
   }, [t, articleList, toast])
 
   const handleClearEntries = useCallback(() => {
     confirm({
-      message: t`delete-entries-message`,
+      message: t`homePage:delete-entries-message`,
       onAccept: clearEntries
     })
   }, [t, confirm, clearEntries])
@@ -93,7 +93,7 @@ const Calculator = () => {
     async (entryId: string) => {
       if (isSectionCollapsed(entryId)) {
         confirm({
-          message: t`delete-section`,
+          message: t`homePage:delete-section`,
           onAccept: () => deleteSection(entryId)
         })
       } else {

@@ -32,14 +32,13 @@ const RowSection = () => {
           autoFocus={autoFocus}
           ref={inputNameRef}
           type="text"
-          placeholder={t`section-name`}
+          placeholder={t`homePage:section-name`}
           value={entry.name}
           onInput={debouncedSave}
           onChange={(e) =>
             onEntryChange({ ...entry, name: e.currentTarget.value })
           }
           onBlur={save}
-          aria-label={t`section-name`}
           class="input w-full col-span-3 border-2 border-primary/50 outline-primary"
         />
       </td>

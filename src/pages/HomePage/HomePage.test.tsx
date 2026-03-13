@@ -63,13 +63,13 @@ describe('Calculator', () => {
 
   it('deletes all records', async () => {
     // clicks the "delete-all-entries" button and opens the modal confirmation
-    const btn = screen.getByRole('button', { name: 'delete-all-entries' })
+    const btn = screen.getByRole('button', { name: /delete-all-entries$/ })
     fireEvent.click(btn)
     const modal = await screen.findByRole('dialog')
     expect(modal).toBeInTheDocument()
 
     // clicks the accept button from the modal confirmation
-    const acceptBtn = await screen.findByRole('button', { name: 'accept' })
+    const acceptBtn = await screen.findByRole('button', { name: /accept$/ })
     fireEvent.click(acceptBtn)
 
     // verifies that there are no rows
@@ -81,9 +81,7 @@ describe('Calculator', () => {
       expect(rows).toHaveLength(1)
 
       const row = rows[0]
-      expect(
-        within(row).getByRole('textbox', { name: 'section-name' })
-      ).toHaveValue('')
+      expect(within(row).getByRole('textbox')).toHaveValue('')
     })
   })
 })

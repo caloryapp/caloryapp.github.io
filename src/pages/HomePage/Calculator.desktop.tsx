@@ -61,14 +61,14 @@ function CalculatorDesktop() {
             <div class="flex flex-row justify-between items-end">
               <div>{curDate}</div>
               {isNaN(totalLeft) ? (
-                <div>{t('kcal', { d: totalSum.toFixed(2) })}</div>
+                <div>{t('homePage:kcal', { d: totalSum.toFixed(2) })}</div>
               ) : (
                 <div class="flex flex-col items-end">
                   <span
                     class={cn('space-x-0.5', { 'text-warning': totalLeft < 0 })}
                   >
                     <Trans
-                      i18nKey="kcal-budget"
+                      i18nKey="homePage:kcal-budget"
                       values={{ d: totalLeft.toFixed(2) }}
                       components={[
                         <span key={0} class="text-lg font-normal" />,
@@ -77,7 +77,8 @@ function CalculatorDesktop() {
                     />
                   </span>
                   <span class="text-xs">
-                    {goal.toFixed(2)} - {t('kcal', { d: totalSum.toFixed(2) })}
+                    {goal.toFixed(2)} -{' '}
+                    {t('homePage:kcal', { d: totalSum.toFixed(2) })}
                   </span>
                 </div>
               )}
@@ -88,7 +89,7 @@ function CalculatorDesktop() {
               <button
                 type="button"
                 onClick={clearEntries}
-                title={t`delete-all-entries`}
+                title={t`homePage:delete-all-entries`}
                 class="btn btn-square btn-warning"
               >
                 <TrashIcon />
@@ -103,16 +104,16 @@ function CalculatorDesktop() {
               >
                 <MenuButton onClick={showEditGoalDialog}>
                   <RocketLaunchIcon />
-                  <span class="text-nowrap">{t`goal-kcal`}</span>
+                  <span class="text-nowrap">{t`homePage:goal-kcal`}</span>
                 </MenuButton>
                 <MenuDivider />
                 <MenuButton onClick={importArticles}>
                   <ImportIcon />
-                  <span class="text-nowrap">{t`import-ingredients`}</span>
+                  <span class="text-nowrap">{t`homePage:import-ingredients`}</span>
                 </MenuButton>
                 <MenuButton onClick={exportArticles}>
                   <ExportIcon />
-                  <span class="text-nowrap">{t`export-ingredients`}</span>
+                  <span class="text-nowrap">{t`homePage:export-ingredients`}</span>
                 </MenuButton>
               </Menu>
             </div>
@@ -140,7 +141,7 @@ function CalculatorDesktop() {
                 <button
                   type="button"
                   onClick={() => deleteEntry(entry.id)}
-                  title={t`remove`}
+                  title={t`homePage:remove-entry`}
                   class="btn btn-square"
                 >
                   <MinusIcon className="size-4" />
@@ -149,7 +150,7 @@ function CalculatorDesktop() {
                   <button
                     type="button"
                     onClick={() => addEntry(entry.id, 'kcalPer100g')}
-                    title={t`new-article`}
+                    title={t`homePage:new-article`}
                     class="btn btn-square join-item"
                   >
                     <PlusIcon className="size-4" />
@@ -157,7 +158,7 @@ function CalculatorDesktop() {
                   <button
                     type="button"
                     onClick={() => addEntry(entry.id, 'section')}
-                    title={t`new-section`}
+                    title={t`homePage:new-section`}
                     class="btn btn-square join-item"
                   >
                     <PlusCircleIcon className="size-5" />

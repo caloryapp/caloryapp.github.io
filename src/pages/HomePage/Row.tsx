@@ -36,7 +36,7 @@ const RowRouter = () => {
           })}
           htmlFor={inputId}
         >
-          {t('kcal', { d: totalSum.toFixed(2) })}
+          {t('homePage:kcal', { d: totalSum.toFixed(2) })}
         </label>
       </td>
       <td class={styles.compact}>

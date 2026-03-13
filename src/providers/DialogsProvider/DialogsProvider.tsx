@@ -32,7 +32,7 @@ const DialogsProvider = ({ children }: DialogsProviderProps) => {
       confirm: (props) => {
         setConfirmDialog({
           open: true,
-          header: props.header ?? t`confirm`,
+          header: props.header ?? t`common:confirm`,
           message: props.message,
           onAccept: props.onAccept
         })
@@ -64,7 +64,7 @@ const DialogsProvider = ({ children }: DialogsProviderProps) => {
               onClick={handleCloseConfirmDialog}
               class="btn"
             >
-              {t`cancel`}
+              {t`common:cancel`}
             </button>
             <button
               autoFocus
@@ -72,7 +72,7 @@ const DialogsProvider = ({ children }: DialogsProviderProps) => {
               onClick={handleAcceptConfirmDialog}
               class="btn btn-primary"
             >
-              {t`accept`}
+              {t`common:accept`}
             </button>
           </>
         }

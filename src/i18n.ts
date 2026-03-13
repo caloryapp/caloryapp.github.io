@@ -16,16 +16,16 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    resources: {
-      es: { translation: es },
-      en: { translation: en }
-    },
+    resources: { es, en },
+    ns: ['common', 'homePage'],
+    defaultNS: 'none',
     interpolation: { escapeValue: false },
     detection: {
       order: ['querystring', 'localStorage', 'navigator', 'htmlTag'],
       lookupQuerystring: 'lng',
       caches: ['localStorage']
     },
+    appendNamespaceToMissingKey: true,
     parseMissingKeyHandler: (key) => {
       return isDev ? `{{${key}}}` : key
     }

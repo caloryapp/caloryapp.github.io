@@ -19,7 +19,7 @@ const HomePage = () => {
       <div class="navbar z-20">
         <div class="grow flex items-center gap-1.5 text-lg md:text-2xl font-medium">
           <CalculatorIcon className="size-7" />
-          <span>{t`app-title`}</span>
+          <span>{t`homePage:app-title`}</span>
         </div>
         <div class="flex flex-wrap items-center justify-end gap-3.5 mt-1">
           <Menu
@@ -29,7 +29,9 @@ const HomePage = () => {
                 onClick={toggle}
                 class="flex items-center gap-0.5 text-xs font-semibold cursor-pointer"
               >
-                <span>{t('language', { lang: lang.toUpperCase() })}</span>
+                <span>
+                  {t('homePage:language', { lang: lang.toUpperCase() })}
+                </span>
                 <ChevronDownIcon
                   className={cn('size-4 transition-[rotate]', {
                     'rotate-180': open
@@ -42,11 +44,11 @@ const HomePage = () => {
             <MenuButton
               onClick={() => i18n.changeLanguage('en')}
               class={cn({ 'menu-active': lang.startsWith('en') })}
-            >{t`english`}</MenuButton>
+            >{t`common:english`}</MenuButton>
             <MenuButton
               onClick={() => i18n.changeLanguage('es')}
               class={cn({ 'menu-active': lang.startsWith('es') })}
-            >{t`spanish`}</MenuButton>
+            >{t`common:spanish`}</MenuButton>
           </Menu>
           <Menu
             anchor={({ toggle, open }) => (
@@ -55,7 +57,7 @@ const HomePage = () => {
                 onClick={toggle}
                 class="flex items-center gap-0.5 text-xs font-semibold cursor-pointer"
               >
-                {t`theme`}
+                {t`common:theme`}
                 <ChevronDownIcon
                   className={cn('size-4 transition-[rotate]', {
                     'rotate-180': open

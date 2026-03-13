@@ -42,10 +42,10 @@ const EditGoalDialog = ({ open, onClose }: EditGoalDialogProps) => {
       actions={
         <>
           <button type="button" onClick={onClose} class="btn">
-            {t`cancel`}
+            {t`common:cancel`}
           </button>
           <button type="submit" form={formId} class="btn btn-primary">
-            {t`save`}
+            {t`common:save`}
           </button>
         </>
       }
@@ -58,12 +58,12 @@ const EditGoalDialog = ({ open, onClose }: EditGoalDialogProps) => {
         }}
       >
         <label class="floating-label">
-          <span>{t`caloric-goal`}</span>
+          <span>{t`editGoalDialog:caloric-goal`}</span>
           <input
             ref={inputRef}
             type="number"
             autoFocus
-            placeholder={t`caloric-goal`}
+            placeholder={t`editGoalDialog:caloric-goal`}
             value={inputVal}
             onInput={handleInput}
             class="input w-full"

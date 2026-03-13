@@ -64,7 +64,7 @@ const RowEntry = () => {
     })
 
     toast({
-      message: article ? t`article-saved` : t`article-created`
+      message: article ? t`homePage:article-saved` : t`homePage:article-created`
     })
   }
 
@@ -93,7 +93,7 @@ const RowEntry = () => {
           <Combobox
             autoFocus={autoFocus}
             ref={inputNameRef}
-            placeholder={t`entry-name`}
+            placeholder={t`homePage:entry-name`}
             value={entry.name}
             onInput={debouncedSave}
             onChange={(e) =>
@@ -124,7 +124,7 @@ const RowEntry = () => {
           />
           <button
             onClick={handleSearchArticle}
-            title={t`search-article`}
+            title={t`homePage:search-article`}
             class="btn btn-square"
           >
             <MagnifyingGlassIcon className="size-5" />
@@ -135,7 +135,7 @@ const RowEntry = () => {
         <div class="join">
           <input
             type="number"
-            placeholder={t`entry-kcal`}
+            placeholder={t`homePage:entry-kcal`}
             value={isNaN(entry.kcal) ? '' : entry.kcal}
             onInput={debouncedSave}
             onChange={(e) =>
@@ -165,8 +165,8 @@ const RowEntry = () => {
               'border-kcal-per-unit': entry.type == 'kcalPerUnit'
             })}
           >
-            <option value="kcalPer100g">{t`kcal-per-100g`}</option>
-            <option value="kcalPerUnit">{t`kcal-per-unit`}</option>{' '}
+            <option value="kcalPer100g">{t`homePage:kcal-per-100g`}</option>
+            <option value="kcalPerUnit">{t`homePage:kcal-per-unit`}</option>{' '}
           </select>
         </div>
       </td>
@@ -175,7 +175,7 @@ const RowEntry = () => {
           <input
             type="number"
             step={entry.type == 'kcalPer100g' ? 5 : 1}
-            placeholder={t`entry-total`}
+            placeholder={t`homePage:entry-total`}
             value={isNaN(entry.total) ? '' : entry.total}
             onInput={debouncedSave}
             onChange={(e) =>
@@ -191,7 +191,7 @@ const RowEntry = () => {
             disabled={!entry.name.trim()}
             type="button"
             onClick={handleSaveArticle}
-            title={t`save-article`}
+            title={t`homePage:save-article`}
             class="btn btn-square"
           >
             <FloppyDiskIcon className="size-5" />
