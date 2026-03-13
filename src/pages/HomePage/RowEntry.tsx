@@ -12,6 +12,7 @@ import { ArticleType, EntryType } from 'src/services/types'
 import { useLanguage } from 'src/libs/i18n'
 import { cn } from 'src/libs/tw'
 import Combobox from 'src/components/inputs/Combobox'
+import { extractFoodName } from './helpers'
 import { useCalculatorContext } from './Calculator.context'
 import { useRowContext } from './Row.context'
 
@@ -68,7 +69,7 @@ const RowEntry = () => {
   }
 
   const handleSearchArticle = () => {
-    const q = entry.name.trim()
+    const q = extractFoodName(entry.name)
     const searchUrl = SEARCH_URL[lang] ?? 'en'
     let url = searchUrl.replace('%q', encodeURIComponent(q))
     if (!q) {

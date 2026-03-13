@@ -8,6 +8,21 @@ export const truncateText = (text: string, maxCols: number) => {
   return text
 }
 
+/**
+ * Extracts a clean food name from the start of a string.
+ * Supports Unicode letters (including accents), combining marks, numbers,
+ * spaces, apostrophes, and hyphens. It also collapses multiple spaces into one.
+ *
+ * @example
+ * extractFoodName("  piña-  colada   y   l'aranja   (1 rebanada)  ")
+ * // "piña- colada y l'aranja"
+ */
+export const extractFoodName = (text: string) => {
+  return (text.match(/^[\p{L}\p{M}\p{N}\s'-]+/u)?.[0] || '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
 export const importArticles = (): Promise<Article[]> =>
   new Promise((resolve, reject) => {
     const input = document.createElement('input')
