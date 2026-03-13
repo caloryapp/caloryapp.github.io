@@ -1,4 +1,4 @@
 export default {
   viteConfig: './vite.ladle.config.ts',
-  defaultStory: 'components--calculator'
+  defaultStory: 'pages--home-page'
 }

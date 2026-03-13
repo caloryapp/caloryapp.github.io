@@ -7,7 +7,7 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
  * Uses IntersectionObserver with an invisible sentinel element to detect
  * when the header is no longer visible at the top of the viewport.
  */
-const useStickyDetection = () => {
+export const useStickyDetection = () => {
   const [isStuck, setIsStuck] = useState(false)
   const tableRef = useRef<HTMLTableElement>(null)
 
@@ -43,5 +43,3 @@ const useStickyDetection = () => {
     [isStuck]
   )
 }
-
-export default useStickyDetection

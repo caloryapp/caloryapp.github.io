@@ -14,8 +14,7 @@ import { useStoreContext } from 'src/providers/StoreProvider'
 import { useSettingsContext } from 'src/providers/SettingsProvider'
 import Menu, { MenuButton, MenuDivider } from 'src/components/navigation/Menu'
 import { useCalculatorContext } from './Calculator.context'
-import useStickyDetection from './useStickyDetection'
-import { useCurrentDate, useSortable } from './helpers'
+import { useCurrentDate, useSortable, useStickyDetection } from './helpers'
 import Row from './Row'
 
 function CalculatorDesktop() {

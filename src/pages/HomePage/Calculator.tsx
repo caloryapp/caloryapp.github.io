@@ -8,8 +8,7 @@ import { useStoreContext } from 'src/providers/StoreProvider'
 import EditGoalDialog from 'src/dialogs/EditGoalDialog'
 import { CalculatorContext, CalculatorContextProps } from './Calculator.context'
 import CalculatorDesktop from './Calculator.desktop'
-import { exportArticles, importArticles } from './helpers'
-import useDisplayOrder from './useDisplayOrder'
+import { exportArticles, importArticles, useDisplayOrder } from './helpers'
 import CalculatorMobile from './Calculator.mobile.tsx'
 
 const Calculator = () => {

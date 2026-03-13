@@ -2,7 +2,7 @@ import { useCallback, useMemo } from 'preact/hooks'
 import { generateKeyBetween, generateNKeysBetween } from 'fractional-indexing'
 import { useStoreContext } from 'src/providers/StoreProvider'
 
-const useDisplayOrder = () => {
+export const useDisplayOrder = () => {
   const { entryList, putEntry } = useStoreContext()
 
   const getOrderBounds = useCallback(
@@ -92,5 +92,3 @@ const useDisplayOrder = () => {
     [genOrder, genOrderAfter, moveEntryAfter, moveEntryBefore]
   )
 }
-
-export default useDisplayOrder

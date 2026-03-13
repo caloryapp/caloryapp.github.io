@@ -99,93 +99,24 @@ npm run ladle
 ```
 calory/
 ├── public/                    # Static assets
-│   ├── manifest.json          # Chrome extension manifest (v3)
-│   ├── favicon.svg            # App favicon
-│   ├── favicon.ico
-│   └── icons/                 # Extension icons (16, 32, 48, 128px)
-├── src/
-│   ├── bootstrap.ts           # App bootstrap (providers/setup)
+├── src/                       # Sources
 │   ├── main.tsx               # Main app entry point
-│   ├── popup.tsx              # Chrome popup entry point
-│   ├── App.tsx                # Main app component
-│   ├── styles.css             # Global styles (Tailwind imports)
-│   ├── i18n.ts                # i18n configuration
-│   ├── vite-env.d.ts          # Vite type declarations
 │   ├── config/                # App configuration
-│   │   ├── general.ts         # General constants
-│   │   └── theme.ts           # Theme configuration
 │   ├── libs/                  # Utility functions
-│   │   ├── strings.ts         # String utilities (capitalize)
-│   │   ├── i18n.ts            # i18n helper hook
-│   │   ├── mq.ts              # Media query utilities
-│   │   └── tw.ts              # cn utility (clsx + tailwind-merge)
 │   ├── assets/                # Static assets (SVG icons)
-│   │   └── icons/             # SVG icon components
 │   ├── components/            # React/Preact components
-│   │   ├── Calculator/        # Main calculator component
-│   │   │   ├── Calculator.tsx
-│   │   │   ├── Calculator.desktop.tsx  # Desktop layout
-│   │   │   ├── Calculator.mobile.tsx   # Mobile layout
-│   │   │   ├── Calculator.module.css
-│   │   │   ├── Calculator.stories.tsx
-│   │   │   ├── Calculator.test.tsx
-│   │   │   ├── Calculator.context.ts
-│   │   │   ├── Row.tsx        # Entry row wrapper
-│   │   │   ├── Row.context.ts # Row-specific context
-│   │   │   ├── RowEntry.tsx   # Food entry row
-│   │   │   ├── RowSection.tsx # Section header row
-│   │   │   ├── useDisplayOrder.ts
-│   │   │   ├── useStickyDetection.ts
-│   │   │   └── helpers/       # Calculator utilities
-│   │   │       ├── functions.ts
-│   │   │       ├── hooks.ts
-│   │   │       └── index.ts
 │   │   ├── feedback/          # Feedback components
-│   │   │   ├── Dialog/        # Reusable dialog component
-│   │   │   └── Toast/         # Toast notifications
 │   │   ├── inputs/            # Form input components
-│   │   │   └── Combobox/      # Autocomplete dropdown
-│   │   ├── navigation/        # Navigation components
-│   │   │   └── Menu/
-│   │   └── PopupApp.tsx       # Chrome popup UI
+│   │   └── navigation/        # Navigation components
 │   ├── dialogs/               # App dialog modules
-│   │   └── EditGoalDialog/
+│   ├── pages/                 # App pages
 │   ├── providers/             # Context providers
-│   │   ├── StoreProvider/     # Database/state management
-│   │   │   ├── StoreProvider.tsx
-│   │   │   ├── StoreProvider.context.ts
-│   │   │   └── helpers.ts
-│   │   ├── DialogsProvider/   # Dialog state management
-│   │   ├── SettingsProvider/  # App settings state
-│   │   └── ThemeProvider/     # Theme state
 │   ├── services/              # Data layer
-│   │   ├── db.ts              # Dexie/IndexedDB setup
-│   │   └── types.ts           # TypeScript interfaces
 │   ├── types/                 # Type declarations and shims
-│   │   ├── react.d.ts
-│   │   └── react-dom.d.ts
 │   ├── locales/               # i18n translations
-│   │   ├── en.json
-│   │   └── es.json
 │   └── test/                  # Test setup
-│       ├── setup.ts           # Vitest setup + mocks
-│       └── smoke.test.tsx     # Basic smoke test
 ├── scripts/                   # Project scripts
-│   └── check-unused-translations.mjs
 ├── reports/                   # Generated reports
-├── index.html                 # Main app HTML
-├── popup.html                 # Chrome popup HTML
-├── popup.ts                   # Popup vanilla JS (legacy)
-├── vite.config.ts             # Vite configuration
-├── vite.ladle.config.ts       # Ladle Vite configuration
-├── vitest.config.ts           # Vitest configuration
-├── tsconfig.json              # TypeScript configuration
-├── tsconfig.build.json        # TypeScript build config
-├── tsconfig.dev.json          # TypeScript dev config
-├── tailwind.config.js         # Tailwind CSS configuration
-├── postcss.config.js          # PostCSS configuration
-├── eslint.config.js           # ESLint configuration
-├── .prettierrc                # Prettier configuration
 └── .husky/pre-push            # Git pre-push hook
 ```
 
@@ -202,7 +133,7 @@ calory/
 
 ### Import Conventions
 
-```typescript
+```ts
 // External libraries first
 import { useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
@@ -240,7 +171,7 @@ import { useStoreContext } from 'src/providers/StoreProvider'
 
 The app uses Dexie.js with IndexedDB, version 1:
 
-```typescript
+```ts
 // db version + indexes
 db.version(1).stores({
   entries: '&id,createdAt,displayOrder',
@@ -299,7 +230,7 @@ npx vitest
 
 ### Example Test Pattern
 
-```typescript
+```tsx
 import { render, screen, fireEvent } from '@testing-library/preact'
 import { describe, it, expect, beforeEach } from 'vitest'
 
@@ -356,7 +287,7 @@ Both must pass before pushing to remote.
 
 The project uses `src/*` path aliasing. Ensure imports use this pattern:
 
-```typescript
+```tsx
 import { something } from 'src/components/Component'
 // NOT: import { something } from '../components/Component'
 ```
