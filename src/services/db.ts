@@ -10,7 +10,6 @@ export const entriesTable = () => db.table<Entry, string>('entries')
 export const articlesTable = () => db.table<Article, string>('articles')
 
 db.version(1).stores({
-  preferences: '&id',
   entries: '&id,createdAt,displayOrder',
   articles: '&id,createdAt,name'
 })

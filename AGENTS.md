@@ -101,18 +101,23 @@ calory/
 ├── public/                    # Static assets
 │   ├── manifest.json          # Chrome extension manifest (v3)
 │   ├── favicon.svg            # App favicon
+│   ├── favicon.ico
 │   └── icons/                 # Extension icons (16, 32, 48, 128px)
 ├── src/
+│   ├── bootstrap.ts           # App bootstrap (providers/setup)
 │   ├── main.tsx               # Main app entry point
 │   ├── popup.tsx              # Chrome popup entry point
 │   ├── App.tsx                # Main app component
 │   ├── styles.css             # Global styles (Tailwind imports)
 │   ├── i18n.ts                # i18n configuration
 │   ├── vite-env.d.ts          # Vite type declarations
-│   ├── config.ts              # App constants (AUTOSAVE_DELAY, etc.)
+│   ├── config/                # App configuration
+│   │   ├── general.ts         # General constants
+│   │   └── theme.ts           # Theme configuration
 │   ├── libs/                  # Utility functions
 │   │   ├── strings.ts         # String utilities (capitalize)
-│   │   ├── theme.ts           # useTheme hook
+│   │   ├── i18n.ts            # i18n helper hook
+│   │   ├── mq.ts              # Media query utilities
 │   │   └── tw.ts              # cn utility (clsx + tailwind-merge)
 │   ├── assets/                # Static assets (SVG icons)
 │   │   └── icons/             # SVG icon components
@@ -120,45 +125,54 @@ calory/
 │   │   ├── Calculator/        # Main calculator component
 │   │   │   ├── Calculator.tsx
 │   │   │   ├── Calculator.desktop.tsx  # Desktop layout
+│   │   │   ├── Calculator.mobile.tsx   # Mobile layout
 │   │   │   ├── Calculator.module.css
+│   │   │   ├── Calculator.stories.tsx
 │   │   │   ├── Calculator.test.tsx
 │   │   │   ├── Calculator.context.ts
 │   │   │   ├── Row.tsx        # Entry row wrapper
 │   │   │   ├── Row.context.ts # Row-specific context
 │   │   │   ├── RowEntry.tsx   # Food entry row
 │   │   │   ├── RowSection.tsx # Section header row
-│   │   │   ├── Dropdown.tsx   # Article dropdown menu
 │   │   │   ├── useDisplayOrder.ts
+│   │   │   ├── useStickyDetection.ts
 │   │   │   └── helpers/       # Calculator utilities
 │   │   │       ├── functions.ts
 │   │   │       ├── hooks.ts
-│   │   │       ├── sorting.ts
-│   │   │       └── sorting.test.ts
-│   │   ├── Combobox/          # Autocomplete dropdown
-│   │   ├── InputField/        # Reusable input component
+│   │   │       └── index.ts
 │   │   ├── feedback/          # Feedback components
-│   │   │   ├── AlertDialog/   # Alert modal
+│   │   │   ├── Dialog/        # Reusable dialog component
 │   │   │   └── Toast/         # Toast notifications
+│   │   ├── inputs/            # Form input components
+│   │   │   └── Combobox/      # Autocomplete dropdown
+│   │   ├── navigation/        # Navigation components
+│   │   │   └── Menu/
 │   │   └── PopupApp.tsx       # Chrome popup UI
-│   ├── pages/                 # Page components
-│   │   └── HomePage/          # Main page
-│   │       ├── HomePage.tsx
-│   │       └── index.ts
+│   ├── dialogs/               # App dialog modules
+│   │   └── EditGoalDialog/
 │   ├── providers/             # Context providers
 │   │   ├── StoreProvider/     # Database/state management
 │   │   │   ├── StoreProvider.tsx
-│   │   │   ├── context.ts
+│   │   │   ├── StoreProvider.context.ts
 │   │   │   └── helpers.ts
-│   │   └── DialogsProvider/   # Dialog state management
+│   │   ├── DialogsProvider/   # Dialog state management
+│   │   ├── SettingsProvider/  # App settings state
+│   │   └── ThemeProvider/     # Theme state
 │   ├── services/              # Data layer
 │   │   ├── db.ts              # Dexie/IndexedDB setup
 │   │   └── types.ts           # TypeScript interfaces
+│   ├── types/                 # Type declarations and shims
+│   │   ├── react.d.ts
+│   │   └── react-dom.d.ts
 │   ├── locales/               # i18n translations
 │   │   ├── en.json
 │   │   └── es.json
 │   └── test/                  # Test setup
 │       ├── setup.ts           # Vitest setup + mocks
 │       └── smoke.test.tsx     # Basic smoke test
+├── scripts/                   # Project scripts
+│   └── check-unused-translations.mjs
+├── reports/                   # Generated reports
 ├── index.html                 # Main app HTML
 ├── popup.html                 # Chrome popup HTML
 ├── popup.ts                   # Popup vanilla JS (legacy)
@@ -213,6 +227,7 @@ import { useStoreContext } from 'src/providers/StoreProvider'
 - Utilities: camelCase (e.g., `helpers.ts`)
 - Styles: ComponentName.module.css for CSS modules
 - Tests: ComponentName.test.tsx alongside the component
+- Stories: ComponentName.stories.tsx alongside the component
 
 ### CSS/Styling
 
@@ -226,6 +241,12 @@ import { useStoreContext } from 'src/providers/StoreProvider'
 The app uses Dexie.js with IndexedDB, version 1:
 
 ```typescript
+// db version + indexes
+db.version(1).stores({
+  entries: '&id,createdAt,displayOrder',
+  articles: '&id,createdAt,name'
+})
+
 // entries table
 {
   id: string // Primary key
