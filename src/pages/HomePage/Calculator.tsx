@@ -65,7 +65,7 @@ const Calculator = () => {
 
   const handleClearEntries = useCallback(() => {
     confirm({
-      message: t`homePage:delete-entries-message`,
+      body: t`homePage:delete-entries-message`,
       onAccept: clearEntries
     })
   }, [t, confirm, clearEntries])
@@ -93,7 +93,7 @@ const Calculator = () => {
     async (entryId: string) => {
       if (isSectionCollapsed(entryId)) {
         confirm({
-          message: t`homePage:delete-section`,
+          body: t`homePage:delete-section`,
           onAccept: () => deleteSection(entryId)
         })
       } else {

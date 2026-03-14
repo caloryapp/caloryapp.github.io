@@ -21,8 +21,7 @@ export const Example: Story = () => {
       type="button"
       onClick={() =>
         confirm({
-          header: 'Confirm',
-          message: 'Please accept to continue.',
+          body: 'Please accept to continue.',
           onAccept: () => console.info('done!')
         })
       }

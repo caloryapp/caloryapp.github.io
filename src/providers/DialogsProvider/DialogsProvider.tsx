@@ -12,16 +12,13 @@ type DialogsProviderProps = {
 const DialogsProvider = ({ children }: DialogsProviderProps) => {
   const { t } = useTranslation()
   const toastRef = useRef<ToastHandle>(null)
-  const [confirmDialog, setConfirmDialog] = useState<{
+  const [dialog, setDialog] = useState<{
     open: boolean
-    header: ComponentChild
-    message: ComponentChild
-    onAccept: () => void
+    body: ComponentChild
+    actions?: (close: () => void) => ComponentChildren
   }>({
     open: false,
-    header: '',
-    message: '',
-    onAccept: () => {}
+    body: null
   })
 
   const ctxValue = useMemo<DialogsContextProps>(
@@ -29,55 +26,46 @@ const DialogsProvider = ({ children }: DialogsProviderProps) => {
       toast: (props) => {
         toastRef.current?.show(props)
       },
+      dialog: (props) => setDialog({ open: true, ...props }),
       confirm: (props) => {
-        setConfirmDialog({
+        setDialog({
           open: true,
-          header: props.header ?? t`common:confirm`,
-          message: props.message,
-          onAccept: props.onAccept
+          body: props.body,
+          actions: (close) => (
+            <>
+              <button type="button" onClick={close} class="btn">
+                {t`common:cancel`}
+              </button>
+              <button
+                autoFocus
+                type="button"
+                onClick={() => {
+                  props.onAccept()
+                  close()
+                }}
+                class="btn btn-primary"
+              >
+                {t`common:accept`}
+              </button>
+            </>
+          )
         })
       }
     }),
     [t]
   )
 
-  const handleCloseConfirmDialog = () =>
-    setConfirmDialog((val) => ({ ...val, open: false }))
-
-  const handleAcceptConfirmDialog = () => {
-    handleCloseConfirmDialog()
-    confirmDialog.onAccept()
-  }
-
   return (
     <DialogsContext value={ctxValue}>
       {children}
       <Toast ref={toastRef} />
       <Dialog
-        open={confirmDialog.open}
-        onClose={handleCloseConfirmDialog}
-        header={confirmDialog.header}
-        actions={
-          <>
-            <button
-              type="button"
-              onClick={handleCloseConfirmDialog}
-              class="btn"
-            >
-              {t`common:cancel`}
-            </button>
-            <button
-              autoFocus
-              type="button"
-              onClick={handleAcceptConfirmDialog}
-              class="btn btn-primary"
-            >
-              {t`common:accept`}
-            </button>
-          </>
-        }
+        open={dialog.open}
+        actions={dialog.actions?.(() =>
+          setDialog((val) => ({ ...val, open: false }))
+        )}
       >
-        {confirmDialog.message}
+        {dialog.body}
       </Dialog>
     </DialogsContext>
   )

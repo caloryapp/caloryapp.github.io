@@ -3,7 +3,6 @@
     "cancel": "Cancel",
     "accept": "Accept",
     "save": "Save",
-    "confirm": "Confirm",
     "english": "English",
     "spanish": "Spanish",
     "theme": "Theme"
@@ -35,7 +34,9 @@
     "export-articles-success": "Articles were exported successfully.",
     "delete-entries-message": "You are about to delete all entries. Do you want to continue?",
     "delete-section": "The section is not empty. Do you want to delete it and its children?",
-    "no-saved-articles": "<0>No ingredients saved yet.</0> Write an ingredient and press <1 /> to save it."
+    "no-saved-articles": "<0>No ingredients saved yet.</0> Write an ingredient and press <1 /> to save it.",
+    "article-name-changed": "The ingredient name has changed. What would you like to do?",
+    "create-new-ingredient": "Create new ingredient"
   },
   "editGoalDialog": {
     "caloric-goal": "Calorie goal (e.g. 2200 kcal)"

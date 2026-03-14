@@ -8,7 +8,7 @@ import TrashIcon from 'src/assets/icons/trash.svg?react'
 import { SEARCH_URL } from 'src/config/general'
 import { useDialogsContext } from 'src/providers/DialogsProvider'
 import { useStoreContext } from 'src/providers/StoreProvider'
-import { ArticleType, EntryType } from 'src/services/types'
+import { Article, ArticleType, EntryType } from 'src/services/types'
 import { useLanguage } from 'src/libs/i18n'
 import { cn } from 'src/libs/tw'
 import Combobox from 'src/components/inputs/Combobox'
@@ -29,14 +29,16 @@ const RowEntry = () => {
   const { focusIdRef, articles } = useCalculatorContext()
   const { autoFocus, entry, onEntryChange, save, debouncedSave } =
     useRowContext()
-  const { toast } = useDialogsContext()
+  const { toast, dialog } = useDialogsContext()
   const inputNameRef = useRef<HTMLInputElement>(null)
   const articleIdRef = useRef('')
+  const nameChangedRef = useRef(false)
 
-  const handleChangeArticle = async (articleId: string) => {
+  const handleSelectArticle = async (articleId: string) => {
     const article = await searchArticleById(articleId)
     if (!article) return
     articleIdRef.current = article.id
+    nameChangedRef.current = false
 
     const newEntry = {
       ...entry,
@@ -50,22 +52,73 @@ const RowEntry = () => {
   }
 
   const handleSaveArticle = async () => {
-    const article = articleIdRef.current
-      ? await searchArticleById(articleIdRef.current)
-      : await searchArticleByName(entry.name)
-    articleIdRef.current = article?.id || nanoid()
-    await putArticle({
-      id: articleIdRef.current,
-      createdAt: article?.createdAt || Date.now(),
-      type: entry.type as ArticleType,
-      name: entry.name,
-      kcal: entry.kcal,
-      total: entry.total
-    })
+    const saveArticle = async (article?: Article) => {
+      nameChangedRef.current = false
 
-    toast({
-      message: article ? t`homePage:article-saved` : t`homePage:article-created`
-    })
+      articleIdRef.current = article?.id || nanoid()
+      await putArticle({
+        id: articleIdRef.current,
+        createdAt: article?.createdAt || Date.now(),
+        type: entry.type as ArticleType,
+        name: entry.name,
+        kcal: entry.kcal,
+        total: entry.total
+      })
+
+      toast({
+        message: article
+          ? t`homePage:article-saved`
+          : t`homePage:article-created`
+      })
+    }
+
+    const saveArticleById = async () => {
+      const article = await searchArticleById(articleIdRef.current)
+      saveArticle(article)
+    }
+
+    const saveArticleByName = async () => {
+      const article = await searchArticleByName(entry.name)
+      saveArticle(article)
+    }
+
+    if (articleIdRef.current && nameChangedRef.current) {
+      dialog({
+        body: t`homePage:article-name-changed`,
+        actions: (close) => (
+          <>
+            <button type="button" onClick={close} class="btn">
+              {t`common:cancel`}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                saveArticleById()
+                close()
+              }}
+              class="btn btn-primary"
+            >
+              {t`common:save`}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                saveArticleByName()
+                close()
+              }}
+              class="btn btn-primary"
+            >
+              {t`homePage:create-new-ingredient`}
+            </button>
+          </>
+        )
+      })
+    } else {
+      const article = articleIdRef.current
+        ? await searchArticleById(articleIdRef.current)
+        : await searchArticleByName(entry.name)
+      saveArticle(article)
+    }
   }
 
   const handleSearchArticle = () => {
@@ -96,9 +149,10 @@ const RowEntry = () => {
             placeholder={t`homePage:entry-name`}
             value={entry.name}
             onInput={debouncedSave}
-            onChange={(e) =>
+            onChange={(e) => {
               onEntryChange({ ...entry, name: e.currentTarget.value })
-            }
+              nameChangedRef.current = true
+            }}
             onBlur={save}
             options={
               articles.length > 0 ? articles : [{ id: 'no-saved-articles' }]
@@ -137,7 +191,7 @@ const RowEntry = () => {
                 </div>
               )
             }}
-            onSelectOption={(option) => handleChangeArticle(option.id)}
+            onSelectOption={(option) => handleSelectArticle(option.id)}
             class="w-full"
           />
           <button

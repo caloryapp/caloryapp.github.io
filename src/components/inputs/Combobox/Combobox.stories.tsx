@@ -15,7 +15,7 @@ export const Example: Story = () => {
       autoFocus
       value={text}
       onChange={(e) => setText(e.currentTarget.value)}
-      onSelectOption={(option) => setText(option.name)}
+      onSelectOption={(option) => setText(option.name || '')}
       renderOption={(option, select) => (
         <a onMouseDown={select}>{option.name}</a>
       )}
