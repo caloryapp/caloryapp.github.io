@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'preact/hooks'
-import { useTranslation } from 'react-i18next'
+import { Trans, useTranslation } from 'react-i18next'
 import { nanoid } from 'nanoid'
 import styles from './Calculator.module.css'
 import MagnifyingGlassIcon from 'src/assets/icons/magnifying-glass.svg?react'
@@ -100,25 +100,43 @@ const RowEntry = () => {
               onEntryChange({ ...entry, name: e.currentTarget.value })
             }
             onBlur={save}
-            options={articles}
-            renderOption={(option, onMouseDown) => (
-              <div class="flex gap-1">
-                <button
-                  onClick={onMouseDown}
-                  class="cursor-pointer whitespace-nowrap grow self-stretch flex items-center"
-                >
-                  {option.name}
-                </button>
-                <button
-                  type="button"
-                  tabIndex={-1}
-                  onClick={() => deleteArticle(option.id)}
-                  class="btn btn-ghost btn-square btn-sm -mr-1"
-                >
-                  <TrashIcon />
-                </button>
-              </div>
-            )}
+            options={
+              articles.length > 0 ? articles : [{ id: 'no-saved-articles' }]
+            }
+            renderOption={(option, onMouseDown) => {
+              if (option.id == 'no-saved-articles') {
+                return (
+                  <div class="block">
+                    <Trans
+                      i18nKey="homePage:no-saved-articles"
+                      components={[
+                        <span key={0} class="font-semibold" />,
+                        <FloppyDiskIcon key={1} className="size-5 inline" />
+                      ]}
+                    />
+                  </div>
+                )
+              }
+
+              return (
+                <div class="flex gap-1">
+                  <button
+                    onClick={onMouseDown}
+                    class="cursor-pointer whitespace-nowrap grow self-stretch flex items-center"
+                  >
+                    {option.name}
+                  </button>
+                  <button
+                    type="button"
+                    tabIndex={-1}
+                    onClick={() => deleteArticle(option.id)}
+                    class="btn btn-ghost btn-square btn-sm -mr-1"
+                  >
+                    <TrashIcon />
+                  </button>
+                </div>
+              )
+            }}
             onSelectOption={(option) => handleChangeArticle(option.id)}
             class="w-full"
           />

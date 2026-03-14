@@ -8,7 +8,7 @@ import useMenuManager from './useMenuManager'
 
 export type ComboboxOption = {
   id: string
-  name: string
+  name?: string
 }
 
 export type ComboboxProps = Omit<
@@ -44,10 +44,12 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
     const itemRefs = useRef<(HTMLLIElement | null)[]>([])
 
     const filteredOptions = menu.query
-      ? options.filter((option) =>
-          normalizeText(option.name).includes(
-            normalizeText(`${menu.query}`.trim())
-          )
+      ? options.filter(
+          (option) =>
+            option.name &&
+            normalizeText(option.name).includes(
+              normalizeText(`${menu.query}`.trim())
+            )
         )
       : options
 

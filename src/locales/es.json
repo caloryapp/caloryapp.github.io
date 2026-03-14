@@ -34,7 +34,8 @@
     "import-articles-success": "Los ingredientes se importaron correctamente.",
     "export-articles-success": "Los ingredientes se exportaron correctamente.",
     "delete-entries-message": "Estás a punto de eliminar todas las entradas. ¿Quieres continuar?",
-    "delete-section": "La sección no está vacía. ¿Quieres eliminarla junto con sus elementos?"
+    "delete-section": "La sección no está vacía. ¿Quieres eliminarla junto con sus elementos?",
+    "no-saved-articles": "<0>No hay ingredientes guardados.</0> Escriba un ingrediente y presione <1 /> para guardarlo."
   },
   "editGoalDialog": {
     "caloric-goal": "Objetivo calórico (p. ej., 2200 kcal)"
