@@ -33,7 +33,7 @@
     "import-articles-success": "Articles were imported successfully.",
     "export-articles-success": "Articles were exported successfully.",
     "delete-entries-message": "Clear the table?",
-    "delete-section": "The section is not empty. Do you want to delete it and its children?",
+    "delete-section": "The section is not empty. Do you want to delete it?",
     "no-saved-articles": "<0>No ingredients saved yet.</0> Write an ingredient and press <1 /> to save it.",
     "article-name-changed": "The ingredient name has changed. What would you like to do?",
     "create-new-ingredient": "Create new ingredient"

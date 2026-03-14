@@ -33,7 +33,7 @@
     "import-articles-success": "Los ingredientes se importaron correctamente.",
     "export-articles-success": "Los ingredientes se exportaron correctamente.",
     "delete-entries-message": "Limpiar la tabla?",
-    "delete-section": "La sección no está vacía. ¿Quieres eliminarla junto con sus elementos?",
+    "delete-section": "La sección no está vacía. ¿Quieres eliminarla?",
     "no-saved-articles": "<0>No hay ingredientes guardados.</0> Escriba un ingrediente y presione <1 /> para guardarlo.",
     "article-name-changed": "El nombre del ingrediente ha cambiado. Qué desea hacer?",
     "create-new-ingredient": "Crear nuevo ingrediente"
