@@ -32,13 +32,13 @@ const RowEntry = () => {
   const { toast, dialog } = useDialogsContext()
   const inputNameRef = useRef<HTMLInputElement>(null)
   const articleIdRef = useRef('')
-  const nameChangedRef = useRef(false)
+  const originalNameRef = useRef(entry.name)
 
   const handleSelectArticle = async (articleId: string) => {
     const article = await searchArticleById(articleId)
     if (!article) return
     articleIdRef.current = article.id
-    nameChangedRef.current = false
+    originalNameRef.current = article.name
 
     const newEntry = {
       ...entry,
@@ -53,8 +53,11 @@ const RowEntry = () => {
 
   const handleSaveArticle = async () => {
     const saveArticle = async (article?: Article) => {
-      nameChangedRef.current = false
+      if (!article) {
+        article = await searchArticleByName(entry.name)
+      }
 
+      originalNameRef.current = entry.name
       articleIdRef.current = article?.id || nanoid()
       await putArticle({
         id: articleIdRef.current,
@@ -72,17 +75,11 @@ const RowEntry = () => {
       })
     }
 
-    const saveArticleById = async () => {
-      const article = await searchArticleById(articleIdRef.current)
-      saveArticle(article)
-    }
-
-    const saveArticleByName = async () => {
-      const article = await searchArticleByName(entry.name)
-      saveArticle(article)
-    }
-
-    if (articleIdRef.current && nameChangedRef.current) {
+    const originalName = originalNameRef.current
+    const article = originalName
+      ? await searchArticleByName(originalName)
+      : undefined
+    if (article && entry.name != originalName) {
       dialog({
         body: t`homePage:article-name-changed`,
         actions: (close) => (
@@ -93,7 +90,7 @@ const RowEntry = () => {
             <button
               type="button"
               onClick={() => {
-                saveArticleById()
+                saveArticle(article)
                 close()
               }}
               class="btn btn-primary"
@@ -103,7 +100,7 @@ const RowEntry = () => {
             <button
               type="button"
               onClick={() => {
-                saveArticleByName()
+                saveArticle()
                 close()
               }}
               class="btn btn-primary"
@@ -114,9 +111,6 @@ const RowEntry = () => {
         )
       })
     } else {
-      const article = articleIdRef.current
-        ? await searchArticleById(articleIdRef.current)
-        : await searchArticleByName(entry.name)
       saveArticle(article)
     }
   }
@@ -149,10 +143,9 @@ const RowEntry = () => {
             placeholder={t`homePage:entry-name`}
             value={entry.name}
             onInput={debouncedSave}
-            onChange={(e) => {
+            onChange={(e) =>
               onEntryChange({ ...entry, name: e.currentTarget.value })
-              nameChangedRef.current = true
-            }}
+            }
             onBlur={save}
             options={
               articles.length > 0 ? articles : [{ id: 'no-saved-articles' }]
