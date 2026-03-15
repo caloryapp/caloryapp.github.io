@@ -1,1 +1,6 @@
-[![Change language and theme](./assets/sr1.png)](./assets/sr1.gif)
+Cambiar lenguaje y tema.
+
+<details>
+<summary>Ver animación</summary>
+![Crear proyecto](./assets/sr1.gif)
+</details>
