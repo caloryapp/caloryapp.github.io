@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CaloryApp Privacy Policy</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f1e8;
+        --panel: #fffaf2;
+        --text: #2f2419;
+        --muted: #6b5a48;
+        --accent: #b85c38;
+        --border: #e4d5bf;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, 'Times New Roman', serif;
+        background:
+          radial-gradient(circle at top, #fff8ef 0, #f6f1e8 50%, #efe5d6 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      main {
+        width: min(860px, calc(100% - 32px));
+        margin: 40px auto;
+        padding: 32px;
+        background: color-mix(in srgb, var(--panel) 92%, white);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow: 0 24px 60px rgba(73, 46, 24, 0.12);
+      }
+
+      h1,
+      h2 {
+        line-height: 1.2;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(2rem, 5vw, 3rem);
+      }
+
+      h2 {
+        margin: 32px 0 12px;
+        font-size: 1.35rem;
+        color: var(--accent);
+      }
+
+      p,
+      li {
+        font-size: 1.02rem;
+      }
+
+      .eyebrow,
+      .updated {
+        color: var(--muted);
+      }
+
+      .eyebrow {
+        margin: 0 0 16px;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .updated {
+        margin: 0;
+      }
+
+      ul {
+        padding-left: 22px;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .note {
+        padding: 16px 18px;
+        border-left: 4px solid var(--accent);
+        background: #fff4e8;
+        border-radius: 10px;
+      }
+
+      footer {
+        margin-top: 36px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      @media (max-width: 640px) {
+        main {
+          margin: 20px auto;
+          padding: 24px 18px;
+          border-radius: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">CaloryApp</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: March 15, 2026</p>
+
+      <p>
+        CaloryApp is a Chrome extension for counting calories and managing
+        personal food entries. It is designed as a local-first tool for private
+        personal use.
+      </p>
+
+      <div class="note">
+        CaloryApp stores user data locally in the browser. It does not transmit
+        entries, saved articles, or preferences to the developer or to third
+        parties.
+      </div>
+
+      <h2>1. Data stored by the extension</h2>
+      <p>CaloryApp stores the following data locally in your browser:</p>
+      <ul>
+        <li>Food and calorie entries in the <code>entries</code> table</li>
+        <li>Saved ingredients or reusable food items in the <code>articles</code> table</li>
+        <li>User interface preferences, such as selected language and theme</li>
+      </ul>
+
+      <p>
+        This means the extension does store user data locally on the device, but
+        it does not collect or transmit that data to the developer or external
+        services.
+      </p>
+
+      <h2>2. Where data is stored</h2>
+      <p>All persistent data is stored locally on your device using:</p>
+      <ul>
+        <li>IndexedDB</li>
+        <li>localStorage</li>
+      </ul>
+
+      <p>
+        CaloryApp does not use remote servers to host or synchronize your
+        personal data.
+      </p>
+
+      <h2>3. Data sharing</h2>
+      <p>
+        CaloryApp does not sell, share, or transfer your personal data to the
+        developer or to third parties.
+      </p>
+
+      <p>
+        Your data remains on your device unless you explicitly choose to export
+        it.
+      </p>
+
+      <h2>4. Data transmission</h2>
+      <p>
+        CaloryApp does not send your food entries, saved articles, preferences,
+        or other personal data to external servers or third parties.
+      </p>
+
+      <h2>5. Import and export</h2>
+      <p>
+        CaloryApp allows users to export and import saved article data for their
+        own convenience.
+      </p>
+      <ul>
+        <li>Exports are created locally on the user's device</li>
+        <li>Imports are initiated explicitly by the user</li>
+        <li>Imported files are processed locally by the extension</li>
+      </ul>
+
+      <p>
+        These actions are optional and only happen when the user chooses to use
+        them.
+      </p>
+
+      <h2>6. External websites</h2>
+      <p>
+        CaloryApp may open external food search pages, such as FatSecret, when
+        the user chooses to perform a search from within the extension.
+      </p>
+
+      <p>
+        This action is initiated manually by the user. CaloryApp does not
+        automatically send its local database to those external websites.
+      </p>
+
+      <p>
+        External websites may have their own privacy policies and data handling
+        practices. Users should review those policies separately when visiting
+        such services.
+      </p>
+
+      <h2>7. Data retention and user control</h2>
+      <p>
+        Because data is stored locally in the browser, users control it
+        directly.
+      </p>
+      <p>Users can remove their data at any time by:</p>
+      <ul>
+        <li>Deleting entries or saved articles within the extension</li>
+        <li>Clearing browser storage</li>
+        <li>Uninstalling the extension</li>
+      </ul>
+
+      <h2>8. Changes to this policy</h2>
+      <p>
+        This Privacy Policy may be updated from time to time. Any updates will
+        be reflected on this page with a revised "Last updated" date.
+      </p>
+
+      <h2>9. Contact</h2>
+      <p>Developer: Gonzalo Chumillas</p>
+      <p>Email: gonzalo.chumillas@gmail.com</p>
+      <p>
+        Repository:
+        <a href="https://github.com/caloryapp/caloryapp.github.io/">
+          https://github.com/caloryapp/caloryapp.github.io/
+        </a>
+      </p>
+
+      <footer>
+        This policy applies to the CaloryApp Chrome extension.
+      </footer>
+    </main>
+  </body>
+</html>
