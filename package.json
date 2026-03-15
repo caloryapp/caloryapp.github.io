@@ -8,6 +8,7 @@
     "dev": "vite --host",
     "ladle": "ladle serve",
     "build": "vite build",
+    "build:watch": "vite build --watch",
     "preview": "vite preview",
     "stats": "ANALYZE=true npm run build",
     "stats:text": "ANALYZE=true ANALYZE_TEMPLATE=markdown ANALYZE_OUT=reports/stats.md npm run build",
