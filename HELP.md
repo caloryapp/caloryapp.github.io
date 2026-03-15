@@ -1,6 +1,5 @@
-Cambiar lenguaje y tema.
-
 <details>
-<summary>Ver animación</summary>
-![Crear proyecto](./assets/sr1.gif)
+  <summary>Cambiar lenguaje y tema</summary>
+  
+  ![Crear proyecto](./assets/sr1.gif)
 </details>
