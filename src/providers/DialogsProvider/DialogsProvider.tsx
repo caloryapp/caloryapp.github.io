@@ -24,7 +24,7 @@ const DialogsProvider = ({ children }: DialogsProviderProps) => {
   const ctxValue = useMemo<DialogsContextProps>(
     () => ({
       toast: (props) => {
-        toastRef.current?.show(props)
+        toastRef.current?.show({ delay: 3000, ...props })
       },
       dialog: (props) => setDialog({ open: true, ...props }),
       confirm: (props) => {
