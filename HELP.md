@@ -39,3 +39,9 @@
   
   ![Reorder sections and ingredients](https://github.com/user-attachments/assets/a531ad76-25b0-484c-acdb-4375294054ae)
 </details>
+
+<details>
+  <summary>Clear the table</summary>
+  
+  ![Clear the table](https://github.com/user-attachments/assets/9f3697cb-97fc-46cc-a8a8-b1d6d49efc88)
+</details>
