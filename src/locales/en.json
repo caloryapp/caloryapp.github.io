@@ -7,6 +7,9 @@
     "spanish": "Spanish",
     "theme": "Theme"
   },
+  "popup": {
+    "open-caloryapp": "Open CaloryApp"
+  },
   "homePage": {
     "app-title": "CaloryApp",
     "language": "Language ({{lang}})",

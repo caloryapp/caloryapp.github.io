@@ -1,26 +1,22 @@
+import { useTranslation } from 'react-i18next'
+
 const PopupApp = () => {
+  const { t } = useTranslation()
+
   const openInFullTab = () => {
     chrome.tabs.create({
       url: chrome.runtime.getURL('index.html')
     })
   }
 
-  // TODO: add translations
   return (
-    <div class="container">
-      <header>
-        <h1>CaloryApp</h1>
-      </header>
-
-      <main>
-        <p>Welcome to CaloryApp!</p>
-        <p>Your meal planning extension is ready to use.</p>
-
-        <button id="openFullTab" class="btn" onClick={openInFullTab}>
-          Open in Full Tab
-        </button>
-      </main>
-    </div>
+    <button
+      id="openFullTab"
+      class="btn btn-sm btn-neutral whitespace-nowrap"
+      onClick={openInFullTab}
+    >
+      {t`popup:open-caloryapp`}
+    </button>
   )
 }
 
