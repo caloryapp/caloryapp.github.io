@@ -1,166 +1,188 @@
-# CaloryApp - AI Agent Guide
+# CaloryApp - Developer Guide
 
-## Project Overview
+## Overview
 
-CaloryApp is a calorie counting web application built as a Chrome browser extension. It allows users to track their daily food intake by adding food entries with calorie information. The app supports organizing entries into sections (like Breakfast, Lunch, Dinner), persisting data locally using IndexedDB, and managing a reusable article database for quick entry.
+CaloryApp is a calorie counter built with Preact and Vite. The repository currently builds two entry points:
 
-**Key Features:**
+- `index.html`: main app
+- `popup.html`: browser-extension popup
 
-- Add food entries with calories per 100g or per unit
-- Organize entries into collapsible sections
-- Drag-and-drop reordering of entries
-- Auto-save with debouncing
-- Article database for quick food lookup
-- Import/export articles as JSON
-- Theme switching (light, caramellatte, valentine)
-- Internationalization (English/Spanish)
+The app stores data locally in IndexedDB via Dexie and supports reusable articles, sections, drag-and-drop ordering, import/export, theming, and English/Spanish translations.
 
-## Technology Stack
+## Stack
 
-| Category      | Technology                                               |
-| ------------- | -------------------------------------------------------- |
-| Framework     | [Preact](https://preactjs.com/) 10.x (React alternative) |
-| Language      | TypeScript 5.x                                           |
-| Build Tool    | Vite 7.x                                                 |
-| Styling       | Tailwind CSS 4.x + [DaisyUI](https://daisyui.com/) 5.x   |
-| Database      | [Dexie.js](https://dexie.org/) (IndexedDB wrapper)       |
-| Drag & Drop   | [SortableJS](https://sortablejs.github.io/)              |
-| i18n          | i18next + react-i18next                                  |
-| Testing       | Vitest + @testing-library/preact                         |
-| Component Dev | [Ladle](https://ladle.dev/) (Storybook alternative)      |
-| Linting       | ESLint 9.x with TypeScript support                       |
-| Formatting    | Prettier                                                 |
-| Git Hooks     | Husky                                                    |
+| Category | Technology |
+| --- | --- |
+| UI | Preact 10 |
+| Language | TypeScript 5 |
+| Build Tool | Vite 7 |
+| Styling | Tailwind CSS 4 + DaisyUI 5 + CSS Modules |
+| Data | Dexie 4 + IndexedDB |
+| Drag & Drop | SortableJS |
+| i18n | i18next + react-i18next |
+| Testing | Vitest + Testing Library for Preact |
+| Component Dev | Ladle |
+| Linting | ESLint 9 + typescript-eslint |
+| Formatting | Prettier |
+| Git Hooks | Husky |
 
-## Build and Development Commands
+## Commands
 
 ```bash
 # Development server
 npm run dev
 
-# Build for production
+# Production build
 npm run build
 
-# Preview production build
+# Watch production build
+npm run build:watch
+
+# Preview build output
 npm run preview
 
-# Run linter (ESLint + TypeScript check)
+# Bundle analysis
+npm run stats
+npm run stats:text
+
+# Lint + TypeScript check
 npm run lint
 
-# Fix linting issues automatically
+# Auto-fix lint issues
 npm run lint:fix
 
-# Format code with Prettier
+# Format source files
 npm run format
 
-# Run tests
+# Run tests once
 npm run test
 
-# Start Ladle component development server
+# Ladle component playground
 npm run ladle
 ```
 
+Notes:
+
+- `npm run lint` runs `eslint src` and `tsc --noEmit -p tsconfig.dev.json`.
+- `npm run format` currently formats `src/` only.
+- `npm run test` runs `vitest run` rather than watch mode.
+
 ## Project Structure
 
+```text
+caloryapp.github.io/
+├── public/                 # Static assets and extension manifest
+├── docs/                   # User-facing documentation and media
+├── reports/                # Generated bundle analysis output
+├── src/
+│   ├── assets/             # SVG icons and static UI assets
+│   ├── components/         # Reusable UI components
+│   ├── config/             # Theme and general config
+│   ├── dialogs/            # Dialog modules
+│   ├── libs/               # Shared helpers
+│   ├── locales/            # i18n resources
+│   ├── pages/              # Route/page-level UI
+│   ├── providers/          # App state/providers
+│   ├── services/           # IndexedDB layer and types
+│   ├── test/               # Test setup
+│   ├── App.tsx             # Main app shell
+│   ├── PopupApp.tsx        # Popup shell
+│   ├── bootstrap.ts        # Early theme/lang bootstrap
+│   ├── i18n.ts             # i18n initialization
+│   ├── main.tsx            # Main app entry
+│   └── popup.tsx           # Popup entry
+├── index.html              # Main app entry HTML
+├── popup.html              # Popup entry HTML
+├── popup.ts                # Extension popup bootstrap
+├── vite.config.ts
+└── vitest.config.ts
 ```
-calory/
-├── public/                    # Static assets
-├── src/                       # Sources
-│   ├── main.tsx               # Main app entry point
-│   ├── config/                # App configuration
-│   ├── libs/                  # Utility functions
-│   ├── assets/                # Static assets (SVG icons)
-│   ├── components/            # React/Preact components
-│   │   ├── feedback/          # Feedback components
-│   │   ├── inputs/            # Form input components
-│   │   └── navigation/        # Navigation components
-│   ├── dialogs/               # App dialog modules
-│   ├── pages/                 # App pages
-│   ├── providers/             # Context providers
-│   ├── services/              # Data layer
-│   ├── types/                 # Type declarations and shims
-│   ├── locales/               # i18n translations
-│   └── test/                  # Test setup
-├── scripts/                   # Project scripts
-├── reports/                   # Generated reports
-└── .husky/pre-push            # Git pre-push hook
-```
 
-## Code Style Guidelines
+## Conventions
 
-### TypeScript/JavaScript
+### TypeScript and imports
 
-- **No semicolons**: Project uses `semi: false` in Prettier/ESLint
-- **Single quotes**: Use single quotes for strings
-- **No trailing commas**: Keep arrays/objects compact
-- **Arrow functions with spacing**: `(arg) => { }`
-- **Object curly spacing**: `{ key: value }`
-- **Array bracket spacing**: `[1, 2, 3]` (no extra spaces)
+- The project uses strict TypeScript settings.
+- Use absolute imports via `src/...` for anything outside the current directory.
+- Relative parent imports like `../...` are blocked by ESLint.
+- JSON imports are enabled for locale files.
 
-### Import Conventions
+Example:
 
 ```ts
-// External libraries first
-import { useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
-
-// Internal imports with `src/` alias
 import { cn } from 'src/libs/tw'
-import { capitalize } from 'src/libs/strings'
-import { Entry } from 'src/services/types'
-import { useStoreContext } from 'src/providers/StoreProvider'
+import { entriesTable } from 'src/services/db'
 ```
 
-### React/Preact Specifics
+### Preact specifics
 
-- Use `class` instead of `className` for CSS classes (configured in ESLint)
-- Components are self-closing when possible: `<Component />`
-- Use Preact hooks from `preact/hooks`
-- React compatibility via `preact/compat` aliasing
+- JSX is configured with `jsxImportSource: 'preact'`.
+- Hooks come from `preact/hooks`.
+- The codebase allows `class` in JSX.
+- React compatibility is provided where needed through `preact/compat`.
 
-### File Naming
+### Formatting and linting
 
-- Components: PascalCase (e.g., `Calculator.tsx`)
-- Utilities: camelCase (e.g., `helpers.ts`)
-- Styles: ComponentName.module.css for CSS modules
-- Tests: ComponentName.test.tsx alongside the component
-- Stories: ComponentName.stories.tsx alongside the component
+- No semicolons
+- Single quotes
+- No trailing commas
+- Use object spacing: `{ key: value }`
+- Use array style: `[1, 2, 3]`
 
-### CSS/Styling
+These rules are enforced primarily through ESLint, with Prettier used for formatting.
 
-- Use Tailwind CSS utility classes for most styling
-- CSS Modules (`.module.css`) for component-specific styles
-- DaisyUI component classes (e.g., `btn`, `input`, `modal`)
-- Custom CSS variables for theme colors
+### Naming
 
-## Database Schema
+- Components: `PascalCase.tsx`
+- Hooks/helpers: `camelCase.ts`
+- CSS modules: `ComponentName.module.css`
+- Tests: `*.test.tsx`
+- Stories: `*.stories.tsx`
 
-The app uses Dexie.js with IndexedDB, version 1:
+## Styling
+
+- Tailwind CSS 4 is loaded from `src/styles.css`.
+- DaisyUI is configured there as a Tailwind plugin.
+- Available themes are currently:
+  - `light`
+  - `caramellatte`
+  - `valentine`
+- CSS Modules are used where utility classes are not enough.
+
+## Data Model
+
+Dexie currently defines version 1 with two tables:
 
 ```ts
-// db version + indexes
 db.version(1).stores({
   entries: '&id,createdAt,displayOrder',
   articles: '&id,createdAt,name'
 })
+```
 
-// entries table
+`Entry`:
+
+```ts
 {
-  id: string // Primary key
-  createdAt: number // Timestamp
-  displayOrder: string // Fractional indexing for sorting
+  id: string
+  createdAt: number
+  displayOrder: string
   type: 'section' | 'kcalPer100g' | 'kcalPerUnit'
   name: string
   kcal: number
   total: number
-  discard: boolean // Exclude from calorie calculation
-  hide: boolean // Hidden (collapsed section)
+  discard: boolean
+  hide: boolean
 }
+```
 
-// articles table
+`Article`:
+
+```ts
 {
-  id: string // Primary key
-  createdAt: number // Timestamp
+  id: string
+  createdAt: number
   type: 'kcalPer100g' | 'kcalPerUnit'
   name: string
   kcal: number
@@ -168,120 +190,37 @@ db.version(1).stores({
 }
 ```
 
+When the entries table is empty, the app seeds an initial empty section automatically.
+
 ## Testing
 
-### Test Setup
+- Test environment: `jsdom`
+- Setup file: `src/test/setup.ts`
+- IndexedDB is mocked with `fake-indexeddb`
+- `IntersectionObserver` and some dialog APIs are mocked in test setup
+- `react-i18next` is mocked for most component tests
 
-- **Framework**: Vitest with jsdom environment
-- **Testing Library**: @testing-library/preact
-- **Mocking**: fake-indexeddb for IndexedDB mocking
-- **Assertions**: @testing-library/jest-dom matchers
+The repository currently contains:
 
-### Running Tests
+- a smoke test in `src/test/smoke.test.tsx`
+- page-level tests such as `src/pages/HomePage/HomePage.test.tsx`
 
-```bash
-# Run all tests
-npm run test
+## Workflow Notes
 
-# Run in watch mode (during development)
-npx vitest
-```
+### Git hook
 
-### Test Conventions
+`.husky/pre-push` runs:
 
-- Tests are co-located with components (`ComponentName.test.tsx`)
-- Use `render()` from `@testing-library/preact`
-- Mock external dependencies in `src/test/setup.ts`
-- Database operations in tests use fake-indexeddb
+1. `npm run lint`
+2. `npm run test`
 
-### Example Test Pattern
+### Translations
 
-```tsx
-import { render, screen, fireEvent } from '@testing-library/preact'
-import { describe, it, expect, beforeEach } from 'vitest'
+- Add keys to both `src/locales/en.json` and `src/locales/es.json`.
+- The codebase uses both `t('namespace:key')` and tagged-template usage like `` t`common:theme` ``.
+- `i18next-browser-languagedetector` is enabled and caches language in `localStorage`.
 
-// Wrap component with required providers
-const renderCalculator = () => {
-  render(
-    <DialogsProvider>
-      <StoreProvider>
-        <Calculator />
-      </StoreProvider>
-    </DialogsProvider>
-  )
-}
-```
+### Bundle analysis
 
-## Development Workflow
-
-### Git Hooks
-
-**Pre-push hook** (`.husky/pre-push`) runs:
-
-1. `npm run lint` - ESLint + TypeScript check
-2. `npm run test` - Run all tests
-
-Both must pass before pushing to remote.
-
-### Adding a New Component
-
-1. Create folder in `src/components/ComponentName/`
-2. Add main component file: `ComponentName.tsx`
-3. Add index file: `index.ts` with exports
-4. Add styles: `ComponentName.module.css` (if needed)
-5. Add stories: `ComponentName.stories.tsx` (for Ladle)
-6. Add tests: `ComponentName.test.tsx`
-
-### Adding Translations
-
-1. Add key to both `src/locales/en.json` and `src/locales/es.json`
-2. Use template literal syntax in components: `` t`translation-key` ``
-3. Keep keys descriptive and hyphen-separated
-
-## Chrome Extension Details
-
-- **Manifest Version**: 3
-- **Permissions**: `storage`, `tabs`
-- **Entry Points**:
-  - Popup: `popup.html` (small popup UI)
-  - Main App: `index.html` (full tab interface)
-- Build outputs to `dist/` with `index.html` and `popup.html`
-
-## Common Issues & Solutions
-
-### TypeScript Path Aliases
-
-The project uses `src/*` path aliasing. Ensure imports use this pattern:
-
-```tsx
-import { something } from 'src/components/Component'
-// NOT: import { something } from '../components/Component'
-```
-
-### Preact/React Compatibility
-
-React libraries work via aliases in `tsconfig.json`:
-
-```json
-{
-  "paths": {
-    "react": ["./node_modules/preact/compat/"],
-    "react-dom": ["./node_modules/preact/compat/"]
-  }
-}
-```
-
-### Database Migrations
-
-When changing the database schema:
-
-1. Update `src/services/db.ts`
-2. Increment `db.version(N)`
-3. Define stores with indexes: `'&id,createdAt,displayOrder'`
-
-## Security Considerations
-
-- All data is stored locally in browser's IndexedDB
-- No external API calls except FatSecret search URL (user-initiated)
-- Chrome extension permissions are minimal (storage, tabs only)
-- File import/export operates on user-selected files only
+- `npm run stats` writes an HTML report to `reports/stats.html`.
+- `npm run stats:text` writes a Markdown report to `reports/stats.md`.
