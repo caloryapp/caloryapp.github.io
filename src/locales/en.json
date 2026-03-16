@@ -32,7 +32,7 @@
     "remove-entry": "Remove entry",
     "new-article": "Add ingredient",
     "new-section": "Add section",
-    "narrow-screen": "The app is optimized for larger screens :)",
+    "narrow-screen": "Desktop only for now — mobile support is on the way.",
     "import-articles-success": "Articles were imported successfully.",
     "export-articles-success": "Articles were exported successfully.",
     "delete-entries-message": "Clear the table?",
