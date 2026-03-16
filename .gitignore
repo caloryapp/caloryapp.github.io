@@ -20,6 +20,7 @@ reports/
 local_storage/
 
 # Misc
+AGENTS.md
 *.swp
 *.swo
 

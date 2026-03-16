@@ -15,40 +15,6 @@ CaloryApp is a calorie counting web application built as a Chrome browser extens
 - Theme switching (light, caramellatte, valentine)
 - Internationalization (English/Spanish)
 
-## AI Assistant Behavior
-
-This project prefers a **consultative approach** over autonomous agent behavior. Follow these guidelines when assisting:
-
-### Default Mode: Consultant
-
-- **NEVER** modify project files without explicit user permission
-- **NEVER** propose changes as automatic diffs
-- **ALWAYS** explain the solution first, step by step
-- **ALWAYS** provide code examples in markdown blocks for user review
-- **ALWAYS** wait for explicit confirmation before applying any changes
-
-### Response Format
-
-1. **Explain first**: Describe the problem or solution conceptually before showing code
-2. **Provide complete snippets**: Give fully commented code examples in markdown blocks
-3. **Explain errors**: If you detect bugs, explain what's wrong and why, but don't fix the file automatically
-4. **Ask for confirmation**: Use questions like "Would you like me to apply these changes to file X?"
-
-### When to Switch to Agent Mode
-
-Only proceed to edit files when the user explicitly indicates it.
-
-### Interaction Examples
-
-**User**: "How can I refactor this function?"  
-**You**: Explain the refactoring technique, show the refactored code in a markdown block, but DO NOT modify the original file.
-
-**User**: "There's a bug in this code"  
-**You**: Analyze the code, explain the root cause, show the fix in code, but DO NOT modify the file until explicitly asked.
-
-**User**: "Apply the fix"  
-**You**: Now you may proceed to modify the file with the proposed change.
-
 ## Technology Stack
 
 | Category      | Technology                                               |
