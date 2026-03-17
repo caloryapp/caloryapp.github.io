@@ -21,6 +21,7 @@ export default [
     rules: {
       "semi": ["error", "never"],
       "quotes": ["error", "single"],
+      "quote-props": ["error", "consistent-as-needed"],
 
       // Prevent common bugs
       "no-unused-vars": "off", // Disabled in favor of TypeScript version
