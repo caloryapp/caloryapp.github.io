@@ -16,7 +16,7 @@ type RowProps = {
   onSave: (entry: Entry) => void
 }
 
-const RowRouter = () => {
+const Row = () => {
   const { t } = useTranslation()
   const { getTotalSum } = useStoreContext()
   const { entry, onEntryChange, debouncedSave } = useRowContext()
@@ -30,8 +30,8 @@ const RowRouter = () => {
       {(type == 'kcalPer100g' || type == 'kcalPerUnit') && <RowEntry />}
       <td class={cn('text-right whitespace-nowrap', styles.compact)}>
         <label
-          class={cn('text-right', {
-            'font-medium text-lg': type == 'section',
+          class={cn('text-right text-sm', {
+            'font-medium text-base md:text-lg': type == 'section',
             'line-through opacity-50': entry.discard
           })}
           htmlFor={inputId}
@@ -59,7 +59,7 @@ const RowRouter = () => {
   )
 }
 
-const Row = ({ autoFocus, entry: entryParam, onSave }: RowProps) => {
+const RowProvider = ({ autoFocus, entry: entryParam, onSave }: RowProps) => {
   const [entry, setEntry] = useState<Entry>(entryParam)
   const hasChangedRef = useRef(false)
   const save = useCallback(() => {
@@ -85,9 +85,9 @@ const Row = ({ autoFocus, entry: entryParam, onSave }: RowProps) => {
 
   return (
     <RowContext value={ctxValue}>
-      <RowRouter />
+      <Row />
     </RowContext>
   )
 }
 
-export default Row
+export default RowProvider

@@ -234,7 +234,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             onChange={handleInputChange}
             onKeyDown={handleInputKeyDown}
             class={cn(
-              'input w-full join-item focus:outline-none focus-within:outline-none',
+              'input input-sm md:input-md w-full join-item focus:outline-none focus-within:outline-none',
               className
             )}
           />
@@ -242,7 +242,7 @@ const Combobox = forwardRef<HTMLInputElement, ComboboxProps>(
             type="button"
             tabIndex={-1}
             onMouseDown={handleToggleMouseDown}
-            class="join-item btn btn-square focus:outline-none"
+            class="join-item btn btn-sm md:btn-md btn-square focus:outline-none"
           >
             <ChevronDownIcon className="size-4" />
           </button>

@@ -40,7 +40,7 @@ const Menu = ({ anchor, class: className, children }: MenuProps) => {
   return (
     <div
       ref={wrapperRef}
-      class={cn('dropdown', className, { 'dropdown-open': open })}
+      class={cn('dropdown font-semibold', className, { 'dropdown-open': open })}
     >
       {anchor({ toggle: handleToggleMenu, open })}
       {open && children && (

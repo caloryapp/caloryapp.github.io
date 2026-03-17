@@ -190,7 +190,7 @@ const RowEntry = () => {
           <button
             onClick={handleSearchArticle}
             title={t`homePage:search-article`}
-            class="btn btn-square"
+            class="btn btn-sm md:btn-md btn-square"
           >
             <MagnifyingGlassIcon className="size-5" />
           </button>
@@ -210,10 +210,13 @@ const RowEntry = () => {
               })
             }
             onBlur={save}
-            class={cn('input join-item w-24', {
-              'border-kcal-per-100g': entry.type == 'kcalPer100g',
-              'border-kcal-per-unit': entry.type == 'kcalPerUnit'
-            })}
+            class={cn(
+              'input input-sm md:input-md join-item w-12 lg:w-20 xl:w-24',
+              {
+                'border-kcal-per-100g': entry.type == 'kcalPer100g',
+                'border-kcal-per-unit': entry.type == 'kcalPerUnit'
+              }
+            )}
           />
           <select
             value={entry.type}
@@ -225,10 +228,13 @@ const RowEntry = () => {
               })
             }
             onBlur={save}
-            class={cn('input join-item w-24', {
-              'border-kcal-per-100g': entry.type == 'kcalPer100g',
-              'border-kcal-per-unit': entry.type == 'kcalPerUnit'
-            })}
+            class={cn(
+              'input input-sm md:input-md join-item w-12 lg:w-20 xl:w-24',
+              {
+                'border-kcal-per-100g': entry.type == 'kcalPer100g',
+                'border-kcal-per-unit': entry.type == 'kcalPerUnit'
+              }
+            )}
           >
             <option value="kcalPer100g">{t`homePage:kcal-per-100g`}</option>
             <option value="kcalPerUnit">{t`homePage:kcal-per-unit`}</option>{' '}
@@ -250,14 +256,14 @@ const RowEntry = () => {
               })
             }
             onBlur={save}
-            class="input w-24"
+            class="input input-sm md:input-md w-12 lg:w-20 xl:w-24"
           />
           <button
             disabled={!entry.name.trim()}
             type="button"
             onClick={handleSaveArticle}
             title={t`homePage:save-article`}
-            class="btn btn-square"
+            class="btn btn-sm md:btn-md btn-square"
           >
             <FloppyDiskIcon className="size-5" />
           </button>

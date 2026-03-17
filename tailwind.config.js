@@ -9,7 +9,10 @@ export default {
       'kcal-per-unit': 'var(--color-warning)'
     },
     screens: {
-      lg: `${BREAKPOINTS.lg}px`
+      sm: `${BREAKPOINTS.sm}px`,
+      md: `${BREAKPOINTS.md}px`,
+      lg: `${BREAKPOINTS.lg}px`,
+      xl: `${BREAKPOINTS.xl}px`
     }
   },
   plugins: []

@@ -19,5 +19,7 @@ export const useMediaQuery = (q: string) => {
   return changed
 }
 
-export const useIsSmallScreen = () =>
-  useMediaQuery(`(width < ${BREAKPOINTS.lg}px)`)
+export const useIsMobile = () => useMediaQuery(`(width < ${BREAKPOINTS.sm}px)`)
+export const useIsSmallTablet = () =>
+  useMediaQuery(`(width < ${BREAKPOINTS.md}px)`)
+export const useIsTablet = () => useMediaQuery(`(width < ${BREAKPOINTS.lg}px)`)

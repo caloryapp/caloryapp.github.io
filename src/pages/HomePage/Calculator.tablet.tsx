@@ -8,16 +8,18 @@ import MinusIcon from 'src/assets/icons/minus.svg?react'
 import PlusIcon from 'src/assets/icons/plus.svg?react'
 import ArrowsUpDownIcon from 'src/assets/icons/arrows-up-down.svg?react'
 import PlusCircleIcon from 'src/assets/icons/plus-circle.svg?react'
+import EllipsisHorizontalCircle from 'src/assets/icons/ellipsis-horizontal-circle.svg?react'
 import TrashIcon from 'src/assets/icons/trash.svg?react'
 import { cn } from 'src/libs/tw'
+import { useIsTablet } from 'src/libs/mq'
 import { useStoreContext } from 'src/providers/StoreProvider'
 import { useSettingsContext } from 'src/providers/SettingsProvider'
 import Menu, { MenuButton, MenuDivider } from 'src/components/navigation/Menu'
-import { useCalculatorContext } from './Calculator.context'
 import { useCurrentDate, useSortable, useStickyDetection } from './helpers'
+import { useCalculatorContext } from './Calculator.context'
 import Row from './Row'
 
-function CalculatorDesktop() {
+function CalculatorTablet() {
   const { t } = useTranslation()
   const { goal } = useSettingsContext()
   const { totalSum, putEntry } = useStoreContext()
@@ -33,6 +35,7 @@ function CalculatorDesktop() {
   } = useCalculatorContext()
   const curDate = useCurrentDate()
   const { tableRef, isStuck } = useStickyDetection()
+  const isTablet = useIsTablet()
   const totalLeft = goal - totalSum
 
   const handleKeydown = (e: KeyboardEvent, entryId: string) => {
@@ -57,7 +60,7 @@ function CalculatorDesktop() {
       >
         <tr>
           <th class={styles.compact}>&nbsp;</th>
-          <th colSpan={5} class="text-xl font-medium">
+          <th colSpan={5} class="text-base md:text-lg lg:text-xl font-medium">
             <div class="flex flex-row justify-between items-end">
               <div>{curDate}</div>
               {isNaN(totalLeft) ? (
@@ -71,7 +74,10 @@ function CalculatorDesktop() {
                       i18nKey="homePage:kcal-budget"
                       values={{ d: totalLeft.toFixed(2) }}
                       components={[
-                        <span key={0} class="text-lg font-normal" />,
+                        <span
+                          key={0}
+                          class="text-base md:text-lg font-normal"
+                        />,
                         <span key={1} />
                       ]}
                     />
@@ -90,13 +96,17 @@ function CalculatorDesktop() {
                 type="button"
                 onClick={clearEntries}
                 title={t`homePage:delete-all-entries`}
-                class="btn btn-square btn-warning"
+                class="btn btn-sm md:btn-md btn-square btn-warning"
               >
                 <TrashIcon />
               </button>
               <Menu
                 anchor={({ toggle }) => (
-                  <button type="button" onClick={toggle} class="btn btn-square">
+                  <button
+                    type="button"
+                    onClick={toggle}
+                    class="btn btn-sm md:btn-md btn-square"
+                  >
                     <Cog6ToothIcon />
                   </button>
                 )}
@@ -137,34 +147,63 @@ function CalculatorDesktop() {
               onSave={putEntry}
             />
             <td class={styles.compact}>
-              <div class="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => deleteEntry(entry.id)}
-                  title={t`homePage:remove-entry`}
-                  class="btn btn-square"
+              {isTablet ? (
+                <Menu
+                  anchor={({ toggle }) => (
+                    <button
+                      type="button"
+                      onClick={toggle}
+                      class="btn btn-sm md:btn-md btn-square"
+                    >
+                      <EllipsisHorizontalCircle className="size-5" />
+                    </button>
+                  )}
+                  class="dropdown-end"
                 >
-                  <MinusIcon className="size-4" />
-                </button>
-                <div class="join">
-                  <button
-                    type="button"
-                    onClick={() => addEntry(entry.id, 'kcalPer100g')}
-                    title={t`homePage:new-article`}
-                    class="btn btn-square join-item"
-                  >
-                    <PlusIcon className="size-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => addEntry(entry.id, 'section')}
-                    title={t`homePage:new-section`}
-                    class="btn btn-square join-item"
-                  >
+                  <MenuButton onClick={() => deleteEntry(entry.id)}>
+                    <MinusIcon className="size-5" />
+                    <span class="text-nowrap">{t`homePage:remove-entry`}</span>
+                  </MenuButton>
+                  <MenuDivider />
+                  <MenuButton onClick={() => addEntry(entry.id, 'kcalPer100g')}>
+                    <PlusIcon className="size-5" />
+                    <span class="text-nowrap">{t`homePage:new-article`}</span>
+                  </MenuButton>
+                  <MenuButton onClick={() => addEntry(entry.id, 'section')}>
                     <PlusCircleIcon className="size-5" />
+                    <span class="text-nowrap">{t`homePage:new-section`}</span>
+                  </MenuButton>
+                </Menu>
+              ) : (
+                <div class="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => deleteEntry(entry.id)}
+                    title={t`homePage:remove-entry`}
+                    class="btn btn-square"
+                  >
+                    <MinusIcon className="size-4" />
                   </button>
+                  <div class="join">
+                    <button
+                      type="button"
+                      onClick={() => addEntry(entry.id, 'kcalPer100g')}
+                      title={t`homePage:new-article`}
+                      class="btn btn-square join-item"
+                    >
+                      <PlusIcon className="size-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => addEntry(entry.id, 'section')}
+                      title={t`homePage:new-section`}
+                      class="btn btn-square join-item"
+                    >
+                      <PlusCircleIcon className="size-5" />
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
             </td>
           </tr>
         ))}
@@ -173,4 +212,4 @@ function CalculatorDesktop() {
   )
 }
 
-export default CalculatorDesktop
+export default CalculatorTablet

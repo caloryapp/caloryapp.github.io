@@ -39,7 +39,7 @@ const RowSection = () => {
             onEntryChange({ ...entry, name: e.currentTarget.value })
           }
           onBlur={save}
-          class="input w-full col-span-3 border-2 border-primary/50 outline-primary"
+          class="input input-sm md:input-md w-full col-span-3 border-2 border-primary/50 outline-primary"
         />
       </td>
       <td class={styles.compact}>
