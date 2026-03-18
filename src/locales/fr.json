@@ -1,0 +1,52 @@
+{
+  "common": {
+    "cancel": "Annuler",
+    "accept": "Accepter",
+    "save": "Enregistrer",
+    "english": "Anglais",
+    "spanish": "Espagnol",
+    "french": "Français",
+    "german": "Allemand",
+    "portuguese": "Portugais (Portugal)",
+    "portuguese-brazil": "Portugais (Brésil)",
+    "italian": "Italien",
+    "theme": "Thème"
+  },
+  "popup": {
+    "open-caloryapp": "Ouvrir CaloryApp"
+  },
+  "homePage": {
+    "app-title": "CaloryApp",
+    "language": "Langue ({{lang}})",
+    "kcal-budget": "<0>Budget :</0> <1>{{d}} kcal</1>",
+    "section-name": "Section (petit-déjeuner, déjeuner, etc.)",
+    "entry-name": "Ingrédient (riz, pain, etc.)",
+    "article-saved": "L'ingrédient a été mis à jour.",
+    "article-created": "Un nouvel ingrédient a été créé.",
+    "search-article": "Rechercher un ingrédient",
+    "kcal": "{{d}} kcal",
+    "entry-kcal": "kcal",
+    "kcal-per-100g": "kcal/100g",
+    "kcal-per-unit": "kcal/unité",
+    "entry-total": "g ou unités",
+    "save-article": "Enregistrer l'ingrédient",
+    "delete-all-entries": "Vider le tableau",
+    "goal-kcal": "Objectif (kcal)",
+    "import-ingredients": "Importer des ingrédients",
+    "export-ingredients": "Exporter des ingrédients",
+    "remove-entry": "Supprimer l'entrée",
+    "new-article": "Ajouter un ingrédient",
+    "new-section": "Ajouter une section",
+    "narrow-screen": "Version bureau uniquement pour le moment — la version mobile arrive bientôt.",
+    "import-articles-success": "Les ingrédients ont été importés avec succès.",
+    "export-articles-success": "Les ingrédients ont été exportés avec succès.",
+    "delete-entries-message": "Vider le tableau ?",
+    "delete-section": "La section n'est pas vide. Voulez-vous la supprimer ?",
+    "no-saved-articles": "<0>Aucun ingrédient enregistré.</0> Saisissez un ingrédient puis appuyez sur <1 /> pour l'enregistrer.",
+    "article-name-changed": "Le nom de l'ingrédient a changé. Que voulez-vous faire ?",
+    "create-new-ingredient": "Créer un nouvel ingrédient"
+  },
+  "editGoalDialog": {
+    "caloric-goal": "Objectif calorique (ex. 2200 kcal)"
+  }
+}

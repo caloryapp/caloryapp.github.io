@@ -1,0 +1,52 @@
+{
+  "common": {
+    "cancel": "Cancelar",
+    "accept": "Aceitar",
+    "save": "Guardar",
+    "english": "Inglês",
+    "spanish": "Espanhol",
+    "french": "Francês",
+    "german": "Alemão",
+    "portuguese": "Português (Portugal)",
+    "portuguese-brazil": "Português (Brasil)",
+    "italian": "Italiano",
+    "theme": "Tema"
+  },
+  "popup": {
+    "open-caloryapp": "Abrir CaloryApp"
+  },
+  "homePage": {
+    "app-title": "CaloryApp",
+    "language": "Idioma ({{lang}})",
+    "kcal-budget": "<0>Orçamento:</0> <1>{{d}} kcal</1>",
+    "section-name": "Secção (pequeno-almoço, almoço, etc.)",
+    "entry-name": "Ingrediente (arroz, pão, etc.)",
+    "article-saved": "O ingrediente foi atualizado.",
+    "article-created": "Foi criado um novo ingrediente.",
+    "search-article": "Pesquisar ingrediente",
+    "kcal": "{{d}} kcal",
+    "entry-kcal": "kcal",
+    "kcal-per-100g": "kcal/100g",
+    "kcal-per-unit": "kcal/unidade",
+    "entry-total": "g ou unidades",
+    "save-article": "Guardar ingrediente",
+    "delete-all-entries": "Limpar tabela",
+    "goal-kcal": "Objetivo (kcal)",
+    "import-ingredients": "Importar ingredientes",
+    "export-ingredients": "Exportar ingredientes",
+    "remove-entry": "Remover entrada",
+    "new-article": "Adicionar ingrediente",
+    "new-section": "Adicionar secção",
+    "narrow-screen": "Apenas desktop por agora - o suporte para mobile está a caminho.",
+    "import-articles-success": "Os ingredientes foram importados com sucesso.",
+    "export-articles-success": "Os ingredientes foram exportados com sucesso.",
+    "delete-entries-message": "Limpar a tabela?",
+    "delete-section": "A secção não está vazia. Quer eliminá-la?",
+    "no-saved-articles": "<0>Ainda não há ingredientes guardados.</0> Escreva um ingrediente e prima <1 /> para o guardar.",
+    "article-name-changed": "O nome do ingrediente foi alterado. O que pretende fazer?",
+    "create-new-ingredient": "Criar novo ingrediente"
+  },
+  "editGoalDialog": {
+    "caloric-goal": "Objetivo calórico (por ex., 2200 kcal)"
+  }
+}

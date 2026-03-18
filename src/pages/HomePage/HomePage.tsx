@@ -4,15 +4,14 @@ import ChevronDownIcon from 'src/assets/icons/chevron-down.svg?react'
 import { AVAIL_THEMES } from 'src/config/theme'
 import { capitalize } from 'src/libs/strings'
 import { cn } from 'src/libs/tw'
-import { useLanguage } from 'src/libs/i18n'
 import { useThemeContext } from 'src/providers/ThemeProvider'
 import Menu, { MenuButton } from 'src/components/navigation/Menu'
+import { LangMenu } from './LangMenu'
 import Calculator from './Calculator'
 
 const HomePage = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { theme, setTheme } = useThemeContext()
-  const lang = useLanguage()
 
   return (
     <div class="flex flex-col h-screen w-[calc(100%-2rem)] max-w-6xl mx-auto">
@@ -22,34 +21,7 @@ const HomePage = () => {
           <span>{t`homePage:app-title`}</span>
         </div>
         <div class="flex flex-wrap items-center justify-end gap-3.5 mt-1">
-          <Menu
-            anchor={({ toggle, open }) => (
-              <button
-                type="button"
-                onClick={toggle}
-                class="flex items-center gap-0.5 text-xs font-semibold cursor-pointer"
-              >
-                <span>
-                  {t('homePage:language', { lang: lang.toUpperCase() })}
-                </span>
-                <ChevronDownIcon
-                  className={cn('size-4 transition-[rotate]', {
-                    'rotate-180': open
-                  })}
-                />
-              </button>
-            )}
-            class="dropdown-center"
-          >
-            <MenuButton
-              onClick={() => i18n.changeLanguage('en')}
-              class={cn({ 'menu-active': lang.startsWith('en') })}
-            >{t`common:english`}</MenuButton>
-            <MenuButton
-              onClick={() => i18n.changeLanguage('es')}
-              class={cn({ 'menu-active': lang.startsWith('es') })}
-            >{t`common:spanish`}</MenuButton>
-          </Menu>
+          <LangMenu />
           <Menu
             anchor={({ toggle, open }) => (
               <button

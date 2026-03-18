@@ -1,0 +1,52 @@
+{
+  "common": {
+    "cancel": "Abbrechen",
+    "accept": "Akzeptieren",
+    "save": "Speichern",
+    "english": "Englisch",
+    "spanish": "Spanisch",
+    "french": "Französisch",
+    "german": "Deutsch",
+    "portuguese": "Portugiesisch (Portugal)",
+    "portuguese-brazil": "Portugiesisch (Brasilien)",
+    "italian": "Italienisch",
+    "theme": "Thema"
+  },
+  "popup": {
+    "open-caloryapp": "CaloryApp öffnen"
+  },
+  "homePage": {
+    "app-title": "CaloryApp",
+    "language": "Sprache ({{lang}})",
+    "kcal-budget": "<0>Budget:</0> <1>{{d}} kcal</1>",
+    "section-name": "Bereich (Frühstück, Mittagessen usw.)",
+    "entry-name": "Zutat (Reis, Brot usw.)",
+    "article-saved": "Die Zutat wurde aktualisiert.",
+    "article-created": "Eine neue Zutat wurde erstellt.",
+    "search-article": "Zutat suchen",
+    "kcal": "{{d}} kcal",
+    "entry-kcal": "kcal",
+    "kcal-per-100g": "kcal/100g",
+    "kcal-per-unit": "kcal/Einheit",
+    "entry-total": "g oder Einheiten",
+    "save-article": "Zutat speichern",
+    "delete-all-entries": "Tabelle leeren",
+    "goal-kcal": "Ziel (kcal)",
+    "import-ingredients": "Zutaten importieren",
+    "export-ingredients": "Zutaten exportieren",
+    "remove-entry": "Eintrag entfernen",
+    "new-article": "Zutat hinzufügen",
+    "new-section": "Bereich hinzufügen",
+    "narrow-screen": "Derzeit nur Desktop - mobile Unterstützung folgt bald.",
+    "import-articles-success": "Zutaten wurden erfolgreich importiert.",
+    "export-articles-success": "Zutaten wurden erfolgreich exportiert.",
+    "delete-entries-message": "Tabelle leeren?",
+    "delete-section": "Der Bereich ist nicht leer. Möchten Sie ihn löschen?",
+    "no-saved-articles": "<0>Noch keine Zutaten gespeichert.</0> Geben Sie eine Zutat ein und drücken Sie <1 />, um sie zu speichern.",
+    "article-name-changed": "Der Name der Zutat hat sich geändert. Was möchten Sie tun?",
+    "create-new-ingredient": "Neue Zutat erstellen"
+  },
+  "editGoalDialog": {
+    "caloric-goal": "Kalorienziel (z. B. 2200 kcal)"
+  }
+}

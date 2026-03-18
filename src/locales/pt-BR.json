@@ -1,0 +1,52 @@
+{
+  "common": {
+    "cancel": "Cancelar",
+    "accept": "Aceitar",
+    "save": "Salvar",
+    "english": "Inglês",
+    "spanish": "Espanhol",
+    "french": "Francês",
+    "german": "Alemão",
+    "portuguese": "Português (Portugal)",
+    "portuguese-brazil": "Português (Brasil)",
+    "italian": "Italiano",
+    "theme": "Tema"
+  },
+  "popup": {
+    "open-caloryapp": "Abrir CaloryApp"
+  },
+  "homePage": {
+    "app-title": "CaloryApp",
+    "language": "Idioma ({{lang}})",
+    "kcal-budget": "<0>Orçamento:</0> <1>{{d}} kcal</1>",
+    "section-name": "Seção (café da manhã, almoço etc.)",
+    "entry-name": "Ingrediente (arroz, pão etc.)",
+    "article-saved": "O ingrediente foi atualizado.",
+    "article-created": "Um novo ingrediente foi criado.",
+    "search-article": "Pesquisar ingrediente",
+    "kcal": "{{d}} kcal",
+    "entry-kcal": "kcal",
+    "kcal-per-100g": "kcal/100g",
+    "kcal-per-unit": "kcal/unidade",
+    "entry-total": "g ou unidades",
+    "save-article": "Salvar ingrediente",
+    "delete-all-entries": "Limpar tabela",
+    "goal-kcal": "Meta (kcal)",
+    "import-ingredients": "Importar ingredientes",
+    "export-ingredients": "Exportar ingredientes",
+    "remove-entry": "Remover entrada",
+    "new-article": "Adicionar ingrediente",
+    "new-section": "Adicionar seção",
+    "narrow-screen": "Somente desktop por enquanto - o suporte para mobile está a caminho.",
+    "import-articles-success": "Os ingredientes foram importados com sucesso.",
+    "export-articles-success": "Os ingredientes foram exportados com sucesso.",
+    "delete-entries-message": "Limpar a tabela?",
+    "delete-section": "A seção não está vazia. Quer excluí-la?",
+    "no-saved-articles": "<0>Ainda não há ingredientes salvos.</0> Escreva um ingrediente e pressione <1 /> para salvá-lo.",
+    "article-name-changed": "O nome do ingrediente mudou. O que você quer fazer?",
+    "create-new-ingredient": "Criar novo ingrediente"
+  },
+  "editGoalDialog": {
+    "caloric-goal": "Meta calórica (ex.: 2200 kcal)"
+  }
+}

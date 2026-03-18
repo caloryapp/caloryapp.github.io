@@ -1,0 +1,52 @@
+{
+  "common": {
+    "cancel": "Annulla",
+    "accept": "Accetta",
+    "save": "Salva",
+    "english": "Inglese",
+    "spanish": "Spagnolo",
+    "french": "Francese",
+    "german": "Tedesco",
+    "portuguese": "Portoghese (Portogallo)",
+    "portuguese-brazil": "Portoghese (Brasile)",
+    "italian": "Italiano",
+    "theme": "Tema"
+  },
+  "popup": {
+    "open-caloryapp": "Apri CaloryApp"
+  },
+  "homePage": {
+    "app-title": "CaloryApp",
+    "language": "Lingua ({{lang}})",
+    "kcal-budget": "<0>Budget:</0> <1>{{d}} kcal</1>",
+    "section-name": "Sezione (colazione, pranzo, ecc.)",
+    "entry-name": "Ingrediente (riso, pane, ecc.)",
+    "article-saved": "L'ingrediente è stato aggiornato.",
+    "article-created": "È stato creato un nuovo ingrediente.",
+    "search-article": "Cerca ingrediente",
+    "kcal": "{{d}} kcal",
+    "entry-kcal": "kcal",
+    "kcal-per-100g": "kcal/100g",
+    "kcal-per-unit": "kcal/unità",
+    "entry-total": "g o unità",
+    "save-article": "Salva ingrediente",
+    "delete-all-entries": "Pulisci tabella",
+    "goal-kcal": "Obiettivo (kcal)",
+    "import-ingredients": "Importa ingredienti",
+    "export-ingredients": "Esporta ingredienti",
+    "remove-entry": "Rimuovi voce",
+    "new-article": "Aggiungi ingrediente",
+    "new-section": "Aggiungi sezione",
+    "narrow-screen": "Solo desktop per ora - il supporto mobile è in arrivo.",
+    "import-articles-success": "Gli ingredienti sono stati importati con successo.",
+    "export-articles-success": "Gli ingredienti sono stati esportati con successo.",
+    "delete-entries-message": "Pulire la tabella?",
+    "delete-section": "La sezione non è vuota. Vuoi eliminarla?",
+    "no-saved-articles": "<0>Nessun ingrediente salvato.</0> Scrivi un ingrediente e premi <1 /> per salvarlo.",
+    "article-name-changed": "Il nome dell'ingrediente è cambiato. Cosa vuoi fare?",
+    "create-new-ingredient": "Crea nuovo ingrediente"
+  },
+  "editGoalDialog": {
+    "caloric-goal": "Obiettivo calorico (es. 2200 kcal)"
+  }
+}

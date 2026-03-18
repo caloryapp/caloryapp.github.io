@@ -5,6 +5,11 @@
     "save": "Save",
     "english": "English",
     "spanish": "Spanish",
+    "french": "French",
+    "german": "German",
+    "portuguese": "Portuguese (Portugal)",
+    "portuguese-brazil": "Portuguese (Brazil)",
+    "italian": "Italian",
     "theme": "Theme"
   },
   "popup": {
