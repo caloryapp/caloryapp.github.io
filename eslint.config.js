@@ -17,7 +17,7 @@ export default [
   ...tseslint.configs.recommended,
   prettier,
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ["src/**/*.{ts,tsx}"],
     rules: {
       "semi": ["error", "never"],
       "quotes": ["error", "single"],

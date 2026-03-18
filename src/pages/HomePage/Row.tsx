@@ -32,6 +32,7 @@ const Row = () => {
         <label
           class={cn('text-right text-sm', {
             'font-medium text-base md:text-lg': type == 'section',
+            'md:text-base': type == 'kcalPer100g' || type == 'kcalPerUnit',
             'line-through opacity-50': entry.discard
           })}
           htmlFor={inputId}
