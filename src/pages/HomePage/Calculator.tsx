@@ -27,6 +27,7 @@ const Calculator = () => {
     replaceArticles
   } = useStoreContext()
   const [openEditGoalDialog, setOpenEditGoalDialog] = useState(false)
+  const [helpMode, setHelpMode] = useState(false)
   const isMobile = useIsMobile()
 
   const collator = useMemo(() => {
@@ -128,6 +129,8 @@ const Calculator = () => {
 
   const ctxValue = useMemo<CalculatorContextProps>(
     () => ({
+      helpMode,
+      setHelpMode,
       focusIdRef,
       articles,
       visibleEntryList,
@@ -140,6 +143,7 @@ const Calculator = () => {
       deleteEntry: handleDeleteEntry
     }),
     [
+      helpMode,
       articles,
       visibleEntryList,
       handleImportArticles,

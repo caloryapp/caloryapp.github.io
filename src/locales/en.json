@@ -44,9 +44,33 @@
     "delete-section": "The section is not empty. Do you want to delete it?",
     "no-saved-articles": "<0>No ingredients saved yet.</0> Write an ingredient and press <1 /> to save it.",
     "article-name-changed": "The ingredient name has changed. What would you like to do?",
-    "create-new-ingredient": "Create new ingredient"
+    "create-new-ingredient": "Create new ingredient",
+    "help-mode": "Help mode"
   },
   "editGoalDialog": {
     "caloric-goal": "Calorie goal (e.g. 2200 kcal)"
+  },
+  "tooltip": {
+    "help-mode-activated": "<0>Help mode enabled!</0> Hover over the main elements to see what each one does. Press the help button again to exit.",
+    "total-calories": "Here you can see your accumulated calories. To know how many you have left, set a calorie goal from the main menu.",
+    "remaining-calories": "Here you can see your remaining calories (calorie goal - accumulated calories).",
+    "clean-table": "Clears the table. Your saved ingredients are not deleted and you can reuse them in your next plan.",
+    "drag-rows": "Drag to reorder as you like.",
+    "delete-entry": "Deletes this row. If the section is collapsed, all its ingredients will be deleted too.",
+    "delete-section": "Deletes this section. If it is collapsed, all its ingredients will be deleted too.",
+    "add-ingredient": "Adds an ingredient right below this row.",
+    "add-section": "Adds a section right below this row.",
+    "kcal-per-section": "Here you can see this section's accumulated calorie total.",
+    "kcal-per-100g": "Formula: (kcal x quantity) / 100.",
+    "kcal-per-unit": "Formula: kcal x quantity.",
+    "discard-entry": "Excludes this entry from the total calculation without deleting it. Ideal for testing variations.",
+    "write-or-select-ingredient": "Type or select an ingredient from the list.",
+    "search-ingredient": "Search for the ingredient on FatSecret (opens in a new tab).",
+    "enter-calories": "Enter the product's calories. You can find them on the package or search for them on FatSecret.",
+    "select-entry-type": "Indicate what the calories refer to: per 100 g or per serving.",
+    "entry-quantity": "Enter the quantity. If you chose kcal/serving, it is multiplied directly (e.g., 90 x 2). If you chose kcal/100 g, the calculation is adjusted per 100 g.",
+    "save-ingredient": "Save this ingredient with its data (kcal, type, and quantity) to reuse it later from the list.",
+    "enter-section": "Create a section to group ingredients, such as \"Breakfast\", \"Lunch\", \"Dinner\", etc.",
+    "toggle-section": "Open or close the section."
   }
 }

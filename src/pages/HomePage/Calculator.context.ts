@@ -1,8 +1,10 @@
 import { createContext } from 'preact'
-import { MutableRef, useContext } from 'preact/hooks'
+import { Dispatch, MutableRef, StateUpdater, useContext } from 'preact/hooks'
 import { Article, Entry, EntryType } from 'src/services/types'
 
 export type CalculatorContextProps = {
+  helpMode: boolean
+  setHelpMode: Dispatch<StateUpdater<boolean>>
   focusIdRef: MutableRef<string>
   articles: Article[]
   visibleEntryList: Entry[]

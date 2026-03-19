@@ -3,6 +3,7 @@ import styles from './Calculator.module.css'
 import ImportIcon from 'src/assets/icons/import.svg?react'
 import ExportIcon from 'src/assets/icons/export.svg?react'
 import Cog6ToothIcon from 'src/assets/icons/cog-6-tooth.svg?react'
+import QuestionMarkCircleIcon from 'src/assets/icons/question-mark-circle.svg?react'
 import RocketLaunchIcon from 'src/assets/icons/rocket-launch.svg?react'
 import MinusIcon from 'src/assets/icons/minus.svg?react'
 import PlusIcon from 'src/assets/icons/plus.svg?react'
@@ -14,6 +15,7 @@ import { cn } from 'src/libs/tw'
 import { useIsTablet } from 'src/libs/mq'
 import { useStoreContext } from 'src/providers/StoreProvider'
 import { useSettingsContext } from 'src/providers/SettingsProvider'
+import { useDialogsContext } from 'src/providers/DialogsProvider'
 import Menu, { MenuButton, MenuDivider } from 'src/components/navigation/Menu'
 import { useCurrentDate, useSortable, useStickyDetection } from './helpers'
 import { useCalculatorContext } from './Calculator.context'
@@ -25,6 +27,8 @@ function CalculatorTablet() {
   const { totalSum, putEntry } = useStoreContext()
   const {
     visibleEntryList,
+    helpMode,
+    setHelpMode,
     showEditGoalDialog,
     importArticles,
     exportArticles,
@@ -35,6 +39,7 @@ function CalculatorTablet() {
   } = useCalculatorContext()
   const curDate = useCurrentDate()
   const { tableRef, isStuck } = useStickyDetection()
+  const { dialog } = useDialogsContext()
   const isTablet = useIsTablet()
   const totalLeft = goal - totalSum
 
@@ -42,6 +47,29 @@ function CalculatorTablet() {
     if (e.ctrlKey && e.key == '+') {
       addEntry(entryId, 'kcalPer100g')
     }
+  }
+
+  const handleToggleHelpMode = (
+    e: Event & { currentTarget: HTMLInputElement }
+  ) => {
+    const checked = e.currentTarget.checked
+    if (checked) {
+      dialog({
+        // body: t('tooltip:help-mode-activated'),
+        body: (
+          <Trans
+            i18nKey="tooltip:help-mode-activated"
+            components={[<strong key={0} />]}
+          />
+        ),
+        actions: (close) => (
+          <button type="button" onClick={close} class="btn btn-primary">
+            {t`common:accept`}
+          </button>
+        )
+      })
+    }
+    setHelpMode(checked)
   }
 
   const { ref: entriesRef } = useSortable<HTMLTableSectionElement>({
@@ -64,9 +92,19 @@ function CalculatorTablet() {
             <div class="flex flex-row justify-between items-end">
               <div>{curDate}</div>
               {isNaN(totalLeft) ? (
-                <div>{t('homePage:kcal', { d: totalSum.toFixed(2) })}</div>
+                <div
+                  class={cn('tooltip-bottom', { tooltip: helpMode })}
+                  data-tip={t`tooltip:total-calories`}
+                >
+                  {t('homePage:kcal', { d: totalSum.toFixed(2) })}
+                </div>
               ) : (
-                <div class="flex flex-col items-end">
+                <div
+                  class={cn('flex flex-col items-end tooltip-bottom', {
+                    tooltip: helpMode
+                  })}
+                  data-tip={t`tooltip:remaining-calories`}
+                >
                   <span
                     class={cn('space-x-0.5', { 'text-warning': totalLeft < 0 })}
                   >
@@ -92,40 +130,60 @@ function CalculatorTablet() {
           </th>
           <th colSpan={2} class="text-right">
             <div class="inline-flex gap-1.5">
-              <button
-                type="button"
-                onClick={clearEntries}
-                title={t`homePage:delete-all-entries`}
-                class="btn btn-sm md:btn-md btn-square btn-warning"
+              <div
+                class={cn('tooltip-left font-normal', { tooltip: helpMode })}
+                data-tip={t`tooltip:clean-table`}
               >
-                <TrashIcon />
-              </button>
-              <Menu
-                anchor={({ toggle }) => (
-                  <button
-                    type="button"
-                    onClick={toggle}
-                    class="btn btn-sm md:btn-md btn-square"
-                  >
-                    <Cog6ToothIcon />
-                  </button>
-                )}
-                class="dropdown-end"
-              >
-                <MenuButton onClick={showEditGoalDialog}>
-                  <RocketLaunchIcon />
-                  <span class="text-nowrap">{t`homePage:goal-kcal`}</span>
-                </MenuButton>
-                <MenuDivider />
-                <MenuButton onClick={importArticles}>
-                  <ImportIcon />
-                  <span class="text-nowrap">{t`homePage:import-ingredients`}</span>
-                </MenuButton>
-                <MenuButton onClick={exportArticles}>
-                  <ExportIcon />
-                  <span class="text-nowrap">{t`homePage:export-ingredients`}</span>
-                </MenuButton>
-              </Menu>
+                <button
+                  type="button"
+                  onClick={clearEntries}
+                  aria-label={t`homePage:delete-all-entries`}
+                  class="btn btn-sm md:btn-md btn-square btn-warning"
+                >
+                  <TrashIcon />
+                </button>
+              </div>
+              <div class="join">
+                <label
+                  title={t`homePage:help-mode`}
+                  class={cn('join-item btn btn-sm md:btn-md btn-square swap', {
+                    'bg-primary text-primary-content border-0': helpMode
+                  })}
+                >
+                  <input
+                    type="checkbox"
+                    checked={helpMode}
+                    onInput={handleToggleHelpMode}
+                  />
+                  <QuestionMarkCircleIcon className="size-6" />
+                </label>
+                <Menu
+                  anchor={({ toggle }) => (
+                    <button
+                      type="button"
+                      onClick={toggle}
+                      class="join-item btn btn-sm md:btn-md btn-square"
+                    >
+                      <Cog6ToothIcon />
+                    </button>
+                  )}
+                  class="join-item dropdown-end"
+                >
+                  <MenuButton onClick={showEditGoalDialog}>
+                    <RocketLaunchIcon />
+                    <span class="text-nowrap">{t`homePage:goal-kcal`}</span>
+                  </MenuButton>
+                  <MenuDivider />
+                  <MenuButton onClick={importArticles}>
+                    <ImportIcon />
+                    <span class="text-nowrap">{t`homePage:import-ingredients`}</span>
+                  </MenuButton>
+                  <MenuButton onClick={exportArticles}>
+                    <ExportIcon />
+                    <span class="text-nowrap">{t`homePage:export-ingredients`}</span>
+                  </MenuButton>
+                </Menu>
+              </div>
             </div>
           </th>
         </tr>
@@ -135,18 +193,23 @@ function CalculatorTablet() {
           <tr key={entry.id} onKeyDown={(e) => handleKeydown(e, entry.id)}>
             <td
               class={cn(
-                'handle cursor-grab active:cursor-grabbing',
-                styles.compact
+                styles.compact,
+                'handle cursor-grab active:cursor-grabbing'
               )}
             >
-              <ArrowsUpDownIcon className="size-4" />
+              <span
+                class={cn('tooltip-right', { tooltip: helpMode })}
+                data-tip={t`tooltip:drag-rows`}
+              >
+                <ArrowsUpDownIcon className="size-4" />
+              </span>
             </td>
             <Row
               entry={entry}
               autoFocus={i == visibleEntryList.length - 1}
               onSave={putEntry}
             />
-            <td class={styles.compact}>
+            <td class={cn(styles.compact, 'text-right')}>
               {isTablet ? (
                 <Menu
                   anchor={({ toggle }) => (
@@ -176,31 +239,51 @@ function CalculatorTablet() {
                 </Menu>
               ) : (
                 <div class="flex items-center gap-1.5">
-                  <button
-                    type="button"
-                    onClick={() => deleteEntry(entry.id)}
-                    title={t`homePage:remove-entry`}
-                    class="btn btn-square"
+                  <div
+                    class={cn('tooltip-left', { tooltip: helpMode })}
+                    data-tip={
+                      entry.type == 'section'
+                        ? t`tooltip:delete-section`
+                        : t`tooltip:delete-entry`
+                    }
                   >
-                    <MinusIcon className="size-4" />
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => deleteEntry(entry.id)}
+                      class="btn btn-square"
+                    >
+                      <MinusIcon className="size-4" />
+                    </button>
+                  </div>
                   <div class="join">
-                    <button
-                      type="button"
-                      onClick={() => addEntry(entry.id, 'kcalPer100g')}
-                      title={t`homePage:new-article`}
-                      class="btn btn-square join-item"
+                    <div
+                      class={cn('join-item tooltip-left', {
+                        tooltip: helpMode
+                      })}
+                      data-tip={t`tooltip:add-ingredient`}
                     >
-                      <PlusIcon className="size-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => addEntry(entry.id, 'section')}
-                      title={t`homePage:new-section`}
-                      class="btn btn-square join-item"
+                      <button
+                        type="button"
+                        onClick={() => addEntry(entry.id, 'kcalPer100g')}
+                        class="btn btn-square join-item"
+                      >
+                        <PlusIcon className="size-4" />
+                      </button>
+                    </div>
+                    <div
+                      class={cn('join-item tooltip-left', {
+                        tooltip: helpMode
+                      })}
+                      data-tip={t`tooltip:add-section`}
                     >
-                      <PlusCircleIcon className="size-5" />
-                    </button>
+                      <button
+                        type="button"
+                        onClick={() => addEntry(entry.id, 'section')}
+                        class="btn btn-square join-item"
+                      >
+                        <PlusCircleIcon className="size-5" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}

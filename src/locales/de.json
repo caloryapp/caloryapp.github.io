@@ -44,9 +44,33 @@
     "delete-section": "Der Bereich ist nicht leer. Möchten Sie ihn löschen?",
     "no-saved-articles": "<0>Noch keine Zutaten gespeichert.</0> Geben Sie eine Zutat ein und drücken Sie <1 />, um sie zu speichern.",
     "article-name-changed": "Der Name der Zutat hat sich geändert. Was möchten Sie tun?",
-    "create-new-ingredient": "Neue Zutat erstellen"
+    "create-new-ingredient": "Neue Zutat erstellen",
+    "help-mode": "Hilfemodus"
   },
   "editGoalDialog": {
     "caloric-goal": "Kalorienziel (z. B. 2200 kcal)"
+  },
+  "tooltip": {
+    "help-mode-activated": "<0>Hilfemodus aktiviert!</0> Fahre mit der Maus über die wichtigsten Elemente, um zu sehen, was jedes davon macht. Drücke die Hilfe-Schaltfläche erneut, um den Modus zu beenden.",
+    "total-calories": "Hier siehst du deine angesammelten Kalorien. Um zu sehen, wie viele dir noch bleiben, lege im Hauptmenü ein Kalorienziel fest.",
+    "remaining-calories": "Hier siehst du deine verbleibenden Kalorien (Kalorienziel - angesammelte Kalorien).",
+    "clean-table": "Leert die Tabelle. Deine gespeicherten Zutaten werden nicht gelöscht und du kannst sie in deinem nächsten Plan wiederverwenden.",
+    "drag-rows": "Ziehen, um nach Wunsch neu anzuordnen.",
+    "delete-entry": "Löscht diese Zeile. Wenn der Bereich geschlossen ist, werden auch alle seine Zutaten gelöscht.",
+    "delete-section": "Löscht diesen Bereich. Wenn er geschlossen ist, werden auch alle seine Zutaten gelöscht.",
+    "add-ingredient": "Fügt direkt unter dieser Zeile eine Zutat hinzu.",
+    "add-section": "Fügt direkt unter dieser Zeile einen Bereich hinzu.",
+    "kcal-per-section": "Hier siehst du die aufsummierten Gesamtkalorien dieses Bereichs.",
+    "kcal-per-100g": "Berechnung: (kcal x Menge) / 100.",
+    "kcal-per-unit": "Berechnung: kcal x Menge.",
+    "discard-entry": "Schließt diesen Eintrag aus der Gesamtberechnung aus, ohne ihn zu löschen. Ideal, um Varianten zu testen.",
+    "write-or-select-ingredient": "Zutat eingeben oder aus der Liste auswählen.",
+    "search-ingredient": "Zutat auf FatSecret suchen (öffnet in einem neuen Tab).",
+    "enter-calories": "Gib die Kalorien des Produkts ein. Du findest sie auf der Verpackung oder über die Suche bei FatSecret.",
+    "select-entry-type": "Gib an, worauf sich die Kalorien beziehen: pro 100 g oder pro Portion.",
+    "entry-quantity": "Gib die Menge ein. Wenn du kcal/Portion gewählt hast, wird direkt multipliziert (z. B. 90 x 2). Wenn du kcal/100 g gewählt hast, wird die Berechnung auf 100 g angepasst.",
+    "save-ingredient": "Speichere diese Zutat mit ihren Daten (kcal, Typ und Menge), um sie später aus der Liste wiederzuverwenden.",
+    "enter-section": "Erstelle einen Bereich, um Zutaten zu gruppieren, z. B. \"Frühstück\", \"Mittagessen\", \"Abendessen\" usw.",
+    "toggle-section": "Bereich öffnen oder schließen."
   }
 }

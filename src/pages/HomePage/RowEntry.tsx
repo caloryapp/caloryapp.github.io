@@ -26,7 +26,7 @@ const RowEntry = () => {
     searchArticleById,
     searchArticleByName
   } = useStoreContext()
-  const { focusIdRef, articles } = useCalculatorContext()
+  const { helpMode, focusIdRef, articles } = useCalculatorContext()
   const { autoFocus, entry, onEntryChange, save, debouncedSave } =
     useRowContext()
   const { toast, dialog } = useDialogsContext()
@@ -137,136 +137,164 @@ const RowEntry = () => {
     <>
       <td>
         <div class="flex items-center gap-1.5">
-          <Combobox
-            autoFocus={autoFocus}
-            ref={inputNameRef}
-            placeholder={t`homePage:entry-name`}
-            value={entry.name}
-            onInput={debouncedSave}
-            onChange={(e) =>
-              onEntryChange({ ...entry, name: e.currentTarget.value })
-            }
-            onBlur={save}
-            options={
-              articles.length > 0 ? articles : [{ id: 'no-saved-articles' }]
-            }
-            renderOption={(option, onMouseDown) => {
-              if (option.id == 'no-saved-articles') {
+          <div
+            class={cn('w-full tooltip-bottom', { tooltip: helpMode })}
+            data-tip={t`tooltip:write-or-select-ingredient`}
+          >
+            <Combobox
+              autoFocus={autoFocus}
+              ref={inputNameRef}
+              placeholder={t`homePage:entry-name`}
+              value={entry.name}
+              onInput={debouncedSave}
+              onChange={(e) =>
+                onEntryChange({ ...entry, name: e.currentTarget.value })
+              }
+              onBlur={save}
+              options={
+                articles.length > 0 ? articles : [{ id: 'no-saved-articles' }]
+              }
+              renderOption={(option, onMouseDown) => {
+                if (option.id == 'no-saved-articles') {
+                  return (
+                    <div class="block">
+                      <Trans
+                        i18nKey="homePage:no-saved-articles"
+                        components={[
+                          <span key={0} class="font-semibold" />,
+                          <FloppyDiskIcon key={1} className="size-5 inline" />
+                        ]}
+                      />
+                    </div>
+                  )
+                }
+
                 return (
-                  <div class="block">
-                    <Trans
-                      i18nKey="homePage:no-saved-articles"
-                      components={[
-                        <span key={0} class="font-semibold" />,
-                        <FloppyDiskIcon key={1} className="size-5 inline" />
-                      ]}
-                    />
+                  <div class="flex gap-1">
+                    <button
+                      onClick={onMouseDown}
+                      class="cursor-pointer whitespace-nowrap grow self-stretch flex items-center"
+                    >
+                      {option.name}
+                    </button>
+                    <button
+                      type="button"
+                      tabIndex={-1}
+                      onClick={() => deleteArticle(option.id)}
+                      class="btn btn-ghost btn-square btn-sm -mr-1"
+                    >
+                      <TrashIcon />
+                    </button>
                   </div>
                 )
-              }
-
-              return (
-                <div class="flex gap-1">
-                  <button
-                    onClick={onMouseDown}
-                    class="cursor-pointer whitespace-nowrap grow self-stretch flex items-center"
-                  >
-                    {option.name}
-                  </button>
-                  <button
-                    type="button"
-                    tabIndex={-1}
-                    onClick={() => deleteArticle(option.id)}
-                    class="btn btn-ghost btn-square btn-sm -mr-1"
-                  >
-                    <TrashIcon />
-                  </button>
-                </div>
-              )
-            }}
-            onSelectOption={(option) => handleSelectArticle(option.id)}
-            class="w-full"
-          />
-          <button
-            onClick={handleSearchArticle}
-            title={t`homePage:search-article`}
-            class="btn btn-sm md:btn-md btn-square"
+              }}
+              onSelectOption={(option) => handleSelectArticle(option.id)}
+              class="w-full"
+            />
+          </div>
+          <div
+            class={cn('tooltip-bottom', { tooltip: helpMode })}
+            data-tip={t`tooltip:search-ingredient`}
           >
-            <MagnifyingGlassIcon className="size-5" />
-          </button>
+            <button
+              onClick={handleSearchArticle}
+              class="btn btn-sm md:btn-md btn-square"
+            >
+              <MagnifyingGlassIcon className="size-5" />
+            </button>
+          </div>
         </div>
       </td>
       <td class={styles.compact}>
         <div class="join">
-          <input
-            type="number"
-            placeholder={t`homePage:entry-kcal`}
-            value={isNaN(entry.kcal) ? '' : entry.kcal}
-            onInput={debouncedSave}
-            onChange={(e) =>
-              onEntryChange({
-                ...entry,
-                kcal: parseFloat(e.currentTarget.value)
-              })
-            }
-            onBlur={save}
-            class={cn(
-              'input input-sm md:input-md join-item w-12 lg:w-20 xl:w-24',
-              {
-                'border-kcal-per-100g': entry.type == 'kcalPer100g',
-                'border-kcal-per-unit': entry.type == 'kcalPerUnit'
-              }
-            )}
-          />
-          <select
-            value={entry.type}
-            onInput={debouncedSave}
-            onChange={(e) =>
-              onEntryChange({
-                ...entry,
-                type: e.currentTarget.value as EntryType
-              })
-            }
-            onBlur={save}
-            class={cn(
-              'input input-sm md:input-md join-item w-12 lg:w-20 xl:w-24',
-              {
-                'border-kcal-per-100g': entry.type == 'kcalPer100g',
-                'border-kcal-per-unit': entry.type == 'kcalPerUnit'
-              }
-            )}
+          <div
+            class={cn('join-item tooltip-bottom', { tooltip: helpMode })}
+            data-tip={t`tooltip:enter-calories`}
           >
-            <option value="kcalPer100g">{t`homePage:kcal-per-100g`}</option>
-            <option value="kcalPerUnit">{t`homePage:kcal-per-unit`}</option>{' '}
-          </select>
+            <input
+              type="number"
+              placeholder={t`homePage:entry-kcal`}
+              value={isNaN(entry.kcal) ? '' : entry.kcal}
+              onInput={debouncedSave}
+              onChange={(e) =>
+                onEntryChange({
+                  ...entry,
+                  kcal: parseFloat(e.currentTarget.value)
+                })
+              }
+              onBlur={save}
+              class={cn(
+                'input input-sm md:input-md join-item w-12 lg:w-20 xl:w-24',
+                {
+                  'border-kcal-per-100g': entry.type == 'kcalPer100g',
+                  'border-kcal-per-unit': entry.type == 'kcalPerUnit'
+                }
+              )}
+            />
+          </div>
+          <div
+            class={cn('join-item tooltip-bottom', { tooltip: helpMode })}
+            data-tip={t`tooltip:select-entry-type`}
+          >
+            <select
+              value={entry.type}
+              onInput={debouncedSave}
+              onChange={(e) =>
+                onEntryChange({
+                  ...entry,
+                  type: e.currentTarget.value as EntryType
+                })
+              }
+              onBlur={save}
+              class={cn(
+                'select select-sm md:select-md join-item w-12 lg:w-20 xl:w-24',
+                {
+                  'border-kcal-per-100g': entry.type == 'kcalPer100g',
+                  'border-kcal-per-unit': entry.type == 'kcalPerUnit'
+                }
+              )}
+            >
+              <option value="kcalPer100g">{t`homePage:kcal-per-100g`}</option>
+              <option value="kcalPerUnit">{t`homePage:kcal-per-unit`}</option>{' '}
+            </select>
+          </div>
         </div>
       </td>
       <td class={styles.compact}>
         <div class="flex items-center gap-1.5">
-          <input
-            type="number"
-            step={entry.type == 'kcalPer100g' ? 5 : 1}
-            placeholder={t`homePage:entry-total`}
-            value={isNaN(entry.total) ? '' : entry.total}
-            onInput={debouncedSave}
-            onChange={(e) =>
-              onEntryChange({
-                ...entry,
-                total: parseFloat(e.currentTarget.value)
-              })
-            }
-            onBlur={save}
-            class="input input-sm md:input-md w-12 lg:w-20 xl:w-24"
-          />
-          <button
-            disabled={!entry.name.trim()}
-            type="button"
-            onClick={handleSaveArticle}
-            title={t`homePage:save-article`}
-            class="btn btn-sm md:btn-md btn-square"
+          <div
+            class={cn('w-full tooltip-bottom', { tooltip: helpMode })}
+            data-tip={t`tooltip:entry-quantity`}
           >
-            <FloppyDiskIcon className="size-5" />
-          </button>
+            <input
+              type="number"
+              step={entry.type == 'kcalPer100g' ? 5 : 1}
+              placeholder={t`homePage:entry-total`}
+              value={isNaN(entry.total) ? '' : entry.total}
+              onInput={debouncedSave}
+              onChange={(e) =>
+                onEntryChange({
+                  ...entry,
+                  total: parseFloat(e.currentTarget.value)
+                })
+              }
+              onBlur={save}
+              class="input input-sm md:input-md w-12 lg:w-20 xl:w-24"
+            />
+          </div>
+          <div
+            class={cn('tooltip-bottom', { tooltip: helpMode })}
+            data-tip={t`tooltip:save-ingredient`}
+          >
+            <button
+              disabled={!entry.name.trim()}
+              type="button"
+              onClick={handleSaveArticle}
+              class="btn btn-sm md:btn-md btn-square"
+            >
+              <FloppyDiskIcon className="size-5" />
+            </button>
+          </div>
         </div>
       </td>
       <td>&nbsp;</td>

@@ -11,7 +11,7 @@ const RowSection = () => {
   const { t } = useTranslation()
   const { toggleSection, isSectionCollapsed, isSectionEmpty } =
     useStoreContext()
-  const { focusIdRef } = useCalculatorContext()
+  const { focusIdRef, helpMode } = useCalculatorContext()
   const { autoFocus, entry, onEntryChange, save, debouncedSave } =
     useRowContext()
   const collapsed = isSectionCollapsed(entry.id)
@@ -28,35 +28,45 @@ const RowSection = () => {
   return (
     <>
       <td colSpan={3}>
-        <input
-          autoFocus={autoFocus}
-          ref={inputNameRef}
-          type="text"
-          placeholder={t`homePage:section-name`}
-          value={entry.name}
-          onInput={debouncedSave}
-          onChange={(e) =>
-            onEntryChange({ ...entry, name: e.currentTarget.value })
-          }
-          onBlur={save}
-          class="input input-sm md:input-md w-full col-span-3 border-2 border-primary/50 outline-primary"
-        />
+        <div
+          class={cn('w-full tooltip-bottom', { tooltip: helpMode })}
+          data-tip={t`tooltip:enter-section`}
+        >
+          <input
+            autoFocus={autoFocus}
+            ref={inputNameRef}
+            type="text"
+            placeholder={t`homePage:section-name`}
+            value={entry.name}
+            onInput={debouncedSave}
+            onChange={(e) =>
+              onEntryChange({ ...entry, name: e.currentTarget.value })
+            }
+            onBlur={save}
+            class="input input-sm md:input-md w-full col-span-3 border-2 border-primary/50 outline-primary"
+          />
+        </div>
       </td>
       <td class={styles.compact}>
-        <button
-          type="button"
-          disabled={empty}
-          onClick={() => toggleSection(entry.id)}
-          class={cn(
-            'btn btn-square btn-link text-base-content btn-sm transition-[rotate]',
-            {
-              'opacity-0': empty,
-              'rotate-180': collapsed
-            }
-          )}
+        <div
+          class={cn('tooltip-bottom', { tooltip: helpMode })}
+          data-tip={t`tooltip:toggle-section`}
         >
-          <ChevronUpIcon />
-        </button>
+          <button
+            type="button"
+            disabled={empty}
+            onClick={() => toggleSection(entry.id)}
+            class={cn(
+              'btn btn-square btn-link text-base-content btn-sm transition-[rotate]',
+              {
+                'opacity-0': empty,
+                'rotate-180': collapsed
+              }
+            )}
+          >
+            <ChevronUpIcon />
+          </button>
+        </div>
       </td>
     </>
   )

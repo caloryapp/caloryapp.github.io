@@ -44,9 +44,33 @@
     "delete-section": "La section n'est pas vide. Voulez-vous la supprimer ?",
     "no-saved-articles": "<0>Aucun ingrédient enregistré.</0> Saisissez un ingrédient puis appuyez sur <1 /> pour l'enregistrer.",
     "article-name-changed": "Le nom de l'ingrédient a changé. Que voulez-vous faire ?",
-    "create-new-ingredient": "Créer un nouvel ingrédient"
+    "create-new-ingredient": "Créer un nouvel ingrédient",
+    "help-mode": "Mode d'aide"
   },
   "editGoalDialog": {
     "caloric-goal": "Objectif calorique (ex. 2200 kcal)"
+  },
+  "tooltip": {
+    "help-mode-activated": "<0>Mode d'aide activé !</0> Survolez les éléments principaux pour voir à quoi chacun sert. Appuyez de nouveau sur le bouton d'aide pour quitter.",
+    "total-calories": "Ici, vous voyez les calories accumulées. Pour savoir combien il vous reste, définissez un objectif calorique depuis le menu principal.",
+    "remaining-calories": "Ici, vous voyez les calories restantes (objectif calorique - calories accumulées).",
+    "clean-table": "Vide le tableau. Vos ingrédients enregistrés ne sont pas supprimés et vous pourrez les réutiliser dans votre prochain plan.",
+    "drag-rows": "Faites glisser pour réorganiser comme vous voulez.",
+    "delete-entry": "Supprime cette ligne. Si la section est fermée, tous ses ingrédients seront aussi supprimés.",
+    "delete-section": "Supprime cette section. Si elle est fermée, tous ses ingrédients seront aussi supprimés.",
+    "add-ingredient": "Ajoute un ingrédient juste en dessous de cette ligne.",
+    "add-section": "Ajoute une section juste en dessous de cette ligne.",
+    "kcal-per-section": "Ici, vous voyez le total calorique cumulé de cette section.",
+    "kcal-per-100g": "Calcul : (kcal x quantité) / 100.",
+    "kcal-per-unit": "Calcul : kcal x quantité.",
+    "discard-entry": "Exclut cette entrée du calcul total sans la supprimer. Idéal pour tester des variations.",
+    "write-or-select-ingredient": "Saisissez ou sélectionnez un ingrédient dans la liste.",
+    "search-ingredient": "Rechercher l'ingrédient sur FatSecret (s'ouvre dans un nouvel onglet).",
+    "enter-calories": "Saisissez les calories du produit. Vous pouvez les trouver sur l'emballage ou les rechercher sur FatSecret.",
+    "select-entry-type": "Indiquez à quoi correspondent les calories : pour 100 g ou par portion.",
+    "entry-quantity": "Saisissez la quantité. Si vous avez choisi kcal/portion, la multiplication est directe (ex. : 90 x 2). Si vous avez choisi kcal/100 g, le calcul est ajusté pour 100 g.",
+    "save-ingredient": "Enregistrez cet ingrédient avec ses données (kcal, type et quantité) pour le réutiliser plus tard depuis la liste.",
+    "enter-section": "Créez une section pour regrouper des ingrédients, comme \"Petit-déjeuner\", \"Déjeuner\", \"Dîner\", etc.",
+    "toggle-section": "Ouvrir ou fermer la section."
   }
 }

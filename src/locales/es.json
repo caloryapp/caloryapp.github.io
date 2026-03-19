@@ -44,9 +44,33 @@
     "delete-section": "La sección no está vacía. ¿Quieres eliminarla?",
     "no-saved-articles": "<0>No hay ingredientes guardados.</0> Escriba un ingrediente y presione <1 /> para guardarlo.",
     "article-name-changed": "El nombre del ingrediente ha cambiado. Qué desea hacer?",
-    "create-new-ingredient": "Crear nuevo ingrediente"
+    "create-new-ingredient": "Crear nuevo ingrediente",
+    "help-mode": "Modo ayuda"
   },
   "editGoalDialog": {
     "caloric-goal": "Objetivo calórico (p. ej., 2200 kcal)"
+  },
+  "tooltip": {
+    "help-mode-activated": "<0>¡Modo ayuda activado!</0> Pasa el ratón sobre los elementos principales para ver qué hace cada uno. Pulsa de nuevo el botón de ayuda para salir.",
+    "total-calories": "Aquí ves las calorías acumuladas. Para saber cuántas te quedan, define un objetivo calórico desde el menú principal.",
+    "remaining-calories": "Aquí ves las calorías que te quedan (objetivo calórico - calorías acumuladas).",
+    "clean-table": "Limpia la tabla. Tus ingredientes guardados no se eliminan y podrás reutilizarlos en tu próximo plan.",
+    "drag-rows": "Arrastra para reordenar a tu gusto.",
+    "delete-entry": "Borra esta fila. Si la sección está cerrada, también se borrarán todos sus ingredientes.",
+    "delete-section": "Borra esta sección. Si está cerrada, también se borrarán todos sus ingredientes.",
+    "add-ingredient": "Añade un ingrediente justo debajo de esta fila.",
+    "add-section": "Añade una sección justo debajo de esta fila.",
+    "kcal-per-section": "Aquí ves el total acumulado de calorías de esta sección.",
+    "kcal-per-100g": "Cálculo: (kcal x cantidad) / 100.",
+    "kcal-per-unit": "Cálculo: kcal x cantidad.",
+    "discard-entry": "Descarta esta entrada del cálculo total sin borrarla. Ideal para probar variaciones.",
+    "write-or-select-ingredient": "Escribe o selecciona un ingrediente de la lista.",
+    "search-ingredient": "Buscar el ingrediente en FatSecret (se abre en una pestaña nueva).",
+    "enter-calories": "Introduce las calorías del producto. Puedes encontrarlas en el envase o buscarlas en FatSecret.",
+    "select-entry-type": "Indica a qué se refieren las calorías: por cada 100 g o por porción.",
+    "entry-quantity": "Introduce la cantidad. Si elegiste kcal/porción, se multiplica directamente (ej.: 90 x 2). Si elegiste kcal/100 g, el cálculo se ajusta por cada 100 g.",
+    "save-ingredient": "Guarda este ingrediente con sus datos (kcal, tipo y cantidad) para reutilizarlo después desde la lista.",
+    "enter-section": "Crea una sección para agrupar ingredientes, como \"Desayuno\", \"Almuerzo\", \"Cena\", etc.",
+    "toggle-section": "Abre o cierra la sección."
   }
 }
