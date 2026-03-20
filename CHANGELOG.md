@@ -3,6 +3,7 @@
 ### Added
 
 - Support for French, German, Portuguese and Italian languages.
+- Interactive help mode.
 
 ### Changed
 
