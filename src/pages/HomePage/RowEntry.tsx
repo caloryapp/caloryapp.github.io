@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'preact/hooks'
 import { Trans, useTranslation } from 'react-i18next'
 import { nanoid } from 'nanoid'
-import styles from './Calculator.module.css'
+import styles from './HomePage.module.css'
 import MagnifyingGlassIcon from 'src/assets/icons/magnifying-glass.svg?react'
 import FloppyDiskIcon from 'src/assets/icons/floppy-disk.svg?react'
 import TrashIcon from 'src/assets/icons/trash.svg?react'
@@ -13,7 +13,7 @@ import { useLanguage } from 'src/libs/i18n'
 import { cn } from 'src/libs/tw'
 import Combobox from 'src/components/inputs/Combobox'
 import { extractFoodName } from './helpers'
-import { useCalculatorContext } from './Calculator.context'
+import { useHomePageContext } from './HomePage.context'
 import { useRowContext } from './Row.context'
 
 const RowEntry = () => {
@@ -26,7 +26,7 @@ const RowEntry = () => {
     searchArticleById,
     searchArticleByName
   } = useStoreContext()
-  const { helpMode, focusIdRef, articles } = useCalculatorContext()
+  const { helpMode, focusIdRef, articles } = useHomePageContext()
   const { autoFocus, entry, onEntryChange, save, debouncedSave } =
     useRowContext()
   const { toast, dialog } = useDialogsContext()

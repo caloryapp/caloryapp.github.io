@@ -14,7 +14,7 @@ import ThemeProvider from 'src/providers/ThemeProvider'
 import DialogsProvider from 'src/providers/DialogsProvider'
 import SettingsProvider from 'src/providers/SettingsProvider'
 import StoreProvider from 'src/providers/StoreProvider'
-import Calculator from './Calculator'
+import HomePage from './HomePage'
 
 const seedDb = async () => {
   let prevOrder: string | null = null
@@ -40,13 +40,13 @@ const seedDb = async () => {
   })
 }
 
-const renderCalculator = () => {
+const renderHomePage = () => {
   render(
     <ThemeProvider>
       <DialogsProvider>
         <SettingsProvider>
           <StoreProvider>
-            <Calculator />
+            <HomePage />
           </StoreProvider>
         </SettingsProvider>
       </DialogsProvider>
@@ -54,10 +54,10 @@ const renderCalculator = () => {
   )
 }
 
-describe('Calculator', () => {
+describe('HomePage', () => {
   beforeEach(async () => {
     await seedDb()
-    renderCalculator()
+    renderHomePage()
     await screen.findByDisplayValue('Article 0')
   })
 

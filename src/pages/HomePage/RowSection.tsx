@@ -3,15 +3,15 @@ import { useTranslation } from 'react-i18next'
 import ChevronUpIcon from 'src/assets/icons/chevron-up.svg?react'
 import { cn } from 'src/libs/tw'
 import { useStoreContext } from 'src/providers/StoreProvider'
-import styles from './Calculator.module.css'
-import { useCalculatorContext } from './Calculator.context'
+import styles from './HomePage.module.css'
+import { useHomePageContext } from './HomePage.context'
 import { useRowContext } from './Row.context'
 
 const RowSection = () => {
   const { t } = useTranslation()
   const { toggleSection, isSectionCollapsed, isSectionEmpty } =
     useStoreContext()
-  const { focusIdRef, helpMode } = useCalculatorContext()
+  const { focusIdRef, helpMode } = useHomePageContext()
   const { autoFocus, entry, onEntryChange, save, debouncedSave } =
     useRowContext()
   const collapsed = isSectionCollapsed(entry.id)

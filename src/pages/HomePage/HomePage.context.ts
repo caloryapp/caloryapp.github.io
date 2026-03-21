@@ -2,7 +2,7 @@ import { createContext } from 'preact'
 import { Dispatch, MutableRef, StateUpdater, useContext } from 'preact/hooks'
 import { Article, Entry, EntryType } from 'src/services/types'
 
-export type CalculatorContextProps = {
+export type HomePageContextProps = {
   helpMode: boolean
   setHelpMode: Dispatch<StateUpdater<boolean>>
   focusIdRef: MutableRef<string>
@@ -17,15 +17,13 @@ export type CalculatorContextProps = {
   moveEntry: (params: { fromIndex?: number; toIndex?: number }) => void
 }
 
-export const CalculatorContext = createContext<CalculatorContextProps | null>(
-  null
-)
+export const HomePageContext = createContext<HomePageContextProps | null>(null)
 
-export const useCalculatorContext = () => {
-  const ctx = useContext(CalculatorContext)
+export const useHomePageContext = () => {
+  const ctx = useContext(HomePageContext)
   if (!ctx) {
     throw new Error(
-      'useCalculatorContext must be used within <CalculatorContext />'
+      'useHomePageContext must be used within <HomePageContext />'
     )
   }
   return ctx

@@ -1,12 +1,12 @@
 import { useCallback, useId, useMemo, useRef, useState } from 'preact/hooks'
 import { useTranslation } from 'react-i18next'
 import { useDebouncedCallback } from 'use-debounce'
-import styles from './Calculator.module.css'
+import styles from './HomePage.module.css'
 import { Entry } from 'src/services/types'
 import { useStoreContext } from 'src/providers/StoreProvider'
 import { AUTOSAVE_DELAY } from 'src/config/general'
 import { cn } from 'src/libs/tw'
-import { useCalculatorContext } from './Calculator.context'
+import { useHomePageContext } from './HomePage.context'
 import { RowContext, RowContextProps, useRowContext } from './Row.context'
 import RowSection from './RowSection'
 import RowEntry from './RowEntry'
@@ -21,7 +21,7 @@ const Row = () => {
   const { t } = useTranslation()
   const { getTotalSum } = useStoreContext()
   const { entry, onEntryChange, debouncedSave } = useRowContext()
-  const { helpMode } = useCalculatorContext()
+  const { helpMode } = useHomePageContext()
   const type = entry.type
   const totalSum = getTotalSum(entry.id)
   const inputId = useId()
