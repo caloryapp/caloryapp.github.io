@@ -223,13 +223,10 @@ const RowEntry = () => {
                 })
               }
               onBlur={save}
-              class={cn(
-                'input input-sm md:input-md join-item w-12 lg:w-20 xl:w-24',
-                {
-                  'border-kcal-per-100g': entry.type == 'kcalPer100g',
-                  'border-kcal-per-unit': entry.type == 'kcalPerUnit'
-                }
-              )}
+              class={cn('input input-sm md:input-md join-item w-12 lg:w-16', {
+                'border-kcal-per-100g': entry.type == 'kcalPer100g',
+                'border-kcal-per-unit': entry.type == 'kcalPerUnit'
+              })}
             />
           </div>
           <div
@@ -247,7 +244,7 @@ const RowEntry = () => {
               }
               onBlur={save}
               class={cn(
-                'select select-sm md:select-md join-item w-12 lg:w-20 xl:w-24',
+                'select select-sm md:select-md join-item w-12 lg:w-28',
                 {
                   'border-kcal-per-100g': entry.type == 'kcalPer100g',
                   'border-kcal-per-unit': entry.type == 'kcalPerUnit'
@@ -279,7 +276,7 @@ const RowEntry = () => {
                 })
               }
               onBlur={save}
-              class="input input-sm md:input-md w-12 lg:w-20 xl:w-24"
+              class="input input-sm md:input-md w-12 lg:w-20"
             />
           </div>
           <div

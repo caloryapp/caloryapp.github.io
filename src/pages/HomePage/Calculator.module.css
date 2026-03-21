@@ -29,7 +29,7 @@
 }
 
 /* Medium tablets or desktops. */
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   /* header cells paddings */
   .entries th {
     padding: 1.5rem 0.5rem 1.5rem;
