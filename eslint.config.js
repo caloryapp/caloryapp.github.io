@@ -20,14 +20,15 @@ export default [
     files: ["src/**/*.{ts,tsx}"],
     rules: {
       "semi": ["error", "never"],
-      "quotes": ["error", "single"],
+      "quotes": ["error", "single", { "avoidEscape": true }],
       "quote-props": ["error", "consistent-as-needed"],
 
       // Prevent common bugs
       "no-unused-vars": "off", // Disabled in favor of TypeScript version
       "@typescript-eslint/no-unused-vars": ["warn", { 
         "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_" 
+        "varsIgnorePattern": "^_" ,
+        "destructuredArrayIgnorePattern": "^_"
       }],
       "no-restricted-imports": [
         "error",

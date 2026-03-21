@@ -14,6 +14,12 @@
       "options": {
         "singleQuote": false
       }
+    },
+    {
+      "files": "*.test.tsx",
+      "options": {
+        "printWidth": 120
+      }
     }
   ]
 }

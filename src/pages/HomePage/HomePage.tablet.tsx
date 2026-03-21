@@ -203,6 +203,7 @@ function HomePageTablet() {
                   styles.compact,
                   'handle cursor-grab active:cursor-grabbing'
                 )}
+                aria-label="homePage:drag-row"
               >
                 <span
                   class={cn('tooltip-right', { tooltip: helpMode })}
@@ -224,11 +225,13 @@ function HomePageTablet() {
                         type="button"
                         onClick={toggle}
                         class="btn btn-sm md:btn-md btn-square"
+                        aria-label={t`homePage:entry-actions`}
                       >
                         <EllipsisHorizontalCircle className="size-5" />
                       </button>
                     )}
                     class="dropdown-end"
+                    aria-label={t`homePage:entry-actions`}
                   >
                     <MenuButton onClick={() => deleteEntry(entry.id)}>
                       <MinusIcon className="size-5" />
@@ -239,11 +242,11 @@ function HomePageTablet() {
                       onClick={() => addEntry(entry.id, 'kcalPer100g')}
                     >
                       <PlusIcon className="size-5" />
-                      <span class="text-nowrap">{t`homePage:new-article`}</span>
+                      <span class="text-nowrap">{t`homePage:add-entry`}</span>
                     </MenuButton>
                     <MenuButton onClick={() => addEntry(entry.id, 'section')}>
                       <PlusCircleIcon className="size-5" />
-                      <span class="text-nowrap">{t`homePage:new-section`}</span>
+                      <span class="text-nowrap">{t`homePage:add-section`}</span>
                     </MenuButton>
                   </Menu>
                 ) : (
@@ -260,6 +263,7 @@ function HomePageTablet() {
                         type="button"
                         onClick={() => deleteEntry(entry.id)}
                         class="btn btn-square"
+                        aria-label={t`homePage:remove-entry`}
                       >
                         <MinusIcon className="size-4" />
                       </button>
@@ -275,6 +279,7 @@ function HomePageTablet() {
                           type="button"
                           onClick={() => addEntry(entry.id, 'kcalPer100g')}
                           class="btn btn-square join-item"
+                          aria-label={t`homePage:add-entry`}
                         >
                           <PlusIcon className="size-4" />
                         </button>
@@ -289,6 +294,7 @@ function HomePageTablet() {
                           type="button"
                           onClick={() => addEntry(entry.id, 'section')}
                           class="btn btn-square join-item"
+                          aria-label={t`homePage:add-section`}
                         >
                           <PlusCircleIcon className="size-5" />
                         </button>

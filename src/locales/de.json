@@ -35,8 +35,8 @@
     "import-ingredients": "Zutaten importieren",
     "export-ingredients": "Zutaten exportieren",
     "remove-entry": "Eintrag entfernen",
-    "new-article": "Zutat hinzufügen",
-    "new-section": "Bereich hinzufügen",
+    "add-entry": "Zutat hinzufügen",
+    "add-section": "Bereich hinzufügen",
     "narrow-screen": "Derzeit nur Desktop - mobile Unterstützung folgt bald.",
     "import-articles-success": "Zutaten wurden erfolgreich importiert.",
     "export-articles-success": "Zutaten wurden erfolgreich exportiert.",
@@ -45,7 +45,10 @@
     "no-saved-articles": "<0>Noch keine Zutaten gespeichert.</0> Geben Sie eine Zutat ein und drücken Sie <1 />, um sie zu speichern.",
     "article-name-changed": "Der Name der Zutat hat sich geändert. Was möchten Sie tun?",
     "create-new-ingredient": "Neue Zutat erstellen",
-    "help-mode": "Hilfemodus"
+    "help-mode": "Hilfemodus",
+    "entry-actions": "Menü umschalten",
+    "drag-row": "Zeile ziehen",
+    "toggle-section": "Bereich öffnen oder schließen."
   },
   "editGoalDialog": {
     "caloric-goal": "Kalorienziel (z. B. 2200 kcal)"

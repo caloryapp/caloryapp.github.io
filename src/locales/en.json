@@ -35,8 +35,8 @@
     "import-ingredients": "Import ingredients",
     "export-ingredients": "Export ingredients",
     "remove-entry": "Remove entry",
-    "new-article": "Add ingredient",
-    "new-section": "Add section",
+    "add-entry": "Add ingredient",
+    "add-section": "Add section",
     "narrow-screen": "Desktop only for now — mobile support is on the way.",
     "import-articles-success": "Articles were imported successfully.",
     "export-articles-success": "Articles were exported successfully.",
@@ -45,7 +45,10 @@
     "no-saved-articles": "<0>No ingredients saved yet.</0> Write an ingredient and press <1 /> to save it.",
     "article-name-changed": "The ingredient name has changed. What would you like to do?",
     "create-new-ingredient": "Create new ingredient",
-    "help-mode": "Help mode"
+    "help-mode": "Help mode",
+    "entry-actions": "Toggle menu",
+    "drag-row": "Drag row",
+    "toggle-section": "Open or close the section."
   },
   "editGoalDialog": {
     "caloric-goal": "Calorie goal (e.g. 2200 kcal)"

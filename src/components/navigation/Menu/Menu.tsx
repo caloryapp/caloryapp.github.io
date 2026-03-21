@@ -1,15 +1,20 @@
-import { ComponentChild, ComponentChildren } from 'preact'
+import { ComponentChild, ComponentChildren, AriaAttributes } from 'preact'
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks'
 import { cn } from 'src/libs/tw'
 import { MenuContext, MenuContextProps, useMenuContext } from './Menu.context'
 
-export type MenuProps = {
+export type MenuProps = AriaAttributes & {
   anchor: (params: { toggle: () => void; open: boolean }) => ComponentChild
   class?: string
   children?: ComponentChildren
 }
 
-const Menu = ({ anchor, class: className, children }: MenuProps) => {
+const Menu = ({
+  anchor,
+  class: className,
+  children,
+  ...ariaProps
+}: MenuProps) => {
   const { open, setOpen } = useMenuContext()
   const wrapperRef = useRef<HTMLDivElement>(null)
   const handleToggleMenu = () => setOpen((val) => !val)
@@ -44,7 +49,11 @@ const Menu = ({ anchor, class: className, children }: MenuProps) => {
     >
       {anchor({ toggle: handleToggleMenu, open })}
       {open && children && (
-        <ul class="menu dropdown-content bg-base-100 border border-base-300 shadow-md/30 my-1.5 rounded-box">
+        <ul
+          class="menu dropdown-content bg-base-100 border border-base-300 shadow-md/30 my-1.5 rounded-box"
+          role="menu"
+          {...ariaProps}
+        >
           {children}
         </ul>
       )}

@@ -39,6 +39,7 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/preact": "^3.2.4",
+    "@testing-library/user-event": "^14.6.1",
     "@types/chrome": "^0.1.35",
     "@types/node": "^25.0.9",
     "@types/sortablejs": "^1.15.9",

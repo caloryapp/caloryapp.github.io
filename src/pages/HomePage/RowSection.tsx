@@ -63,6 +63,7 @@ const RowSection = () => {
                 'rotate-180': collapsed
               }
             )}
+            aria-label="tooltip:toggle-section"
           >
             <ChevronUpIcon />
           </button>

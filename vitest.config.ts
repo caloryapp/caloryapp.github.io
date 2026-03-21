@@ -18,6 +18,7 @@ export default defineConfig({
     }
   },
   test: {
+    reporters: 'tree',
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
     alias: {
