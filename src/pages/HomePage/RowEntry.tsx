@@ -197,6 +197,7 @@ const RowEntry = () => {
             data-tip={t`tooltip:search-ingredient`}
           >
             <button
+              type="button"
               onClick={handleSearchArticle}
               class="btn btn-sm md:btn-md btn-square"
             >
