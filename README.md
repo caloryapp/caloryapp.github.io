@@ -14,8 +14,8 @@ Add foods. Count calories. That's it!
 
 <p align="center">
   View YouTube video:<br>
-  <a href="https://www.youtube.com/watch?v=LjrWPzBz9Ws">
-    <img width="800" alt="Screenshot" src="https://img.youtube.com/vi/LjrWPzBz9Ws/maxresdefault.jpg">
+  <a href="https://www.youtube.com/watch?v=R5n53BfXggI">
+    <img width="800" alt="Screenshot" src="https://img.youtube.com/vi/R5n53BfXggI/maxresdefault.jpg">
   </a>
 </p>
 
