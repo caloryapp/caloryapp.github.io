@@ -13,7 +13,9 @@ Add foods. Count calories. That's it!
 <br>
 
 <p align="center">
-  <img width="800" alt="Screenshot" src="./docs/assets/screenshot.png">
+  <a href="https://www.youtube.com/watch?v=LjrWPzBz9Ws">
+    <img width="800" alt="Screenshot" src="https://img.youtube.com/vi/LjrWPzBz9Ws/maxresdefault.jpg">
+  </a>
 </p>
 
 ## Development
